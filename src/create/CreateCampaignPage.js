@@ -34,14 +34,17 @@ export default function CreateCampaignPage(props) {
   }
 
   const { title, brand, tags } = data
+
   return (
     <Grid>
-      <Title css="position: absolute; top: 0; width: 100%">Create</Title>
+      <Title css="position: absolute; top: 0; width: 100%">
+        Kampagne erstellen
+      </Title>
       <CampaignContainer data-cy="preview-container">
         {(title || brand || tags) && (
           <Campaign
             title={title || 'No title yet'}
-            brand={brand || 'No content yet'}
+            brand={brand || 'No brand yet'}
             tags={split(tags)}
           />
         )}
