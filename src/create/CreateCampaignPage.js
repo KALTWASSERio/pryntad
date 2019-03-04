@@ -14,6 +14,7 @@ const Grid = styled.section`
 const defaultData = {
   title: '',
   brand: '',
+  shedule: '',
   tags: '',
 }
 export default function CreateCampaignPage(props) {
@@ -33,7 +34,7 @@ export default function CreateCampaignPage(props) {
     setData(defaultData)
   }
 
-  const { title, brand, tags } = data
+  const { title, brand, shedule, tags } = data
 
   return (
     <Grid>
@@ -41,10 +42,11 @@ export default function CreateCampaignPage(props) {
         Kampagne erstellen
       </Title>
       <CampaignContainer data-cy="preview-container">
-        {(title || brand || tags) && (
+        {(title || brand || shedule || tags) && (
           <Campaign
             title={title || 'No title yet'}
             brand={brand || 'No brand yet'}
+            shedule={shedule || 'No shedule yet'}
             tags={split(tags)}
           />
         )}

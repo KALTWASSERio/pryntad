@@ -28,7 +28,7 @@ export default createGlobalStyle`
 
   input {
     appearance: none;
-    border: 4px solid #dcdcdc;
+    border: 2px solid #dcdcdc;
     border-radius: none;
     background: white;
     padding-left: 4px;

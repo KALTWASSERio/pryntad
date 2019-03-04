@@ -26,7 +26,7 @@ const Tag = styled.li`
   font-size: 0.8em;
 `
 
-export default function Campaign({ title, brand, tags }) {
+export default function Campaign({ title, brand, shedule, tags }) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
   }
@@ -36,6 +36,7 @@ export default function Campaign({ title, brand, tags }) {
       <StyledCampaign>
         <h3>{title}</h3>
         <p>{brand}</p>
+        <p>{shedule}</p>
         {tags && <TagList>{tags.map(renderTag)}</TagList>}
       </StyledCampaign>
     </div>
