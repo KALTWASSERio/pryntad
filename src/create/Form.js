@@ -14,17 +14,16 @@ const StyledInputAreaDates = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 80px;
+  grid-gap: 4px;
 `
 const StyledSectionFrom = styled.section`
   display: grid;
   grid-template-rows: auto auto;
-  grid-column: 1 / 2;
 `
 
 const StyledSectionTo = styled.section`
   display: grid;
   grid-template-rows: auto auto;
-  grid-column: 2 / 3;
 `
 
 const StyledLabel = styled.label`
@@ -42,7 +41,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
         <input
           id="kampagnenname__input"
           label={'Test'}
-          onChange={onInputChange}
+          onInput={onInputChange}
           value={data.title}
           type="text"
           placeholder="Kampagnenname"
@@ -53,7 +52,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
         <StyledLabel for="brand__input">Brand</StyledLabel>
         <input
           id="brand__input"
-          onChange={onInputChange}
+          onInput={onInputChange}
           value={data.brand}
           type="Text"
           placeholder="Brand"
@@ -62,23 +61,23 @@ export default function Form({ data, onSubmit, onInputChange }) {
       </StyledInputArea>
       <StyledInputAreaDates>
         <StyledSectionFrom>
-          <StyledLabel for="shedule__input__from">Zeitraum (von)</StyledLabel>
+          <StyledLabel for="schedule__input__from">Zeitraum (von)</StyledLabel>
           <input
-            id="shedule__input__from"
-            onChange={onInputChange}
-            value={data.shedule}
+            id="schedule__input__from"
+            onInput={onInputChange}
             type="date"
-            name="Kampagnenzeitraum"
+            name="scheduleFrom"
+            value={data.scheduleFrom}
           />
         </StyledSectionFrom>
         <StyledSectionTo>
-          <StyledLabel for="shedule__input__to">Zeitraum (bis)</StyledLabel>
+          <StyledLabel for="schedule__input__to">Zeitraum (bis)</StyledLabel>
           <input
-            id="shedule__input__to"
-            onChange={onInputChange}
-            value={data.shedule}
+            id="schedule__input__to"
+            onInput={onInputChange}
             type="date"
-            name="Kampagnenzeitraum"
+            name="scheduleTo"
+            value={data.scheduleTo}
           />
         </StyledSectionTo>
       </StyledInputAreaDates>
@@ -86,7 +85,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
         <StyledLabel for="tags__input">Tags</StyledLabel>
         <input
           id="tags__input"
-          onChange={onInputChange}
+          onInput={onInputChange}
           value={data.tags}
           type="text"
           placeholder="Tags"

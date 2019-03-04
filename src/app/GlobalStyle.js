@@ -32,6 +32,7 @@ export default createGlobalStyle`
     border-radius: none;
     background: white;
     padding-left: 4px;
+    width: 100%;
   }
 
   button {

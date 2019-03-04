@@ -14,13 +14,16 @@ const Grid = styled.section`
 const defaultData = {
   title: '',
   brand: '',
-  shedule: '',
+  scheduleFrom: '2019-03-04',
+  scheduleTo: '2019-05-31',
   tags: '',
 }
 export default function CreateCampaignPage(props) {
   const [data, setData] = useState(defaultData)
 
   function onInputChange(event) {
+    console.log(event.target.value)
+
     setData({
       ...data,
       [event.target.name]: event.target.value,
@@ -34,7 +37,7 @@ export default function CreateCampaignPage(props) {
     setData(defaultData)
   }
 
-  const { title, brand, shedule, tags } = data
+  const { title, brand, scheduleFrom, scheduleTo, tags } = data
 
   return (
     <Grid>
@@ -42,11 +45,12 @@ export default function CreateCampaignPage(props) {
         Kampagne erstellen
       </Title>
       <CampaignContainer data-cy="preview-container">
-        {(title || brand || shedule || tags) && (
+        {(title || brand || scheduleFrom || scheduleTo || tags) && (
           <Campaign
-            title={title || 'No title yet'}
-            brand={brand || 'No brand yet'}
-            shedule={shedule || 'No shedule yet'}
+            title={title || 'Kein Kampagnentitel'}
+            brand={brand || 'Keine Brand'}
+            scheduleFrom={scheduleFrom || 'No shedule yet'}
+            scheduleTo={scheduleTo || 'kein Enddatum'}
             tags={split(tags)}
           />
         )}
