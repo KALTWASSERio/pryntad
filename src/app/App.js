@@ -10,7 +10,6 @@ import {
   saveCampaignsToStorage,
 } from '../services'
 import GlobalStyle from './GlobalStyle'
-import { Helmet } from 'react-helmet'
 
 const Grid = styled.div`
   display: grid;
@@ -63,17 +62,6 @@ function App() {
   return (
     <Router>
       <Grid>
-        <Helmet>
-          <title>pryntad</title>
-          <meta
-            name="the digital marketplace for print media"
-            content="pryntad application"
-          />
-          <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans"
-            rel="stylesheet"
-          />
-        </Helmet>
         <Route
           exact
           path="/"
