@@ -1,0 +1,30 @@
+---
+name: CampaignsPage
+menu: Components
+---
+
+import CampaignsPage from './CampaignsPage'
+import { Playground } from 'docz'
+
+# Kampagnen-Seite
+
+<Playground>
+  <CampaignsPage
+    campaigns={[
+      {
+        title: 'Free Run 5.0',
+        brand: 'Nike',
+        scheduleFrom: '03.03.2019',
+        scheduleTo: '09.09.2019',
+        tags: ['turnschuhe', 'laufen', 'sport'],
+      },
+      {
+        title: 'Court Vantage',
+        brand: 'Adidas',
+        scheduleFrom: '03.04.2019',
+        scheduleTo: '09.011.2019',
+        tags: ['turnschuhe', 'tennis', 'sport'],
+      },
+    ]}
+  />
+</Playground>

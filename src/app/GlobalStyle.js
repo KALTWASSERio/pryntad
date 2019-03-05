@@ -6,7 +6,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
   }
 

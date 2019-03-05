@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Title from './Title'
-import logo from './logo.png'
+import logo from '../images/logo.png'
 
 const StyledHeader = styled.header`
   overflow: hidden;
