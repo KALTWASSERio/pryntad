@@ -15,7 +15,7 @@ export default function Select(value) {
   return (
     <StyledInputArea>
       <StyledLabel for="ad-select">Anzeigenformat</StyledLabel>
-      <select id="ad-select">
+      <select id="ad-select" required>
         <option value="">-- Wähle ein Format --</option>
         <option value="1/4">1/4</option>
         <option value="1/3">1/3</option>

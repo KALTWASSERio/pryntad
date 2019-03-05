@@ -34,7 +34,6 @@ export default createGlobalStyle`
     padding-left: 4px;
     width: 100%;
     font-family: sans-serif;
-    color: #a0a09b;
 }
 
   ::placeholder {
@@ -49,8 +48,12 @@ export default createGlobalStyle`
     padding-left: 4px;
     width: 100%;
     font-family: sans-serif;
-    color: #a0a09b;
+    
   }
+
+  :invalid {
+    color: #a0a09b;
+}
 
   button {
     background: #d70064;

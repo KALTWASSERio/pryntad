@@ -69,6 +69,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
             type="date"
             name="scheduleFrom"
             value={data.scheduleFrom}
+            required
           />
         </StyledSectionFrom>
         <StyledSectionTo>
@@ -79,6 +80,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
             type="date"
             name="scheduleTo"
             value={data.scheduleTo}
+            required
           />
         </StyledSectionTo>
       </StyledInputAreaDates>
