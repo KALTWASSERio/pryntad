@@ -14,8 +14,14 @@ const StyledInputArea = styled.section`
 export default function Select({ name, value, onChange }) {
   return (
     <StyledInputArea>
-      <StyledLabel for="ad-select">Anzeigenformat</StyledLabel>
-      <select id="ad-select" name={name} onChange={onChange} value={value}>
+      <StyledLabel htmlFor="ad-select">Anzeigenformat</StyledLabel>
+      <select
+        id="ad-select"
+        name={name}
+        onChange={onChange}
+        value={value}
+        required
+      >
         <option value="">-- Wähle ein Format --</option>
         <option value="1/4">1/4</option>
         <option value="1/3">1/3</option>

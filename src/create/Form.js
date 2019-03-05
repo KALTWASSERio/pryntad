@@ -38,7 +38,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
   return (
     <StyledForm onSubmit={onSubmit}>
       <StyledInputArea>
-        <StyledLabel for="kampagnenname__input">Kampagne</StyledLabel>
+        <StyledLabel htmlFor="kampagnenname__input">Kampagne</StyledLabel>
         <input
           id="kampagnenname__input"
           label={'Test'}
@@ -50,7 +50,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
         />
       </StyledInputArea>
       <StyledInputArea>
-        <StyledLabel for="brand__input">Brand</StyledLabel>
+        <StyledLabel htmlFor="brand__input">Brand</StyledLabel>
         <input
           id="brand__input"
           onInput={onInputChange}
@@ -62,7 +62,9 @@ export default function Form({ data, onSubmit, onInputChange }) {
       </StyledInputArea>
       <StyledInputAreaDates>
         <StyledSectionFrom>
-          <StyledLabel for="schedule__input__from">Zeitraum (von)</StyledLabel>
+          <StyledLabel htmlFor="schedule__input__from">
+            Zeitraum (von)
+          </StyledLabel>
           <input
             id="schedule__input__from"
             onInput={onInputChange}
@@ -73,7 +75,9 @@ export default function Form({ data, onSubmit, onInputChange }) {
           />
         </StyledSectionFrom>
         <StyledSectionTo>
-          <StyledLabel for="schedule__input__to">Zeitraum (bis)</StyledLabel>
+          <StyledLabel htmlFor="schedule__input__to">
+            Zeitraum (bis)
+          </StyledLabel>
           <input
             id="schedule__input__to"
             onInput={onInputChange}
@@ -86,7 +90,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
       </StyledInputAreaDates>
       <Select onChange={onInputChange} name="format" value={data.format} />
       <StyledInputArea>
-        <StyledLabel for="tags__input">Tags</StyledLabel>
+        <StyledLabel htmlFor="tags__input">Tags</StyledLabel>
         <input
           id="tags__input"
           onInput={onInputChange}
