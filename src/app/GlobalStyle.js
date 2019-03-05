@@ -6,7 +6,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
   }
 
@@ -28,10 +28,11 @@ export default createGlobalStyle`
 
   input {
     appearance: none;
-    border: 4px solid #dcdcdc;
+    border: 2px solid #dcdcdc;
     border-radius: none;
     background: white;
     padding-left: 4px;
+    width: 100%;
   }
 
   button {

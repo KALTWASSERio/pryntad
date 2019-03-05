@@ -75,7 +75,7 @@ function App() {
           <StyledLink exact to="/">
             Dashboard
           </StyledLink>
-          <StyledLink to="/create">Kampagne erstellen</StyledLink>
+          <StyledLink to="/create">Kampagne</StyledLink>
         </Nav>
         <GlobalStyle />
       </Grid>
