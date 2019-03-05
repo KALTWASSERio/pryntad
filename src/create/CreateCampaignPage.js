@@ -14,8 +14,8 @@ const Grid = styled.section`
 const defaultData = {
   title: '',
   brand: '',
-  scheduleFrom: '2019-03-04',
-  scheduleTo: '2019-05-31',
+  scheduleFrom: '',
+  scheduleTo: '',
   tags: '',
 }
 export default function CreateCampaignPage(props) {

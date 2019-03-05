@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <StyledHeader>
       <Title>
-        <StyledImage src={logo} alt="logo" />
+        <StyledImage data-cy="header-logo" src={logo} alt="logo" />
       </Title>
     </StyledHeader>
   )
