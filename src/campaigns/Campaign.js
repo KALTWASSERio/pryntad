@@ -31,6 +31,7 @@ export default function Campaign({
   brand,
   scheduleFrom,
   scheduleTo,
+  format,
   tags,
 }) {
   function renderTag(text, index) {
@@ -40,11 +41,12 @@ export default function Campaign({
   return (
     <div css="padding: 10px 0 0; scroll-snap-align: start;">
       <StyledCampaign>
-        <h3>{title}</h3>
-        <p>{brand}</p>
+        <h3>Kampage: {title}</h3>
+        <p>Marke: {brand}</p>
         <p>
-          Vom {scheduleFrom} bis zum {scheduleTo}
+          Zeitraum: {scheduleFrom} - {scheduleTo}{' '}
         </p>
+        <p>Format: {format} </p>
         {tags && <TagList>{tags.map(renderTag)}</TagList>}
       </StyledCampaign>
     </div>

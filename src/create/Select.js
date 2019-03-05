@@ -11,11 +11,11 @@ const StyledInputArea = styled.section`
   display: grid;
 `
 
-export default function Select(value) {
+export default function Select({ name, value, onChange }) {
   return (
     <StyledInputArea>
       <StyledLabel for="ad-select">Anzeigenformat</StyledLabel>
-      <select id="ad-select" required>
+      <select id="ad-select" name={name} onChange={onChange} value={value}>
         <option value="">-- Wähle ein Format --</option>
         <option value="1/4">1/4</option>
         <option value="1/3">1/3</option>

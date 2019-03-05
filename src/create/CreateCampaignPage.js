@@ -23,8 +23,7 @@ export default function CreateCampaignPage(props) {
   const [data, setData] = useState(defaultData)
 
   function onInputChange(event) {
-    console.log(event.target.value)
-
+    console.log(event.target)
     setData({
       ...data,
       [event.target.name]: event.target.value,
