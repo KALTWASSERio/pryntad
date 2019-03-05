@@ -82,6 +82,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
           />
         </StyledSectionTo>
       </StyledInputAreaDates>
+      <Select value={data.format} onInput={onInputChange} name="format" />
       <StyledInputArea>
         <StyledLabel for="tags__input">Tags</StyledLabel>
         <input
@@ -93,7 +94,6 @@ export default function Form({ data, onSubmit, onInputChange }) {
           name="tags"
         />
       </StyledInputArea>
-      <Select />
       <button>Hinzufügen</button>
     </StyledForm>
   )

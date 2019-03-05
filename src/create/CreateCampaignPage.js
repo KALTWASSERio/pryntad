@@ -38,7 +38,7 @@ export default function CreateCampaignPage(props) {
     setData(defaultData)
   }
 
-  const { title, brand, scheduleFrom, scheduleTo, tags } = data
+  const { title, brand, scheduleFrom, scheduleTo, format, tags } = data
 
   return (
     <Grid>
@@ -46,12 +46,13 @@ export default function CreateCampaignPage(props) {
         Kampagne erstellen
       </Title>
       <CampaignContainer data-cy="preview-container">
-        {(title || brand || scheduleFrom || scheduleTo || tags) && (
+        {(title || brand || scheduleFrom || scheduleTo || format || tags) && (
           <Campaign
-            title={title || 'Kein Kampagnentitel'}
-            brand={brand || 'Keine Brand'}
-            scheduleFrom={scheduleFrom || 'No shedule yet'}
+            title={title || 'kein Kampagnentitel'}
+            brand={brand || 'keine Brand'}
+            scheduleFrom={scheduleFrom || 'kein Startdatum'}
             scheduleTo={scheduleTo || 'kein Enddatum'}
+            format={format || 'kein Anzeigenformat hinterlegt'}
             tags={split(tags)}
           />
         )}

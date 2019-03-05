@@ -35,13 +35,14 @@ export default createGlobalStyle`
     width: 100%;
     font-family: sans-serif;
     color: #a0a09b;
-  }
+}
 
   ::placeholder {
     color: #a0a09b;
   }
 
   select {
+    appearance: none;
     border: 2px solid #dcdcdc;
     border-radius: none;
     background: white;
