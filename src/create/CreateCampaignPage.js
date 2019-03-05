@@ -16,6 +16,7 @@ const defaultData = {
   brand: '',
   scheduleFrom: '',
   scheduleTo: '',
+  format: '',
   tags: '',
 }
 export default function CreateCampaignPage(props) {

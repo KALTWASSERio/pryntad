@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import Select from './Select'
 
 const StyledForm = styled.form`
   display: grid;
   grid-gap: 12px;
-  grid-template-rows: 80px 80px 80px 80px 48px;
+  grid-template-rows: 80px 80px 80px 80px 80px 48px;
 `
 const StyledInputArea = styled.section`
   display: grid;
@@ -92,6 +93,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
           name="tags"
         />
       </StyledInputArea>
+      <Select />
       <button>Hinzufügen</button>
     </StyledForm>
   )
