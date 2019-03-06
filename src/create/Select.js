@@ -6,6 +6,7 @@ const StyledLabel = styled.label`
   display: flex;
   align-items: flex-end;
   margin-bottom: 8px;
+  font-family: 'Open Sans', sans-serif;
 `
 const StyledInputArea = styled.section`
   display: grid;

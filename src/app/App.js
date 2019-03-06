@@ -10,6 +10,7 @@ import {
   saveCampaignsToStorage,
 } from '../services'
 import GlobalStyle from './GlobalStyle'
+import { Helmet } from 'react-helmet'
 
 const Grid = styled.div`
   display: grid;
@@ -60,26 +61,40 @@ function App() {
   }
 
   return (
-    <Router>
-      <Grid>
-        <Route
-          exact
-          path="/"
-          render={() => <CampaignsPage campaigns={campaigns} />}
+    <React.Fragment>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>pryntad</title>
+        <description>
+          pryntad ist der digitale Marktplatz für Print Media. Check it out now!
+        </description>
+        <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans"
+          rel="stylesheet"
         />
-        <Route
-          path="/create"
-          render={() => <CreateCampaignPage onSubmit={createCampaign} />}
-        />
-        <Nav>
-          <StyledLink exact to="/">
-            Dashboard
-          </StyledLink>
-          <StyledLink to="/create">Kampagne</StyledLink>
-        </Nav>
-        <GlobalStyle />
-      </Grid>
-    </Router>
+        >
+      </Helmet>
+      <Router>
+        <Grid>
+          <Route
+            exact
+            path="/"
+            render={() => <CampaignsPage campaigns={campaigns} />}
+          />
+          <Route
+            path="/create"
+            render={() => <CreateCampaignPage onSubmit={createCampaign} />}
+          />
+          <Nav>
+            <StyledLink exact to="/">
+              Dashboard
+            </StyledLink>
+            <StyledLink to="/create">Kampagne</StyledLink>
+          </Nav>
+          <GlobalStyle />
+        </Grid>
+      </Router>
+    </React.Fragment>
   )
 }
 

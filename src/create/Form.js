@@ -9,7 +9,6 @@ const StyledForm = styled.form`
 `
 const StyledInputArea = styled.section`
   display: grid;
-  grid-auto-flow: rows;
 `
 const StyledInputAreaDates = styled.section`
   display: grid;
@@ -32,6 +31,7 @@ const StyledLabel = styled.label`
   display: flex;
   align-items: flex-end;
   margin-bottom: 8px;
+  font-family: 'Open Sans', sans-serif;
 `
 
 export default function Form({ data, onSubmit, onInputChange }) {

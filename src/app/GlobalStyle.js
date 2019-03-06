@@ -29,11 +29,10 @@ export default createGlobalStyle`
   input {
     appearance: none;
     border: 2px solid #dcdcdc;
-    border-radius: none;
     background: white;
     padding-left: 4px;
     width: 100%;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
   ::placeholder {
@@ -43,11 +42,10 @@ export default createGlobalStyle`
   select {
     appearance: none;
     border: 2px solid #dcdcdc;
-    border-radius: none;
     background: white;
     padding-left: 4px;
     width: 100%;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     
   }
 
@@ -61,5 +59,6 @@ export default createGlobalStyle`
     border-radius: 4px;
     color: white;
     font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
   }
 `
