@@ -5,8 +5,6 @@ import CampaignContainer from '../campaigns/CampaignContainer' */
 import { split } from '../utils'
 import Form from './Form'
 import Title from '../common/Title'
-import logo from '../images/logo.png'
-import cola from '../images/cola.jpg'
 
 const Grid = styled.section`
   display: grid;
@@ -19,7 +17,7 @@ const defaultData = {
   scheduleFrom: '',
   scheduleTo: '',
   format: '',
-  ad: 'cola',
+  ad: '',
   tags: '',
 }
 export default function CreateCampaignPage(props) {
