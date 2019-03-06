@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import Select from './Select'
 
 const StyledForm = styled.form`
   display: grid;
   grid-gap: 12px;
-  grid-template-rows: 80px 80px 80px 80px 48px;
+  grid-template-rows: 80px 80px 80px 80px 80px 48px;
 `
 const StyledInputArea = styled.section`
   display: grid;
@@ -37,7 +38,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
   return (
     <StyledForm onSubmit={onSubmit}>
       <StyledInputArea>
-        <StyledLabel for="kampagnenname__input">Kampagne</StyledLabel>
+        <StyledLabel htmlFor="kampagnenname__input">Kampagne</StyledLabel>
         <input
           id="kampagnenname__input"
           label={'Test'}
@@ -49,7 +50,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
         />
       </StyledInputArea>
       <StyledInputArea>
-        <StyledLabel for="brand__input">Brand</StyledLabel>
+        <StyledLabel htmlFor="brand__input">Brand</StyledLabel>
         <input
           id="brand__input"
           onInput={onInputChange}
@@ -61,28 +62,35 @@ export default function Form({ data, onSubmit, onInputChange }) {
       </StyledInputArea>
       <StyledInputAreaDates>
         <StyledSectionFrom>
-          <StyledLabel for="schedule__input__from">Zeitraum (von)</StyledLabel>
+          <StyledLabel htmlFor="schedule__input__from">
+            Zeitraum (von)
+          </StyledLabel>
           <input
             id="schedule__input__from"
             onInput={onInputChange}
             type="date"
             name="scheduleFrom"
             value={data.scheduleFrom}
+            required
           />
         </StyledSectionFrom>
         <StyledSectionTo>
-          <StyledLabel for="schedule__input__to">Zeitraum (bis)</StyledLabel>
+          <StyledLabel htmlFor="schedule__input__to">
+            Zeitraum (bis)
+          </StyledLabel>
           <input
             id="schedule__input__to"
             onInput={onInputChange}
             type="date"
             name="scheduleTo"
             value={data.scheduleTo}
+            required
           />
         </StyledSectionTo>
       </StyledInputAreaDates>
+      <Select onChange={onInputChange} name="format" value={data.format} />
       <StyledInputArea>
-        <StyledLabel for="tags__input">Tags</StyledLabel>
+        <StyledLabel htmlFor="tags__input">Tags</StyledLabel>
         <input
           id="tags__input"
           onInput={onInputChange}

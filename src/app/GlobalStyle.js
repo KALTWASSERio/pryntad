@@ -22,7 +22,7 @@ export default createGlobalStyle`
     margin: 0;
   }
 
-  input, button {
+  input, select, button {
     font-size: 1em;
   }
 
@@ -33,7 +33,27 @@ export default createGlobalStyle`
     background: white;
     padding-left: 4px;
     width: 100%;
+    font-family: sans-serif;
+}
+
+  ::placeholder {
+    color: #a0a09b;
   }
+
+  select {
+    appearance: none;
+    border: 2px solid #dcdcdc;
+    border-radius: none;
+    background: white;
+    padding-left: 4px;
+    width: 100%;
+    font-family: sans-serif;
+    
+  }
+
+  :invalid {
+    color: #a0a09b;
+}
 
   button {
     background: #d70064;
@@ -41,6 +61,5 @@ export default createGlobalStyle`
     border-radius: 4px;
     color: white;
     font-weight: bold;
-
   }
 `
