@@ -47,6 +47,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
           type="text"
           placeholder="Kampagnenname"
           name="title"
+          required
         />
       </StyledInputArea>
       <StyledInputArea>
@@ -58,6 +59,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
           type="Text"
           placeholder="Brand"
           name="brand"
+          required
         />
       </StyledInputArea>
       <StyledInputAreaDates>

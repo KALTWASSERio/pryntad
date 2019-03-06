@@ -65,9 +65,10 @@ function App() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>pryntad</title>
-        <description>
-          pryntad ist der digitale Marktplatz für Print Media. Check it out now!
-        </description>
+        <meta
+          name="description"
+          content="Der digitale Marktplatz für Print Media"
+        />
         <link
           href="https://fonts.googleapis.com/css?family=Open+Sans"
           rel="stylesheet"
