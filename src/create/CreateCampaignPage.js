@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Campaign from '../campaigns/Campaign'
-import CampaignContainer from '../campaigns/CampaignContainer'
+/* import Campaign from '../campaigns/Campaign'
+import CampaignContainer from '../campaigns/CampaignContainer' */
 import { split } from '../utils'
 import Form from './Form'
 import Title from '../common/Title'
@@ -17,6 +17,7 @@ const defaultData = {
   scheduleFrom: '',
   scheduleTo: '',
   format: '',
+  ad: '',
   tags: '',
 }
 export default function CreateCampaignPage(props) {
@@ -37,14 +38,14 @@ export default function CreateCampaignPage(props) {
     setData(defaultData)
   }
 
-  const { title, brand, scheduleFrom, scheduleTo, format, tags } = data
+  /* const { title, brand, scheduleFrom, scheduleTo, format, ad, tags } = data */
 
   return (
     <Grid>
       <Title css="position: absolute; top: 0; width: 100%">
         Kampagne erstellen
       </Title>
-      <CampaignContainer data-cy="preview-container">
+      {/* <CampaignContainer data-cy="preview-container">
         {(title || brand || scheduleFrom || scheduleTo || format || tags) && (
           <Campaign
             title={title || 'kein Kampagnentitel'}
@@ -55,7 +56,7 @@ export default function CreateCampaignPage(props) {
             tags={split(tags)}
           />
         )}
-      </CampaignContainer>
+      </CampaignContainer> */}
       <Form data={data} onSubmit={onSubmit} onInputChange={onInputChange} />
     </Grid>
   )

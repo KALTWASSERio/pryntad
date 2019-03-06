@@ -32,6 +32,7 @@ export default function Campaign({
   scheduleFrom,
   scheduleTo,
   format,
+  ad,
   tags,
 }) {
   function renderTag(text, index) {
@@ -41,6 +42,7 @@ export default function Campaign({
   return (
     <div css="padding: 10px 0 0; scroll-snap-align: start;">
       <StyledCampaign>
+        <img src={ad} alt="" />
         <h3>Kampage: {title}</h3>
         <p>Marke: {brand}</p>
         <p>

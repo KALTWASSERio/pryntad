@@ -10,7 +10,6 @@ import {
   saveCampaignsToStorage,
 } from '../services'
 import GlobalStyle from './GlobalStyle'
-import { Helmet } from 'react-helmet'
 
 const Grid = styled.div`
   display: grid;
@@ -55,6 +54,9 @@ function App() {
   }, [campaigns])
 
   function createCampaign(data) {
+    //setCampaigns([...campaigns, data])
+    // postNewCampaign(data).then(res => {
+    //})
     postNewCampaign(data).then(res => {
       setCampaigns([...campaigns, res.data])
     })
@@ -62,19 +64,6 @@ function App() {
 
   return (
     <React.Fragment>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>pryntad</title>
-        <meta
-          name="description"
-          content="Der digitale Marktplatz für Print Media"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Open+Sans"
-          rel="stylesheet"
-        />
-        >
-      </Helmet>
       <Router>
         <Grid>
           <Route

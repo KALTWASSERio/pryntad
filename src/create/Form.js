@@ -5,7 +5,7 @@ import Select from './Select'
 const StyledForm = styled.form`
   display: grid;
   grid-gap: 12px;
-  grid-template-rows: 80px 80px 80px 80px 80px 48px;
+  grid-template-rows: repeat(6, 80px) 48px;
 `
 const StyledInputArea = styled.section`
   display: grid;
@@ -38,16 +38,15 @@ export default function Form({ data, onSubmit, onInputChange }) {
   return (
     <StyledForm onSubmit={onSubmit}>
       <StyledInputArea>
-        <StyledLabel htmlFor="kampagnenname__input">Kampagne</StyledLabel>
+        <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
         <input
-          id="kampagnenname__input"
+          id="campaign__name__input"
           label={'Test'}
           onInput={onInputChange}
           value={data.title}
           type="text"
           placeholder="Kampagnenname"
           name="title"
-          required
         />
       </StyledInputArea>
       <StyledInputArea>
@@ -59,7 +58,6 @@ export default function Form({ data, onSubmit, onInputChange }) {
           type="Text"
           placeholder="Brand"
           name="brand"
-          required
         />
       </StyledInputArea>
       <StyledInputAreaDates>
@@ -73,7 +71,6 @@ export default function Form({ data, onSubmit, onInputChange }) {
             type="date"
             name="scheduleFrom"
             value={data.scheduleFrom}
-            required
           />
         </StyledSectionFrom>
         <StyledSectionTo>
@@ -86,11 +83,21 @@ export default function Form({ data, onSubmit, onInputChange }) {
             type="date"
             name="scheduleTo"
             value={data.scheduleTo}
-            required
           />
         </StyledSectionTo>
       </StyledInputAreaDates>
       <Select onChange={onInputChange} name="format" value={data.format} />
+      <StyledInputArea>
+        <StyledLabel htmlFor="ad__input">Werbemittel</StyledLabel>
+        <input
+          id="ad__input"
+          onInput={onInputChange}
+          value={data.ad}
+          type="url"
+          placeholder="Werbemittel hochladen"
+          name="ad"
+        />
+      </StyledInputArea>
       <StyledInputArea>
         <StyledLabel htmlFor="tags__input">Tags</StyledLabel>
         <input
