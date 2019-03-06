@@ -93,7 +93,7 @@ export default function Form({ data, onSubmit, onInputChange }) {
           id="ad__input"
           onInput={onInputChange}
           value={data.ad}
-          type="url"
+          type="text"
           placeholder="Werbemittel hochladen"
           name="ad"
         />
