@@ -2,11 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledCampaign = styled.section`
-  padding: 18px 18px 0;
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 12px;
   background: white;
   border: 2px solid #dcdcdc;
   border-radius: 4px;
   position: relative;
+`
+
+const StyledCampaignContent = styled.section`
+  grid-column: 5 span;
 `
 
 const TagList = styled.ul`
@@ -25,6 +32,10 @@ const Tag = styled.li`
   color: white;
   font-size: 0.8em;
 `
+const StyledAd = styled.img`
+  grid-column: 1 span;
+  height: 200px;
+`
 
 export default function Campaign({
   title,
@@ -32,6 +43,7 @@ export default function Campaign({
   scheduleFrom,
   scheduleTo,
   format,
+  ad,
   tags,
 }) {
   function renderTag(text, index) {
@@ -41,13 +53,16 @@ export default function Campaign({
   return (
     <div css="padding: 10px 0 0; scroll-snap-align: start;">
       <StyledCampaign>
-        <h3>Kampage: {title}</h3>
-        <p>Marke: {brand}</p>
-        <p>
-          Zeitraum: {scheduleFrom} - {scheduleTo}{' '}
-        </p>
-        <p>Format: {format} </p>
-        {tags && <TagList>{tags.map(renderTag)}</TagList>}
+        <StyledAd src={ad} alt="" />
+        <StyledCampaignContent>
+          <h3>Kampage: {title}</h3>
+          <p>Marke: {brand}</p>
+          <p>
+            Zeitraum: {scheduleFrom} - {scheduleTo}{' '}
+          </p>
+          <p>Format: {format} </p>
+          {tags && <TagList>{tags.map(renderTag)}</TagList>}
+        </StyledCampaignContent>
       </StyledCampaign>
     </div>
   )

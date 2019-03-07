@@ -6,7 +6,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: sans-serif;
     margin: 0;
   }
 
@@ -32,7 +32,7 @@ export default createGlobalStyle`
     background: white;
     padding-left: 4px;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: sans-serif; 
 }
 
   ::placeholder {
@@ -45,8 +45,6 @@ export default createGlobalStyle`
     background: white;
     padding-left: 4px;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    
   }
 
   :invalid {
@@ -59,6 +57,5 @@ export default createGlobalStyle`
     border-radius: 4px;
     color: white;
     font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
   }
 `
