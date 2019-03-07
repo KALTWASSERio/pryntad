@@ -54,7 +54,7 @@ export default function Campaign({
   return (
     <div css="padding: 10px 0 0; scroll-snap-align: start;">
       <StyledCampaign>
-        <StyledAd src={cola} alt={ad} />
+        <StyledAd src={ad} alt="" style={{ width: '100%' }} />
         <StyledCampaignContent>
           <h3>Kampage: {title}</h3>
           <p>Marke: {brand}</p>

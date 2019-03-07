@@ -34,7 +34,7 @@ const StyledLabel = styled.label`
   font-family: 'Open Sans', sans-serif;
 `
 
-export default function Form({ data, onSubmit, onInputChange }) {
+export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
   return (
     <StyledForm onSubmit={onSubmit}>
       <StyledInputArea>
@@ -91,11 +91,11 @@ export default function Form({ data, onSubmit, onInputChange }) {
         <StyledLabel htmlFor="ad__input">Werbemittel</StyledLabel>
         <input
           id="ad__input"
-          onInput={onInputChange}
+          type="file"
           value={data.ad}
-          type="text"
           placeholder="Werbemittel hochladen"
           name="ad"
+          onChange={onImageUpload}
         />
       </StyledInputArea>
       <StyledInputArea>
