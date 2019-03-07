@@ -3,21 +3,36 @@ import styled from 'styled-components'
 
 const StyledCampaign = styled.section`
   display: grid;
-  grid-gap: 12px;
   grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 150px auto;
+  grid-column-gap: 12px;
   padding: 12px;
-  background: white;
-  border: 2px solid #dcdcdc;
+  border: 1px solid #dcdcdc;
   border-radius: 4px;
   position: relative;
 `
+const StyledAd = styled.img`
+  display: flex;
+  justify-self: center;
+  grid-column: 6 span;
+  height: 150px;
+`
 
-const StyledCampaignContent = styled.section`
-  grid-column: 5 span;
+const StyledCampaignLabels = styled.p`
+  color: #dcdcdc;
+  grid-column: 1 / 2;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  align-self: center;
+`
+const StyledCampaignContents = styled.p`
+  font-size: 0.9em;
+  grid-column: 2 / 7;
 `
 
 const TagList = styled.ul`
   display: flex;
+  align-self: center;
   width: 100%;
   flex-wrap: wrap;
   padding: 0;
@@ -26,15 +41,11 @@ const TagList = styled.ul`
 const Tag = styled.li`
   display: inline-block;
   margin: 0 10px 10px 0;
-  padding: 2px 6px;
+  padding: 4px 6px;
   background: #502896;
   border-radius: 6px;
   color: white;
-  font-size: 0.8em;
-`
-const StyledAd = styled.img`
-  grid-column: 1 span;
-  height: 200px;
+  font-size: 0.9em;
 `
 
 export default function Campaign({
@@ -54,15 +65,20 @@ export default function Campaign({
     <div css="padding: 10px 0 0; scroll-snap-align: start;">
       <StyledCampaign>
         <StyledAd src={ad} alt="" />
-        <StyledCampaignContent>
-          <h3>Kampage: {title}</h3>
-          <p>Marke: {brand}</p>
-          <p>
-            Zeitraum: {scheduleFrom} - {scheduleTo}{' '}
-          </p>
-          <p>Format: {format} </p>
+        <StyledCampaignLabels>Kampage</StyledCampaignLabels>
+        <StyledCampaignContents>{title}</StyledCampaignContents>
+        <StyledCampaignLabels>Marke</StyledCampaignLabels>
+        <StyledCampaignContents>{brand}</StyledCampaignContents>
+        <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
+        <StyledCampaignContents>
+          {scheduleFrom} - {scheduleTo}
+        </StyledCampaignContents>
+        <StyledCampaignLabels>Format</StyledCampaignLabels>
+        <StyledCampaignContents>{format}</StyledCampaignContents>
+        <StyledCampaignLabels>Keywords</StyledCampaignLabels>
+        <StyledCampaignContents>
           {tags && <TagList>{tags.map(renderTag)}</TagList>}
-        </StyledCampaignContent>
+        </StyledCampaignContents>
       </StyledCampaign>
     </div>
   )

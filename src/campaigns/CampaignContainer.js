@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 export default styled.section`
   display: grid;
-  grid-template-columns: auto;
-  align-content: flex-start;
-  grid-gap: 12px;
-  padding: 4px 12px 12px;
-  overflow-y: scroll;
+  grid-gap: 24px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  margin: 12px;
+  overflow: scroll;
+  /*   align-content: flex-start;*/
   scroll-snap-type: y mandatory;
   -webkit-overflow-scrolling: touch;
 `
