@@ -10,6 +10,7 @@ import {
   saveCampaignsToStorage,
 } from '../services'
 import GlobalStyle from './GlobalStyle'
+import { Helmet } from 'react-helmet'
 
 const Grid = styled.div`
   display: grid;
@@ -61,6 +62,11 @@ function App() {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>pryntad</title>
+        <meta name="description" content="pryntad der ditale Marktplatz für Print Media. Lokalisiere deine Zielgruppe und buche deine Anzeige gegen Gebot - jetzt ausprobieren!" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+    </Helmet>
       <Router>
         <Grid>
           <Route
