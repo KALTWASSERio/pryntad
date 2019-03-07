@@ -54,9 +54,6 @@ function App() {
   }, [campaigns])
 
   function createCampaign(data) {
-    //setCampaigns([...campaigns, data])
-    // postNewCampaign(data).then(res => {
-    //})
     postNewCampaign(data).then(res => {
       setCampaigns([...campaigns, res.data])
     })

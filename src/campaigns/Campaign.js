@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import cola from '../images/cola.jpg'
 
 const StyledCampaign = styled.section`
   display: grid;

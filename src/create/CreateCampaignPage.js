@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-/* import Campaign from '../campaigns/Campaign'
-import CampaignContainer from '../campaigns/CampaignContainer' */
 import { split } from '../utils'
 import Form from './Form'
-import Title from '../common/Title'
+import Header from '../common/Header'
 import axios from 'axios'
+
+const PageGrid = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+`
 
 const Grid = styled.section`
   display: grid;
-  align-content: flex-end;
+  grid-template-columns: auto;
+  overflow-y: scroll;
   padding: 12px;
 `
 const defaultData = {
@@ -65,31 +70,17 @@ export default function CreateCampaignPage(props) {
     setData(defaultData)
   }
 
-  /* const { title, brand, scheduleFrom, scheduleTo, format, ad, tags } = data */
-
   return (
-    <Grid>
-      <Title css="position: absolute; top: 0; width: 100%">
-        Kampagne erstellen
-      </Title>
-      {/* <CampaignContainer data-cy="preview-container">
-        {(title || brand || scheduleFrom || scheduleTo || format || tags) && (
-          <Campaign
-            title={title || 'kein Kampagnentitel'}
-            brand={brand || 'keine Brand'}
-            scheduleFrom={scheduleFrom || 'kein Startdatum'}
-            scheduleTo={scheduleTo || 'kein Enddatum'}
-            format={format || 'kein Anzeigenformat hinterlegt'}
-            tags={split(tags)}
-          />
-        )}
-      </CampaignContainer> */}
-      <Form
-        data={data}
-        onSubmit={onSubmit}
-        onImageUpload={onImageUpload}
-        onInputChange={onInputChange}
-      />
-    </Grid>
+    <PageGrid>
+      <Header />
+      <Grid>
+        <Form
+          data={data}
+          onSubmit={onSubmit}
+          onImageUpload={onImageUpload}
+          onInputChange={onInputChange}
+        />
+      </Grid>
+    </PageGrid>
   )
 }

@@ -6,7 +6,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: sans-serif;
     margin: 0;
   }
 
@@ -32,12 +32,11 @@ export default createGlobalStyle`
     background: white;
     padding-left: 4px;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: sans-serif; 
 }
 
   ::placeholder {
     color: #a0a09b;
-    font-family: 'Open Sans', sans-serif;
   }
 
   select {
@@ -46,13 +45,10 @@ export default createGlobalStyle`
     background: white;
     padding-left: 4px;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
-    
   }
 
   :invalid {
     color: #a0a09b;
-    font-family: 'Open Sans', sans-serif;
 }
 
   button {
@@ -61,6 +57,5 @@ export default createGlobalStyle`
     border-radius: 4px;
     color: white;
     font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
   }
 `
