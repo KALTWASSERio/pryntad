@@ -35,6 +35,14 @@ export default createGlobalStyle`
     font-family: sans-serif; 
 }
 
+input[type=file]::-webkit-file-upload-button {
+    background: white;
+    border: 2px solid #dcdcdc;
+    padding: 8px;
+    border-radius: 4px;
+    color: #a0a09b;
+  }
+
   ::placeholder {
     color: #a0a09b;
   }
@@ -58,4 +66,5 @@ export default createGlobalStyle`
     color: white;
     font-weight: bold;
   }
+
 `
