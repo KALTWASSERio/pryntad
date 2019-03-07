@@ -37,6 +37,7 @@ export default createGlobalStyle`
 
   ::placeholder {
     color: #a0a09b;
+    font-family: 'Open Sans', sans-serif;
   }
 
   select {
@@ -51,6 +52,7 @@ export default createGlobalStyle`
 
   :invalid {
     color: #a0a09b;
+    font-family: 'Open Sans', sans-serif;
 }
 
   button {

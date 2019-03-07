@@ -33,6 +33,12 @@ const StyledLabel = styled.label`
   margin-bottom: 8px;
   font-family: 'Open Sans', sans-serif;
 `
+const StyledUpload = styled.input`
+  background: white;
+  border: none;
+  padding-left: 4px;
+  font-family: 'Open Sans', sans-serif;
+`
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
   return (
@@ -89,7 +95,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       <Select onChange={onInputChange} name="format" value={data.format} />
       <StyledInputArea>
         <StyledLabel htmlFor="ad__input">Werbemittel</StyledLabel>
-        <input
+        <StyledUpload
           id="ad__input"
           type="file"
           value={data.ad}
