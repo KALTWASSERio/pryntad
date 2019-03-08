@@ -2,21 +2,16 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { split } from '../utils'
 import Form from './Form'
-import Header from '../common/Header'
 import axios from 'axios'
 
 const PageGrid = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   overflow: hidden;
-`
-
-const Grid = styled.section`
-  display: grid;
-  grid-template-columns: auto;
   overflow-y: scroll;
   padding: 12px;
 `
+
 const defaultData = {
   title: '',
   brand: '',
@@ -72,15 +67,12 @@ export default function CreateCampaignPage(props) {
 
   return (
     <PageGrid>
-      <Header />
-      <Grid>
-        <Form
-          data={data}
-          onSubmit={onSubmit}
-          onImageUpload={onImageUpload}
-          onInputChange={onInputChange}
-        />
-      </Grid>
+      <Form
+        data={data}
+        onSubmit={onSubmit}
+        onImageUpload={onImageUpload}
+        onInputChange={onInputChange}
+      />
     </PageGrid>
   )
 }

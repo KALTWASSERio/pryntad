@@ -1,9 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import Title from './Title'
 import logo from '../images/logo.png'
 
 const StyledHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  border-bottom: 1px solid #dcdcdc;
   overflow: hidden;
 `
 const StyledImage = styled.img`
@@ -15,9 +19,7 @@ const StyledImage = styled.img`
 export default function Header() {
   return (
     <StyledHeader>
-      <Title>
-        <StyledImage data-cy="header-logo" src={logo} alt="logo" />
-      </Title>
+      <StyledImage data-cy="header-logo" src={logo} alt="logo" />
     </StyledHeader>
   )
 }

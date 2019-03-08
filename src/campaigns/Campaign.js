@@ -4,12 +4,15 @@ import styled from 'styled-components'
 const StyledCampaign = styled.section`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 150px auto;
+  grid-template-rows: auto 160px auto;
   grid-column-gap: 12px;
-  /*  padding: 12px; */
-  border: 1px solid #dcdcdc;
-  border-radius: 4px;
+  border-radius: 6px;
   position: relative;
+  box-shadow: 0 2px 4px #28233c;
+  margin: 12px;
+  align-content: flex-start;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
 `
 const StyledAd = styled.div`
   grid-column: 6 span;
@@ -18,7 +21,7 @@ const StyledAd = styled.div`
 const StyledCampaignLabels = styled.p`
   color: #dcdcdc;
   grid-column: 1 / 2;
-  font-size: 0.75em;
+  font-size: 0.8em;
   text-transform: uppercase;
   align-self: center;
   padding-left: 12px;
@@ -40,7 +43,7 @@ const Tag = styled.li`
   display: inline-block;
   margin: 0 10px 10px 0;
   padding: 4px 6px;
-  background: #502896;
+  background: #d70064;
   border-radius: 6px;
   color: white;
   font-size: 0.9em;
@@ -62,21 +65,22 @@ export default function Campaign({
   return (
     <div css="scroll-snap-align: start">
       <StyledCampaign>
+        <StyledCampaignLabels>Kampage</StyledCampaignLabels>
+        <StyledCampaignContents
+          style={{ color: '#28233c', fontWeight: 'bold', padding: '4px' }}
+        >
+          {title}
+        </StyledCampaignContents>
         <StyledAd
           style={{
             backgroundImage: 'url(' + ad + ')',
             height: '100%',
             width: '100%',
-            //objectFit: 'cover',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            //maxWidth: '300px',
-            //maxHeight: '300px',
           }}
         />
-        <StyledCampaignLabels>Kampage</StyledCampaignLabels>
-        <StyledCampaignContents>{title}</StyledCampaignContents>
         <StyledCampaignLabels>Marke</StyledCampaignLabels>
         <StyledCampaignContents>{brand}</StyledCampaignContents>
         <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>

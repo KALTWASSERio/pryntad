@@ -9,6 +9,7 @@ export default createGlobalStyle`
     font-family: sans-serif;
     font-size: 18px;
     margin: 0;
+    color: #28233c;
   }
 
   html, body {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
 import styled from 'styled-components'
+import Header from '../common/Header'
 import CampaignsPage from '../campaigns/CampaignsPage'
 import CreateCampaignPage from '../create/CreateCampaignPage'
 import {
@@ -14,7 +15,7 @@ import { Helmet } from 'react-helmet'
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: auto 48px;
+  grid-template-rows: 48px auto 48px;
   position: absolute;
   top: 0;
   left: 0;
@@ -64,11 +65,18 @@ function App() {
     <React.Fragment>
       <Helmet>
         <title>pryntad</title>
-        <meta name="description" content="pryntad der ditale Marktplatz für Print Media. Lokalisiere deine Zielgruppe und buche deine Anzeige gegen Gebot - jetzt ausprobieren!" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
-    </Helmet>
+        <meta
+          name="description"
+          content="pryntad der ditale Marktplatz für Print Media. Lokalisiere deine Zielgruppe und buche deine Anzeige gegen Gebot - jetzt ausprobieren!"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans"
+          rel="stylesheet"
+        />
+      </Helmet>
       <Router>
         <Grid>
+          <Header />
           <Route
             exact
             path="/"
