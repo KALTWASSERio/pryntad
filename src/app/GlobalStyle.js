@@ -8,8 +8,8 @@ export default createGlobalStyle`
   body {
     font-family: sans-serif;
     font-size: 18px;
-    margin: 0;
     color: #28233c;
+    margin: 0;
   }
 
   html, body {
@@ -40,9 +40,9 @@ export default createGlobalStyle`
 input[type=file]::-webkit-file-upload-button {
     background: white;
     border: 2px solid #dcdcdc;
-    padding: 8px;
     border-radius: 4px;
     color: #a0a09b;
+    padding: 8px;
   }
 
   ::placeholder {
@@ -64,9 +64,10 @@ input[type=file]::-webkit-file-upload-button {
   button {
     background: #d70064;
     border: none;
-    border-radius: 4px;
+    border-radius: 12px;
     color: white;
     font-weight: bold;
+    margin-bottom:12px;
   }
 
 `

@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 import { split } from '../utils'
 import Form from './Form'
-import axios from 'axios'
 
 const PageGrid = styled.div`
-  display: grid;
-  grid-template-rows: auto 1fr;
-  overflow: hidden;
-  overflow-y: scroll;
-  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  margin: 12px 12px 0 12px;
 `
 
 const defaultData = {

@@ -7,28 +7,26 @@ const StyledCampaign = styled.section`
   grid-template-rows: auto 160px auto;
   grid-column-gap: 12px;
   border-radius: 6px;
-  position: relative;
   box-shadow: 0 2px 4px #28233c;
   margin: 12px;
-  align-content: flex-start;
-  scroll-snap-type: y mandatory;
-  -webkit-overflow-scrolling: touch;
-`
-const StyledAd = styled.div`
-  grid-column: 6 span;
 `
 
 const StyledCampaignLabels = styled.p`
-  color: #dcdcdc;
   grid-column: 1 / 2;
   font-size: 0.8em;
   text-transform: uppercase;
+  color: #dcdcdc;
   align-self: center;
   padding-left: 12px;
 `
+
 const StyledCampaignContents = styled.p`
   font-size: 0.9em;
   grid-column: 2 / 7;
+`
+
+const StyledAd = styled.div`
+  grid-column: 6 span;
 `
 
 const TagList = styled.ul`
@@ -47,6 +45,7 @@ const Tag = styled.li`
   border-radius: 6px;
   color: white;
   font-size: 0.9em;
+  font-weight: lighter;
 `
 
 export default function Campaign({

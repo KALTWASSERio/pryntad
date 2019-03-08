@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import Campaign from './Campaign'
 
 const PageGrid = styled.div`
-  display: grid;
-  grid-template-rows: auto;
+  display: flex;
+  flex-direction: column;
   overflow: scroll;
-  margin: 12px;
+  margin: 12px 12px 0 12px;
 `
 
 export default function CampaignsPage({ campaigns }) {

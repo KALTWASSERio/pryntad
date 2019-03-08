@@ -2,36 +2,37 @@ import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
 
-const StyledForm = styled.form`
+const PageGrid = styled.form`
   display: grid;
   grid-gap: 12px;
-  grid-template-rows: repeat(6, 80px) 48px;
 `
+
 const StyledInputArea = styled.section`
-  display: grid;
+  display: flex;
+  flex-direction: column;
 `
+
 const StyledInputAreaDates = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 80px;
-  grid-gap: 4px;
 `
+
 const StyledSectionFrom = styled.section`
-  display: grid;
-  grid-template-rows: auto auto;
+  display: flex;
+  flex-direction: column;
 `
 
 const StyledSectionTo = styled.section`
-  display: grid;
-  grid-template-rows: auto auto;
+  display: flex;
+  flex-direction: column;
 `
 
 const StyledLabel = styled.label`
   color: #d70064;
   display: flex;
   align-items: flex-end;
+  margin-top: 12px;
   margin-bottom: 8px;
-  font-family: 'Open Sans', sans-serif;
 `
 const StyledUploadButton = styled.input`
   display: flex;
@@ -41,7 +42,7 @@ const StyledUploadButton = styled.input`
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
   return (
-    <StyledForm onSubmit={onSubmit}>
+    <PageGrid onSubmit={onSubmit}>
       <StyledInputArea>
         <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
         <input
@@ -115,6 +116,6 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
         />
       </StyledInputArea>
       <button>Hinzufügen</button>
-    </StyledForm>
+    </PageGrid>
   )
 }

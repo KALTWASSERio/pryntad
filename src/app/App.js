@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
+import GlobalStyle from './GlobalStyle'
 import Header from '../common/Header'
 import CampaignsPage from '../campaigns/CampaignsPage'
 import CreateCampaignPage from '../create/CreateCampaignPage'
@@ -10,12 +12,10 @@ import {
   postNewCampaign,
   saveCampaignsToStorage,
 } from '../services'
-import GlobalStyle from './GlobalStyle'
-import { Helmet } from 'react-helmet'
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 48px auto 48px;
+  grid-template-rows: 60px auto 48px;
   position: absolute;
   top: 0;
   left: 0;
