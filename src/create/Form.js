@@ -34,9 +34,9 @@ const StyledLabel = styled.label`
   font-family: 'Open Sans', sans-serif;
 `
 const StyledUploadButton = styled.input`
- display: flex;
- align-self: center;
- border: none;
+  display: flex;
+  align-self: center;
+  border: none;
 `
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {

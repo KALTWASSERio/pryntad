@@ -11,11 +11,8 @@ const StyledCampaign = styled.section`
   border-radius: 4px;
   position: relative;
 `
-const StyledAd = styled.img`
-  display: flex;
-  justify-self: center;
+const StyledAd = styled.div`
   grid-column: 6 span;
-  height: 150px;
 `
 
 const StyledCampaignLabels = styled.p`
@@ -64,7 +61,18 @@ export default function Campaign({
   return (
     <div css="padding: 10px 0 0; scroll-snap-align: start;">
       <StyledCampaign>
-        <StyledAd src={ad} alt="" />
+        <StyledAd
+          style={{
+            backgroundImage: 'url(' + ad + ')',
+            height: '100%',
+            width: '100%',
+            //objectFit: 'cover',
+            backgroundSize: '200px',
+            backgroundRepeat: 'no-repeat',
+            //maxWidth: '300px',
+            //maxHeight: '300px',
+          }}
+        />
         <StyledCampaignLabels>Kampage</StyledCampaignLabels>
         <StyledCampaignContents>{title}</StyledCampaignContents>
         <StyledCampaignLabels>Marke</StyledCampaignLabels>
