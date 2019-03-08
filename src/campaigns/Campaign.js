@@ -6,7 +6,7 @@ const StyledCampaign = styled.section`
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 150px auto;
   grid-column-gap: 12px;
-  padding: 12px;
+  /*  padding: 12px; */
   border: 1px solid #dcdcdc;
   border-radius: 4px;
   position: relative;
@@ -21,6 +21,7 @@ const StyledCampaignLabels = styled.p`
   font-size: 0.75em;
   text-transform: uppercase;
   align-self: center;
+  padding-left: 12px;
 `
 const StyledCampaignContents = styled.p`
   font-size: 0.9em;
@@ -59,7 +60,7 @@ export default function Campaign({
   }
 
   return (
-    <div css="padding: 10px 0 0; scroll-snap-align: start;">
+    <div css="scroll-snap-align: start">
       <StyledCampaign>
         <StyledAd
           style={{
@@ -67,8 +68,9 @@ export default function Campaign({
             height: '100%',
             width: '100%',
             //objectFit: 'cover',
-            backgroundSize: '200px',
+            backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
             //maxWidth: '300px',
             //maxHeight: '300px',
           }}
