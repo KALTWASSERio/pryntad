@@ -36,6 +36,10 @@ const StyledLabel = styled.label`
   margin-top: 12px;
   margin-bottom: 8px;
 `
+const StyledRadioInputGrid = styled.div`
+  display: flex;
+  flex-direction: row;
+`
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
   return (
@@ -92,14 +96,33 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           />
         </StyledSectionTo>
       </StyledInputAreaDates>
+      <Sections text="2. Werbemittel" />
       <Select onChange={onInputChange} name="format" value={data.format} />
       <SelectPlacement
         onChange={onInputChange}
         name="placement"
         value={data.placement}
       />
+      <StyledLabel htmlFor="print_space__input">Satzspiegel</StyledLabel>
+      <StyledRadioInputGrid>
+        <input
+          id="print_space__input"
+          type="radio"
+          name="printSpace"
+          value="Anschnitt"
+          checke3d={data.printSpace === 'Anschnitt'}
+          onChange={onInputChange}
+        />
+        <input
+          type="radio"
+          name="printSpace"
+          value="Satzspiegel"
+          checke3d={data.printSpace === 'Satzspiegel'}
+          onChange={onInputChange}
+        />
+      </StyledRadioInputGrid>
       <StyledInputArea>
-        <StyledLabel htmlFor="ad__input">Werbemittel</StyledLabel>
+        <StyledLabel htmlFor="ad__input">Creative Upload</StyledLabel>
         <input
           id="ad__input"
           type="file"
@@ -109,7 +132,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           style={{ color: 'white', border: 'none' }}
         />
       </StyledInputArea>
-      <Sections text="2. Zielgruppe definieren" />
+      <Sections text="3. Zielgruppe definieren" />
       <StyledInputArea>
         <StyledLabel htmlFor="tags__input">Tags</StyledLabel>
         <input
