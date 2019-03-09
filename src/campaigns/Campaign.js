@@ -9,6 +9,7 @@ const StyledCampaign = styled.section`
   border-radius: 6px;
   box-shadow: 0 2px 4px #a0a09b;
   margin: 12px;
+  scroll-snap-align: start;
 `
 
 const StyledCampaignLabels = styled.p`

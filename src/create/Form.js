@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
 import Sections from '../common/Sections'
-import { NONAME } from 'dns'
 
 const PageGrid = styled.form`
   display: grid;
@@ -35,11 +34,6 @@ const StyledLabel = styled.label`
   align-items: flex-end;
   margin-top: 12px;
   margin-bottom: 8px;
-`
-const StyledUploadButton = styled.input`
-  display: flex;
-  align-self: center;
-  border: none;
 `
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {

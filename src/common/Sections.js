@@ -6,6 +6,7 @@ const StyledSections = styled.div`
   background: #dcdcdc;
   height: 30px;
   margin-top: 12px;
+  scroll-snap-align: start;
 `
 const StyledSectionHeadline = styled.h2`
   align-self: center;
