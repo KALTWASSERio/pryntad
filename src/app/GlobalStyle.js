@@ -28,21 +28,24 @@ export default createGlobalStyle`
     font-size: 1em;
   }
 
+
   input {
     appearance: none;
-    border: 2px solid #dcdcdc;
+    border: 1px solid #dcdcdc;
     background: white;
     padding-left: 4px;
     width: 100%;
-    font-family: sans-serif; 
+    font-family: sans-serif;
+    font-weight: lighter; 
 }
 
 input[type=file]::-webkit-file-upload-button {
     background: white;
-    border: 2px solid #dcdcdc;
+    border: 1px solid #dcdcdc;
     border-radius: 4px;
     color: #a0a09b;
     padding: 8px;
+    font-weight: lighter; 
   }
 
   ::placeholder {
@@ -51,10 +54,11 @@ input[type=file]::-webkit-file-upload-button {
 
   select {
     appearance: none;
-    border: 2px solid #dcdcdc;
+    border: 1px solid #dcdcdc;
     background: white;
     padding-left: 4px;
     width: 100%;
+    font-weight: lighter; 
   }
 
   :invalid {
@@ -64,10 +68,11 @@ input[type=file]::-webkit-file-upload-button {
   button {
     background: #d70064;
     border: none;
-    border-radius: 12px;
+    border-radius: 20px;
     color: white;
     font-weight: bold;
     margin-bottom:12px;
+    padding: 12px;
   }
 
 `
