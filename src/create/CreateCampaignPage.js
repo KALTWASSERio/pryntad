@@ -19,6 +19,7 @@ const defaultData = {
   scheduleFrom: '',
   scheduleTo: '',
   format: '',
+  placement: '',
   ad: '',
   tags: '',
   id: uid(),

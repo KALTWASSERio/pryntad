@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
+import SelectPlacement from './SelectPlacement'
 import Sections from '../common/Sections'
 
 const PageGrid = styled.form`
@@ -92,6 +93,11 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
         </StyledSectionTo>
       </StyledInputAreaDates>
       <Select onChange={onInputChange} name="format" value={data.format} />
+      <SelectPlacement
+        onChange={onInputChange}
+        name="placement"
+        value={data.placement}
+      />
       <StyledInputArea>
         <StyledLabel htmlFor="ad__input">Werbemittel</StyledLabel>
         <input
