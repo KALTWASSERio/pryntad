@@ -30,7 +30,7 @@ export default createGlobalStyle`
 
 
   input {
-    appearance: none;
+    /* appearance: none; */
     border: 1px solid #dcdcdc;
     background: white;
     padding-left: 4px;

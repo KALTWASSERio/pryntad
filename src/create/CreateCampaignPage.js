@@ -29,6 +29,7 @@ export default function CreateCampaignPage(props) {
   const [ad, setAd] = useState('')
 
   function onImageUpload(event) {
+    alert('Deine Datei wurde hochgeladen')
     const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`
 
     const formData = new FormData()

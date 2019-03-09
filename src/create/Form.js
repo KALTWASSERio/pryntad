@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
 import Sections from '../common/Sections'
+import { NONAME } from 'dns'
 
 const PageGrid = styled.form`
   display: grid;
@@ -99,13 +100,13 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       <Select onChange={onInputChange} name="format" value={data.format} />
       <StyledInputArea>
         <StyledLabel htmlFor="ad__input">Werbemittel</StyledLabel>
-        <StyledUploadButton
+        <input
           id="ad__input"
           type="file"
           value={data.ad}
-          placeholder="Werbemittel hochladen"
           name="ad"
           onChange={onImageUpload}
+          style={{ color: 'white', border: 'none' }}
         />
       </StyledInputArea>
       <Sections text="2. Zielgruppe definieren" />
