@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
+import Sections from '../common/Sections'
 
 const PageGrid = styled.form`
   display: grid;
@@ -28,7 +29,7 @@ const StyledSectionTo = styled.section`
 `
 
 const StyledLabel = styled.label`
-  color: #d70064;
+  color: #28233c;
   display: flex;
   align-items: flex-end;
   margin-top: 12px;
@@ -43,6 +44,7 @@ const StyledUploadButton = styled.input`
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
   return (
     <PageGrid onSubmit={onSubmit}>
+      <Sections text="1. Kampagne erstellen" />
       <StyledInputArea>
         <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
         <input
@@ -106,6 +108,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           onChange={onImageUpload}
         />
       </StyledInputArea>
+      <Sections text="2. Zielgruppe definieren" />
       <StyledInputArea>
         <StyledLabel htmlFor="tags__input">Tags</StyledLabel>
         <input
@@ -117,6 +120,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           name="tags"
         />
       </StyledInputArea>
+
       <button>Hinzufügen</button>
     </PageGrid>
   )

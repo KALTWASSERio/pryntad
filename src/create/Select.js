@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledLabel = styled.label`
-  color: #d70064;
+  color: #28233c;
   display: flex;
   align-items: flex-end;
   margin-top: 12px;
