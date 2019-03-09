@@ -7,7 +7,7 @@ const StyledCampaign = styled.section`
   grid-template-rows: auto 160px auto;
   grid-column-gap: 12px;
   border-radius: 6px;
-  box-shadow: 0 2px 4px #28233c;
+  box-shadow: 0 2px 4px #a0a09b;
   margin: 12px;
 `
 
