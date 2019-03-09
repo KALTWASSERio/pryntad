@@ -5,11 +5,12 @@ const StyledLabel = styled.label`
   color: #d70064;
   display: flex;
   align-items: flex-end;
+  margin-top: 12px;
   margin-bottom: 8px;
-  font-family: 'Open Sans', sans-serif;
 `
 const StyledInputArea = styled.section`
-  display: grid;
+  display: flex;
+  flex-direction: column;
 `
 
 export default function Select({ name, value, onChange }) {

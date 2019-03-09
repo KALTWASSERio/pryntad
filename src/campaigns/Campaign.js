@@ -3,21 +3,35 @@ import styled from 'styled-components'
 
 const StyledCampaign = styled.section`
   display: grid;
-  grid-gap: 12px;
   grid-template-columns: repeat(6, 1fr);
-  padding: 12px;
-  background: white;
-  border: 2px solid #dcdcdc;
-  border-radius: 4px;
-  position: relative;
+  grid-template-rows: auto 160px auto;
+  grid-column-gap: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px #28233c;
+  margin: 12px;
 `
 
-const StyledCampaignContent = styled.section`
-  grid-column: 5 span;
+const StyledCampaignLabels = styled.p`
+  grid-column: 1 / 2;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #dcdcdc;
+  align-self: center;
+  padding-left: 12px;
+`
+
+const StyledCampaignContents = styled.p`
+  font-size: 0.9em;
+  grid-column: 2 / 7;
+`
+
+const StyledAd = styled.div`
+  grid-column: 6 span;
 `
 
 const TagList = styled.ul`
   display: flex;
+  align-self: center;
   width: 100%;
   flex-wrap: wrap;
   padding: 0;
@@ -26,15 +40,12 @@ const TagList = styled.ul`
 const Tag = styled.li`
   display: inline-block;
   margin: 0 10px 10px 0;
-  padding: 2px 6px;
-  background: #502896;
+  padding: 4px 6px;
+  background: #d70064;
   border-radius: 6px;
   color: white;
-  font-size: 0.8em;
-`
-const StyledAd = styled.img`
-  grid-column: 1 span;
-  height: 200px;
+  font-size: 0.9em;
+  font-weight: lighter;
 `
 
 export default function Campaign({
@@ -51,18 +62,36 @@ export default function Campaign({
   }
 
   return (
-    <div css="padding: 10px 0 0; scroll-snap-align: start;">
+    <div css="scroll-snap-align: start">
       <StyledCampaign>
-        <StyledAd src={ad} alt="" />
-        <StyledCampaignContent>
-          <h3>Kampage: {title}</h3>
-          <p>Marke: {brand}</p>
-          <p>
-            Zeitraum: {scheduleFrom} - {scheduleTo}{' '}
-          </p>
-          <p>Format: {format} </p>
+        <StyledCampaignLabels>Kampage</StyledCampaignLabels>
+        <StyledCampaignContents
+          style={{ color: '#28233c', fontWeight: 'bold', padding: '4px' }}
+        >
+          {title}
+        </StyledCampaignContents>
+        <StyledAd
+          style={{
+            backgroundImage: 'url(' + ad + ')',
+            height: '100%',
+            width: '100%',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }}
+        />
+        <StyledCampaignLabels>Marke</StyledCampaignLabels>
+        <StyledCampaignContents>{brand}</StyledCampaignContents>
+        <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
+        <StyledCampaignContents>
+          {scheduleFrom} - {scheduleTo}
+        </StyledCampaignContents>
+        <StyledCampaignLabels>Format</StyledCampaignLabels>
+        <StyledCampaignContents>{format}</StyledCampaignContents>
+        <StyledCampaignLabels>Keywords</StyledCampaignLabels>
+        <StyledCampaignContents>
           {tags && <TagList>{tags.map(renderTag)}</TagList>}
-        </StyledCampaignContent>
+        </StyledCampaignContents>
       </StyledCampaign>
     </div>
   )
