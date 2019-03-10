@@ -20,6 +20,7 @@ const defaultData = {
   scheduleTo: '',
   format: '',
   placement: '',
+  printSpace: '',
   ad: '',
   tags: '',
   id: uid(),

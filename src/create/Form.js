@@ -49,9 +49,22 @@ const StyledRadioInputGrid = styled.div`
   flex-direction: row;
 `
 const StyledRadioLabel = styled.label`
-  align-items: center;
   color: #a0a09b;
   font-weight: lighter;
+  display: inline-block;
+  width: 50%;
+  background-color: {
+     {
+      input: checked;
+    }
+    ?#d70064 : white;
+  }
+  border: 1px solid #dcdcdc;
+  font-size: 0.9em;
+  font-weight: lighter;
+  text-align: center;
+  padding: 6px 14px;
+  justify-content: center;
 `
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
@@ -116,7 +129,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
         name="placement"
         value={data.placement}
       />
-      <StyledRadioHeadline>Anschnitt</StyledRadioHeadline>
+      <StyledRadioHeadline>Satzspiegel</StyledRadioHeadline>
       <StyledRadioInputGrid>
         <StyledRadioLabel htmlFor="print_space__input-anschnitt">
           Anschnitt
@@ -126,9 +139,8 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           type="radio"
           name="printSpace"
           value="Anschnitt"
-          checked={data.printSpace === 'Anschnitt'}
+          checked={data.printSpace === 'Anschnitt' ? data.printSpace : ''}
           onChange={onInputChange}
-          required
         />
         <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
           Satzspiegel
@@ -138,9 +150,8 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           type="radio"
           name="printSpace"
           value="Satzspiegel"
-          checked={data.printSpace === 'Satzspiegel'}
+          checked={data.printSpace === 'Satzspiegel' ? data.printSpace : ''}
           onChange={onInputChange}
-          required
         />
       </StyledRadioInputGrid>
       <StyledInputArea>
@@ -156,17 +167,16 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       </StyledInputArea>
       <Sections text="3. Zielgruppe definieren" />
       <StyledInputArea>
-        <StyledLabel htmlFor="tags__input">Tags</StyledLabel>
+        <StyledLabel htmlFor="tags__input">Detailliertes Targeting</StyledLabel>
         <input
           id="tags__input"
           onInput={onInputChange}
           value={data.tags}
           type="text"
-          placeholder="Tags"
+          placeholder="Demografie, Interessen oder Verhalten"
           name="tags"
         />
       </StyledInputArea>
-
       <button>Hinzufügen</button>
     </PageGrid>
   )

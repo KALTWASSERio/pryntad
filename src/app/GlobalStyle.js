@@ -28,7 +28,6 @@ export default createGlobalStyle`
     font-size: 1em;
   }
 
-
   input {
     /* appearance: none; */
     border: 1px solid #dcdcdc;
