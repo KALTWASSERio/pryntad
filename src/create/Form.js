@@ -36,9 +36,22 @@ const StyledLabel = styled.label`
   margin-top: 12px;
   margin-bottom: 8px;
 `
+const StyledRadioHeadline = styled.p`
+  color: #28233c;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 12px;
+  margin-bottom: 8px;
+`
+
 const StyledRadioInputGrid = styled.div`
   display: flex;
   flex-direction: row;
+`
+const StyledRadioLabel = styled.label`
+  align-items: center;
+  color: #a0a09b;
+  font-weight: lighter;
 `
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
@@ -103,22 +116,31 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
         name="placement"
         value={data.placement}
       />
-      <StyledLabel htmlFor="print_space__input">Satzspiegel</StyledLabel>
+      <StyledRadioHeadline>Anschnitt</StyledRadioHeadline>
       <StyledRadioInputGrid>
+        <StyledRadioLabel htmlFor="print_space__input-anschnitt">
+          Anschnitt
+        </StyledRadioLabel>
         <input
-          id="print_space__input"
+          id="print_space__input-anschnitt"
           type="radio"
           name="printSpace"
           value="Anschnitt"
-          checke3d={data.printSpace === 'Anschnitt'}
+          checked={data.printSpace === 'Anschnitt'}
           onChange={onInputChange}
+          required
         />
+        <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
+          Satzspiegel
+        </StyledRadioLabel>
         <input
+          id="print_space__input-satzspiegel"
           type="radio"
           name="printSpace"
           value="Satzspiegel"
-          checke3d={data.printSpace === 'Satzspiegel'}
+          checked={data.printSpace === 'Satzspiegel'}
           onChange={onInputChange}
+          required
         />
       </StyledRadioInputGrid>
       <StyledInputArea>
