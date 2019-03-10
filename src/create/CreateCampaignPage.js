@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { split } from '../utils'
 import Form from './Form'
+import uid from 'uid'
 
 const PageGrid = styled.div`
   display: flex;
@@ -18,8 +19,10 @@ const defaultData = {
   scheduleFrom: '',
   scheduleTo: '',
   format: '',
+  placement: '',
   ad: '',
   tags: '',
+  id: uid(),
 }
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME

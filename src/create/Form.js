@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
+import SelectPlacement from './SelectPlacement'
 import Sections from '../common/Sections'
 
 const PageGrid = styled.form`
@@ -34,6 +35,23 @@ const StyledLabel = styled.label`
   align-items: flex-end;
   margin-top: 12px;
   margin-bottom: 8px;
+`
+const StyledRadioHeadline = styled.p`
+  color: #28233c;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 12px;
+  margin-bottom: 8px;
+`
+
+const StyledRadioInputGrid = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+const StyledRadioLabel = styled.label`
+  align-items: center;
+  color: #a0a09b;
+  font-weight: lighter;
 `
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
@@ -91,9 +109,42 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           />
         </StyledSectionTo>
       </StyledInputAreaDates>
+      <Sections text="2. Werbemittel" />
       <Select onChange={onInputChange} name="format" value={data.format} />
+      <SelectPlacement
+        onChange={onInputChange}
+        name="placement"
+        value={data.placement}
+      />
+      <StyledRadioHeadline>Anschnitt</StyledRadioHeadline>
+      <StyledRadioInputGrid>
+        <StyledRadioLabel htmlFor="print_space__input-anschnitt">
+          Anschnitt
+        </StyledRadioLabel>
+        <input
+          id="print_space__input-anschnitt"
+          type="radio"
+          name="printSpace"
+          value="Anschnitt"
+          checked={data.printSpace === 'Anschnitt'}
+          onChange={onInputChange}
+          required
+        />
+        <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
+          Satzspiegel
+        </StyledRadioLabel>
+        <input
+          id="print_space__input-satzspiegel"
+          type="radio"
+          name="printSpace"
+          value="Satzspiegel"
+          checked={data.printSpace === 'Satzspiegel'}
+          onChange={onInputChange}
+          required
+        />
+      </StyledRadioInputGrid>
       <StyledInputArea>
-        <StyledLabel htmlFor="ad__input">Werbemittel</StyledLabel>
+        <StyledLabel htmlFor="ad__input">Creative Upload</StyledLabel>
         <input
           id="ad__input"
           type="file"
@@ -103,7 +154,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           style={{ color: 'white', border: 'none' }}
         />
       </StyledInputArea>
-      <Sections text="2. Zielgruppe definieren" />
+      <Sections text="3. Zielgruppe definieren" />
       <StyledInputArea>
         <StyledLabel htmlFor="tags__input">Tags</StyledLabel>
         <input
