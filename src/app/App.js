@@ -73,6 +73,14 @@ function App() {
           href="https://fonts.googleapis.com/css?family=Open+Sans"
           rel="stylesheet"
         />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
       </Helmet>
       <Router>
         <Grid>
