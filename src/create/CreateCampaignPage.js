@@ -21,6 +21,7 @@ const defaultData = {
   format: '',
   placement: '',
   printSpace: '',
+  colorSchema: '',
   ad: '',
   tags: '',
   id: uid(),

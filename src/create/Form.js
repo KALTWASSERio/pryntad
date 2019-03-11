@@ -149,6 +149,45 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           onChange={onInputChange}
         />
       </StyledRadioInputGrid>
+      <StyledRadioHeadline>Satzspiegel</StyledRadioHeadline>
+      <StyledRadioInputGrid>
+        <StyledRadioLabel htmlFor="colorschema__input-bw">s/w</StyledRadioLabel>
+        <input
+          id="colorschema__input-bw"
+          type="radio"
+          name="colorSchema"
+          value="s/w"
+          checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
+          onChange={onInputChange}
+        />
+        <StyledRadioLabel htmlFor="colorschema__input-2c">2c</StyledRadioLabel>
+        <input
+          id="colorschema__input-2c"
+          type="radio"
+          name="colorSchema"
+          value="2c"
+          checked={data.colorSchema === '2c' ? data.colorSchema : ''}
+          onChange={onInputChange}
+        />
+        <StyledRadioLabel htmlFor="colorschema__input-3c">3c</StyledRadioLabel>
+        <input
+          id="colorschema__input-3c"
+          type="radio"
+          name="colorSchema"
+          value="3c"
+          checked={data.colorSchema === '3c' ? data.colorSchema : ''}
+          onChange={onInputChange}
+        />
+        <StyledRadioLabel htmlFor="colorschema__input-4c">4c</StyledRadioLabel>
+        <input
+          id="colorschema__input-4c"
+          type="radio"
+          name="colorSchema"
+          value="4c"
+          checked={data.colorSchema === '4c' ? data.colorSchema : ''}
+          onChange={onInputChange}
+        />
+      </StyledRadioInputGrid>
       <StyledInputArea>
         <StyledLabel htmlFor="ad__input">Creative Upload</StyledLabel>
         <input
