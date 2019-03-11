@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Select from './Select'
 import SelectPlacement from './SelectPlacement'
 import Sections from '../common/Sections'
-/* import InputRange from 'react-input-range' */
 
 const PageGrid = styled.form`
   display: grid;
