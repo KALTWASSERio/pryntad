@@ -53,7 +53,7 @@ const StyledRadioLabel = styled.label`
   font-weight: lighter;
   display: inline-block;
   width: 50%;
-  background-color: #d70064;
+  background-color: white;
   border: 1px solid #dcdcdc;
   font-size: 0.9em;
   font-weight: lighter;
