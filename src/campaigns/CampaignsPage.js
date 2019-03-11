@@ -7,7 +7,6 @@ const PageGrid = styled.div`
   flex-direction: column;
   overflow: scroll;
   margin: 12px 12px 0 12px;
-  scroll-snap-type: y mandatory;
 `
 
 export default function CampaignsPage({ campaigns }) {

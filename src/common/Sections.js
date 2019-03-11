@@ -3,15 +3,14 @@ import styled from 'styled-components'
 
 const StyledSections = styled.div`
   display: flex;
-  background: #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
   height: 30px;
-  margin-top: 12px;
-  scroll-snap-align: start;
+  margin-top: 24px;
 `
 const StyledSectionHeadline = styled.h2`
   align-self: center;
   color: #28233c;
-  font-size: 0.8em;
+  font-size: 1.2em;
   font-weight: normal;
   text-transform: uppercase;
   padding: 4px;

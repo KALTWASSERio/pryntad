@@ -9,11 +9,11 @@ const StyledCampaign = styled.section`
   border-radius: 6px;
   box-shadow: 0 2px 4px #a0a09b;
   margin: 12px;
-  scroll-snap-align: start;
 `
 
 const StyledCampaignLabels = styled.p`
   grid-column: 1 / 2;
+  grid-auto-flow: column;
   font-size: 0.8em;
   text-transform: uppercase;
   color: #dcdcdc;
@@ -59,6 +59,10 @@ export default function Campaign({
   placement,
   printSpace,
   colorSchema,
+  location,
+  gender,
+  ageFrom,
+  ageTo,
   tags,
 }) {
   function renderTag(text, index) {
@@ -90,14 +94,22 @@ export default function Campaign({
         <StyledCampaignContents>
           {scheduleFrom} - {scheduleTo}
         </StyledCampaignContents>
-        <StyledCampaignLabels>Format</StyledCampaignLabels>
-        <StyledCampaignContents>{format}</StyledCampaignContents>
-        <StyledCampaignLabels>Platzierung</StyledCampaignLabels>
-        <StyledCampaignContents>{placement}</StyledCampaignContents>
+        <StyledCampaignLabels>Format (Farbigkeit)</StyledCampaignLabels>
+        <StyledCampaignContents>
+          {format} ({colorSchema})
+        </StyledCampaignContents>
         <StyledCampaignLabels>Satzspiegel</StyledCampaignLabels>
         <StyledCampaignContents>{printSpace}</StyledCampaignContents>
-        <StyledCampaignLabels>Farbigkeit</StyledCampaignLabels>
-        <StyledCampaignContents>{colorSchema}</StyledCampaignContents>
+        <StyledCampaignLabels>Platzierung</StyledCampaignLabels>
+        <StyledCampaignContents>{placement}</StyledCampaignContents>
+        <StyledCampaignLabels>Ort</StyledCampaignLabels>
+        <StyledCampaignContents>{location}</StyledCampaignContents>
+        <StyledCampaignLabels>Alter</StyledCampaignLabels>
+        <StyledCampaignContents>
+          {ageFrom} - {ageTo} Jahre
+        </StyledCampaignContents>
+        <StyledCampaignLabels>Geschlecht</StyledCampaignLabels>
+        <StyledCampaignContents>{gender}</StyledCampaignContents>
         <StyledCampaignLabels>Keywords</StyledCampaignLabels>
         <StyledCampaignContents>
           {tags && <TagList>{tags.map(renderTag)}</TagList>}

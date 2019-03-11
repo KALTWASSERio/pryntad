@@ -6,7 +6,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: sans-serif;
+    font-family: 'Open Sans',sans-serif;
     font-size: 16px;
     color: #28233c;
     margin: 0;
@@ -46,6 +46,12 @@ input[type=file]::-webkit-file-upload-button {
     padding: 8px;
     font-weight: lighter; 
   }
+
+  input[type=radio]:checked + label {
+  background-color: #d70064;
+  color: white;
+} 
+
 
   ::placeholder {
     color: #a0a09b;

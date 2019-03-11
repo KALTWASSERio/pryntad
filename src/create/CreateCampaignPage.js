@@ -23,6 +23,9 @@ const defaultData = {
   printSpace: '',
   colorSchema: '',
   ad: '',
+  location: 'Deutschland',
+  ageFrom: '',
+  ageTo: '',
   tags: '',
   id: uid(),
 }
@@ -57,7 +60,6 @@ export default function CreateCampaignPage(props) {
   }
 
   function onInputChange(event) {
-    console.log(event.target)
     setData({
       ...data,
       [event.target.name]: event.target.value,
