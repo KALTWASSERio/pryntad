@@ -47,6 +47,7 @@ input[type=file]::-webkit-file-upload-button {
     font-weight: lighter; 
   }
 
+
   ::placeholder {
     color: #a0a09b;
   }
