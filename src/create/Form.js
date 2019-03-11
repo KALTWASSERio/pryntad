@@ -62,6 +62,7 @@ const StyledRadioLabel = styled.label`
   padding: 6px 14px;
   font-family: 'OpenSans', sans-serif;
   align-self: center;
+  margin-right: 12px;
 `
 const StyledRadioInput = styled.input`
   align-self: center;
@@ -130,9 +131,6 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       />
       <StyledRadioHeadline>Satzspiegel</StyledRadioHeadline>
       <StyledRadioInputGrid>
-        <StyledRadioLabel htmlFor="print_space__input-anschnitt">
-          Anschnitt
-        </StyledRadioLabel>
         <StyledRadioInput
           id="print_space__input-anschnitt"
           type="radio"
@@ -140,9 +138,10 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           value="Anschnitt"
           checked={data.printSpace === 'Anschnitt' ? data.printSpace : ''}
           onChange={onInputChange}
+          style={{ display: 'none' }}
         />
-        <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
-          Satzspiegel
+        <StyledRadioLabel htmlFor="print_space__input-anschnitt">
+          Anschnitt
         </StyledRadioLabel>
         <StyledRadioInput
           id="print_space__input-satzspiegel"
@@ -151,11 +150,14 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           value="Satzspiegel"
           checked={data.printSpace === 'Satzspiegel' ? data.printSpace : ''}
           onChange={onInputChange}
+          style={{ display: 'none' }}
         />
+        <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
+          Satzspiegel
+        </StyledRadioLabel>
       </StyledRadioInputGrid>
-      <StyledRadioHeadline>Satzspiegel</StyledRadioHeadline>
+      <StyledRadioHeadline>Farbigkeit</StyledRadioHeadline>
       <StyledRadioInputGrid>
-        <StyledRadioLabel htmlFor="colorschema__input-bw">s/w</StyledRadioLabel>
         <StyledRadioInput
           id="colorschema__input-bw"
           type="radio"
@@ -163,8 +165,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           value="s/w"
           checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
           onChange={onInputChange}
+          style={{ display: 'none' }}
         />
-        <StyledRadioLabel htmlFor="colorschema__input-2c">2c</StyledRadioLabel>
+        <StyledRadioLabel htmlFor="colorschema__input-bw">s/w</StyledRadioLabel>
         <StyledRadioInput
           id="colorschema__input-2c"
           type="radio"
@@ -172,8 +175,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           value="2c"
           checked={data.colorSchema === '2c' ? data.colorSchema : ''}
           onChange={onInputChange}
+          style={{ display: 'none' }}
         />
-        <StyledRadioLabel htmlFor="colorschema__input-3c">3c</StyledRadioLabel>
+        <StyledRadioLabel htmlFor="colorschema__input-2c">2c</StyledRadioLabel>
         <StyledRadioInput
           id="colorschema__input-3c"
           type="radio"
@@ -181,8 +185,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           value="3c"
           checked={data.colorSchema === '3c' ? data.colorSchema : ''}
           onChange={onInputChange}
+          style={{ display: 'none' }}
         />
-        <StyledRadioLabel htmlFor="colorschema__input-4c">4c</StyledRadioLabel>
+        <StyledRadioLabel htmlFor="colorschema__input-3c">3c</StyledRadioLabel>
         <StyledRadioInput
           id="colorschema__input-4c"
           type="radio"
@@ -190,7 +195,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           value="4c"
           checked={data.colorSchema === '4c' ? data.colorSchema : ''}
           onChange={onInputChange}
+          style={{ display: 'none' }}
         />
+        <StyledRadioLabel htmlFor="colorschema__input-4c">4c</StyledRadioLabel>
       </StyledRadioInputGrid>
       <StyledInputArea>
         <StyledLabel htmlFor="ad__input">Creative Upload</StyledLabel>
@@ -245,7 +252,6 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       </StyledInputAreaDates>
       <StyledRadioHeadline>Geschlecht</StyledRadioHeadline>
       <StyledRadioInputGrid>
-        <StyledRadioLabel htmlFor="gender__input-both">Beide</StyledRadioLabel>
         <StyledRadioInput
           id="gender__input-both"
           type="radio"
@@ -253,10 +259,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           value="Männer und Frauen"
           checked={data.gender === 'Männer und Frauen' ? data.gender : ''}
           onChange={onInputChange}
+          style={{ display: 'none' }}
         />
-        <StyledRadioLabel htmlFor="gender__input-women">
-          Frauen
-        </StyledRadioLabel>
+        <StyledRadioLabel htmlFor="gender__input-both">Beide</StyledRadioLabel>
         <StyledRadioInput
           id="gender__input-women"
           type="radio"
@@ -264,8 +269,11 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           value="Frauen"
           checked={data.gender === 'Frauen' ? data.gender : ''}
           onChange={onInputChange}
+          style={{ display: 'none' }}
         />
-        <StyledRadioLabel htmlFor="gender__input-men">Männer</StyledRadioLabel>
+        <StyledRadioLabel htmlFor="gender__input-women">
+          Frauen
+        </StyledRadioLabel>
         <StyledRadioInput
           id="gender__input-men"
           type="radio"
@@ -273,7 +281,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           value="Männer"
           checked={data.gender === 'Männer' ? data.gender : ''}
           onChange={onInputChange}
+          style={{ display: 'none' }}
         />
+        <StyledRadioLabel htmlFor="gender__input-men">Männer</StyledRadioLabel>
       </StyledRadioInputGrid>
       <StyledInputArea>
         <StyledLabel htmlFor="tags__input">Detailliertes Targeting</StyledLabel>

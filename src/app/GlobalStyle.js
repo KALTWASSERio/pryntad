@@ -47,6 +47,11 @@ input[type=file]::-webkit-file-upload-button {
     font-weight: lighter; 
   }
 
+  input[type=radio]:checked + label {
+  background-color: #d70064;
+  color: white;
+} 
+
 
   ::placeholder {
     color: #a0a09b;
