@@ -11,7 +11,7 @@ const StyledSections = styled.div`
 const StyledSectionHeadline = styled.h2`
   align-self: center;
   color: #28233c;
-  font-size: 0.8em;
+  font-size: 1em;
   font-weight: normal;
   text-transform: uppercase;
   padding: 4px;

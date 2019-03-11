@@ -55,11 +55,10 @@ const StyledRadioLabel = styled.label`
   width: 50%;
   background-color: white;
   border: 1px solid #dcdcdc;
-  font-size: 0.9em;
-  font-weight: lighter;
   text-align: center;
   padding: 6px 14px;
   justify-content: center;
+  font-family: 'OpenSans', sans-serif;
 `
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
