@@ -58,6 +58,7 @@ export default function Campaign({
   ad,
   placement,
   printSpace,
+  colorSchema,
   tags,
 }) {
   function renderTag(text, index) {
@@ -95,6 +96,8 @@ export default function Campaign({
         <StyledCampaignContents>{placement}</StyledCampaignContents>
         <StyledCampaignLabels>Satzspiegel</StyledCampaignLabels>
         <StyledCampaignContents>{printSpace}</StyledCampaignContents>
+        <StyledCampaignLabels>Farbigkeit</StyledCampaignLabels>
+        <StyledCampaignContents>{colorSchema}</StyledCampaignContents>
         <StyledCampaignLabels>Keywords</StyledCampaignLabels>
         <StyledCampaignContents>
           {tags && <TagList>{tags.map(renderTag)}</TagList>}
