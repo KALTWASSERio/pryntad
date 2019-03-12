@@ -9,6 +9,9 @@ const StyledCampaign = styled.section`
   border-radius: 6px;
   box-shadow: 0 2px 4px #a0a09b;
   margin: 12px;
+  @media (max-width: 800px) {
+    margin: 12px;
+  }
 `
 
 const StyledCampaignLabels = styled.p`
@@ -96,6 +99,10 @@ export default function Campaign({
         <StyledCampaignContents>
           {scheduleFrom} - {scheduleTo}
         </StyledCampaignContents>
+        <StyledCampaignLabels>Budget (Gesamt)</StyledCampaignLabels>
+        <StyledCampaignContents>{budget} € EUR</StyledCampaignContents>
+        <StyledCampaignLabels>Gebot (TAP)</StyledCampaignLabels>
+        <StyledCampaignContents>{bid} € EUR</StyledCampaignContents>
         <StyledCampaignLabels>Format (Farbigkeit)</StyledCampaignLabels>
         <StyledCampaignContents>
           {format} ({colorSchema})
@@ -116,10 +123,6 @@ export default function Campaign({
         <StyledCampaignContents>
           {tags && <TagList>{tags.map(renderTag)}</TagList>}
         </StyledCampaignContents>
-        <StyledCampaignLabels>Budget</StyledCampaignLabels>
-        <StyledCampaignContents>Gesamt:{budget}€ EUR</StyledCampaignContents>
-        <StyledCampaignLabels>Gebot</StyledCampaignLabels>
-        <StyledCampaignContents>TAP:{bid}€ EUR</StyledCampaignContents>
       </StyledCampaign>
     </div>
   )
