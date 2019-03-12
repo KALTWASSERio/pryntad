@@ -77,6 +77,18 @@ const StyledRadioLabel = styled.label`
 const StyledRadioInput = styled.input`
   align-self: center;
 `
+const StyledHintHeadline = styled.h3`
+  color: #28233c;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-top: 12px;
+`
+
+const StyledHint = styled.p`
+  color: #28233c;
+  font-size: 0.8em;
+  width: 50%;
+`
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
   return (
@@ -350,6 +362,11 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           placeholder="TAP in € EUR"
           name="bid"
         />
+        <StyledHintHeadline>Erklärung TAP</StyledHintHeadline>
+        <StyledHint>
+          Der Tausend-Auflagen-Preis (TAP) gibt den Geldbetrag an, wie viel eine
+          Anzeige für 1000 Exemplare eines Werbeträgers kostet.
+        </StyledHint>
       </StyledInputArea>
       <button>Hinzufügen</button>
     </PageGrid>
