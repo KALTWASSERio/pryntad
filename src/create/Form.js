@@ -324,6 +324,33 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           name="tags"
         />
       </StyledInputArea>
+      <Sections text="4. Publisher-Playlist" />
+      <StyledInputArea>PLAYLIST</StyledInputArea>
+      <Sections text="5. Budget" />
+      <StyledInputArea>
+        <StyledLabel htmlFor="budget__input">Budget</StyledLabel>
+        <input
+          id="budget__input"
+          onInput={onInputChange}
+          value={data.budget}
+          type="number"
+          min="1"
+          placeholder="Gesamtbudget in € EUR"
+          name="budget"
+        />
+      </StyledInputArea>
+      <StyledInputArea>
+        <StyledLabel htmlFor="bid__input">Gebot</StyledLabel>
+        <input
+          id="bid__input"
+          onInput={onInputChange}
+          value={data.bid}
+          type="number"
+          min="1"
+          placeholder="TAP in € EUR"
+          name="bid"
+        />
+      </StyledInputArea>
       <button>Hinzufügen</button>
     </PageGrid>
   )
