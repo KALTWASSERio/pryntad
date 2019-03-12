@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
+import NumberFormat from 'react-number-format'
 
 const StyledCampaign = styled.section`
   display: grid;
@@ -75,6 +76,7 @@ export default function Campaign({
     return <Tag key={index}>{text}</Tag>
   }
 
+  var NumberFormat = require('react-number-format')
   return (
     <div css="scroll-snap-align: start">
       <StyledCampaign>
@@ -102,9 +104,23 @@ export default function Campaign({
           {dayjs(scheduleTo).format('DD/MM/YYYY')}
         </StyledCampaignContents>
         <StyledCampaignLabels>Budget (Gesamt)</StyledCampaignLabels>
-        <StyledCampaignContents>{budget} € EUR</StyledCampaignContents>
+        <StyledCampaignContents>
+          <NumberFormat
+            value={budget}
+            displayType={'text'}
+            thousandSeparator={true}
+            suffix={' € EUR'}
+          />
+        </StyledCampaignContents>
         <StyledCampaignLabels>Gebot (TAP)</StyledCampaignLabels>
-        <StyledCampaignContents>{bid} € EUR</StyledCampaignContents>
+        <StyledCampaignContents>
+          <NumberFormat
+            value={bid}
+            displayType={'text'}
+            thousandSeparator={true}
+            suffix={' € EUR'}
+          />
+        </StyledCampaignContents>
         <StyledCampaignLabels>Format (Farbigkeit)</StyledCampaignLabels>
         <StyledCampaignContents>
           {format} ({colorSchema})
