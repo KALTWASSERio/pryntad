@@ -29,6 +29,8 @@ const defaultData = {
   ageFrom: '',
   ageTo: '',
   tags: '',
+  budget: '',
+  bid: '',
   id: uid(),
 }
 
