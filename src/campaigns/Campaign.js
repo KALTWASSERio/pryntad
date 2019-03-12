@@ -9,6 +9,9 @@ const StyledCampaign = styled.section`
   border-radius: 6px;
   box-shadow: 0 2px 4px #a0a09b;
   margin: 12px;
+  @media (max-width: 800px) {
+    margin: 12px;
+  }
 `
 
 const StyledCampaignLabels = styled.p`
@@ -64,6 +67,8 @@ export default function Campaign({
   ageFrom,
   ageTo,
   tags,
+  budget,
+  bid,
 }) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
@@ -94,6 +99,10 @@ export default function Campaign({
         <StyledCampaignContents>
           {scheduleFrom} - {scheduleTo}
         </StyledCampaignContents>
+        <StyledCampaignLabels>Budget (Gesamt)</StyledCampaignLabels>
+        <StyledCampaignContents>{budget} € EUR</StyledCampaignContents>
+        <StyledCampaignLabels>Gebot (TAP)</StyledCampaignLabels>
+        <StyledCampaignContents>{bid} € EUR</StyledCampaignContents>
         <StyledCampaignLabels>Format (Farbigkeit)</StyledCampaignLabels>
         <StyledCampaignContents>
           {format} ({colorSchema})

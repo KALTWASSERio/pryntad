@@ -77,6 +77,18 @@ const StyledRadioLabel = styled.label`
 const StyledRadioInput = styled.input`
   align-self: center;
 `
+const StyledHintHeadline = styled.h3`
+  color: #28233c;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-top: 12px;
+`
+
+const StyledHint = styled.p`
+  color: #28233c;
+  font-size: 0.8em;
+  width: 50%;
+`
 
 export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
   return (
@@ -323,6 +335,38 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           placeholder="Demografie, Interessen oder Verhalten"
           name="tags"
         />
+      </StyledInputArea>
+      <Sections text="4. Publisher-Playlist" />
+      <StyledInputArea>PLAYLIST</StyledInputArea>
+      <Sections text="5. Budget" />
+      <StyledInputArea>
+        <StyledLabel htmlFor="budget__input">Budget</StyledLabel>
+        <input
+          id="budget__input"
+          onInput={onInputChange}
+          value={data.budget}
+          type="number"
+          min="1"
+          placeholder="Gesamtbudget in € EUR"
+          name="budget"
+        />
+      </StyledInputArea>
+      <StyledInputArea>
+        <StyledLabel htmlFor="bid__input">Gebot</StyledLabel>
+        <input
+          id="bid__input"
+          onInput={onInputChange}
+          value={data.bid}
+          type="number"
+          min="1"
+          placeholder="TAP in € EUR"
+          name="bid"
+        />
+        <StyledHintHeadline>Erklärung TAP</StyledHintHeadline>
+        <StyledHint>
+          Der Tausend-Auflagen-Preis (TAP) gibt den Geldbetrag an, wie viel eine
+          Anzeige für 1000 Exemplare eines Werbeträgers kostet.
+        </StyledHint>
       </StyledInputArea>
       <button>Hinzufügen</button>
     </PageGrid>
