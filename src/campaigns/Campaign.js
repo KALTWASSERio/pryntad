@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import dayjs from 'dayjs'
 
 const StyledCampaign = styled.section`
   display: grid;
@@ -92,7 +93,8 @@ export default function Campaign({
         <StyledCampaignContents>{brand}</StyledCampaignContents>
         <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
         <StyledCampaignContents>
-          {scheduleFrom} - {scheduleTo}
+          {dayjs(scheduleFrom).format('DD/MM/YYYY')} -{' '}
+          {dayjs(scheduleTo).format('DD/MM/YYYY')}
         </StyledCampaignContents>
         <StyledCampaignLabels>Format (Farbigkeit)</StyledCampaignLabels>
         <StyledCampaignContents>

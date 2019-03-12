@@ -11,6 +11,7 @@
     "babel-plugin-jsx-remove-data-test-id": "2.0.0",
     "babel-plugin-styled-components": "1.10.0",
     "cypress": "3.1.5",
+    "dayjs": "^1.8.10",
     "dotenv": "^6.2.0",
     "internal-ip-cli": "1.0.0",
     "prop-types": "15.7.2",
