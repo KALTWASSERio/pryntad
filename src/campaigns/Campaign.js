@@ -64,6 +64,8 @@ export default function Campaign({
   ageFrom,
   ageTo,
   tags,
+  budget,
+  bid,
 }) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
@@ -114,6 +116,10 @@ export default function Campaign({
         <StyledCampaignContents>
           {tags && <TagList>{tags.map(renderTag)}</TagList>}
         </StyledCampaignContents>
+        <StyledCampaignLabels>Budget</StyledCampaignLabels>
+        <StyledCampaignContents>Gesamt:{budget}€ EUR</StyledCampaignContents>
+        <StyledCampaignLabels>Gebot</StyledCampaignLabels>
+        <StyledCampaignContents>TAP:{bid}€ EUR</StyledCampaignContents>
       </StyledCampaign>
     </div>
   )
