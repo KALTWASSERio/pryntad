@@ -97,23 +97,23 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       <StyledInputArea>
         <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
         <input
+          name="title"
           id="campaign__name__input"
           onInput={onInputChange}
           value={data.title}
           type="text"
           placeholder="Kampagnenname"
-          name="title"
         />
       </StyledInputArea>
       <StyledInputArea>
         <StyledLabel htmlFor="brand__input">Brand</StyledLabel>
         <input
+          name="brand"
           id="brand__input"
           onInput={onInputChange}
           value={data.brand}
           type="Text"
           placeholder="Brand"
-          name="brand"
         />
       </StyledInputArea>
       <StyledInputAreaDates>
@@ -122,10 +122,10 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             Zeitraum (von)
           </StyledLabel>
           <input
+            name="scheduleFrom"
             id="schedule__input__from"
             onInput={onInputChange}
             type="date"
-            name="scheduleFrom"
             value={data.scheduleFrom}
             required
           />
@@ -135,10 +135,10 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             Zeitraum (bis)
           </StyledLabel>
           <input
+            name="scheduleTo"
             id="schedule__input__to"
             onInput={onInputChange}
             type="date"
-            name="scheduleTo"
             value={data.scheduleTo}
             required
           />
@@ -147,17 +147,17 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       <Sections text="2. Werbemittel" />
       <Select onChange={onInputChange} name="format" value={data.format} />
       <SelectPlacement
-        onChange={onInputChange}
         name="placement"
+        onChange={onInputChange}
         value={data.placement}
       />
       <StyledRadioAreas>
         <StyledRadioHeadline>Satzspiegel</StyledRadioHeadline>
         <StyledRadioInputGrid>
           <StyledRadioInput
+            name="printSpace"
             id="print_space__input-anschnitt"
             type="radio"
-            name="printSpace"
             value="Anschnitt"
             checked={data.printSpace === 'Anschnitt' ? data.printSpace : ''}
             onChange={onInputChange}
@@ -167,9 +167,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             Anschnitt
           </StyledRadioLabel>
           <StyledRadioInput
+            name="printSpace"
             id="print_space__input-satzspiegel"
             type="radio"
-            name="printSpace"
             value="Satzspiegel"
             checked={data.printSpace === 'Satzspiegel' ? data.printSpace : ''}
             onChange={onInputChange}
@@ -184,9 +184,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
         <StyledRadioHeadline>Farbigkeit</StyledRadioHeadline>
         <StyledRadioInputGrid>
           <StyledRadioInput
+            name="colorSchema"
             id="colorschema__input-bw"
             type="radio"
-            name="colorSchema"
             value="s/w"
             checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
             onChange={onInputChange}
@@ -196,9 +196,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             s/w
           </StyledRadioLabel>
           <StyledRadioInput
+            name="colorSchema"
             id="colorschema__input-2c"
             type="radio"
-            name="colorSchema"
             value="2c"
             checked={data.colorSchema === '2c' ? data.colorSchema : ''}
             onChange={onInputChange}
@@ -208,9 +208,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             2c
           </StyledRadioLabel>
           <StyledRadioInput
+            name="colorSchema"
             id="colorschema__input-3c"
             type="radio"
-            name="colorSchema"
             value="3c"
             checked={data.colorSchema === '3c' ? data.colorSchema : ''}
             onChange={onInputChange}
@@ -220,9 +220,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             3c
           </StyledRadioLabel>
           <StyledRadioInput
+            name="colorSchema"
             id="colorschema__input-4c"
             type="radio"
-            name="colorSchema"
             value="4c"
             checked={data.colorSchema === '4c' ? data.colorSchema : ''}
             onChange={onInputChange}
@@ -236,10 +236,10 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       <StyledInputArea>
         <StyledLabel htmlFor="ad__input">Creative Upload</StyledLabel>
         <input
+          name="ad"
           id="ad__input"
           type="file"
           value={data.ad}
-          name="ad"
           onChange={onImageUpload}
           style={{ color: 'white', border: 'none' }}
         />
@@ -248,23 +248,23 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       <StyledInputArea>
         <StyledLabel htmlFor="location__input">Ort</StyledLabel>
         <input
+          name="location"
           id="location__input"
           onInput={onInputChange}
           value={data.location}
           type="text"
           placeholder="Orte"
-          name="location"
         />
       </StyledInputArea>
       <StyledInputAreaDates>
         <StyledSectionFrom>
           <StyledLabel htmlFor="age__input__from">Alter (ab)</StyledLabel>
           <input
+            name="ageFrom"
             id="age__input__from"
             onInput={onInputChange}
             type="number"
             min="10"
-            name="ageFrom"
             placeholder="min. 10 Jahre"
             value={data.ageFrom}
             required
@@ -273,11 +273,11 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
         <StyledSectionTo>
           <StyledLabel htmlFor="age__input__to">Alter (bis)</StyledLabel>
           <input
+            name="ageTo"
             id="age__input__to"
             onInput={onInputChange}
             type="number"
             max="65+"
-            name="ageTo"
             placeholder="max. 65+ Jahre"
             value={data.ageTo}
             required
@@ -288,9 +288,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
         <StyledRadioHeadline>Geschlecht</StyledRadioHeadline>
         <StyledRadioInputGrid>
           <StyledRadioInput
+            name="gender"
             id="gender__input-both"
             type="radio"
-            name="gender"
             value="Männer und Frauen"
             checked={data.gender === 'Männer und Frauen' ? data.gender : ''}
             onChange={onInputChange}
@@ -300,9 +300,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             Beide
           </StyledRadioLabel>
           <StyledRadioInput
+            name="gender"
             id="gender__input-women"
             type="radio"
-            name="gender"
             value="Frauen"
             checked={data.gender === 'Frauen' ? data.gender : ''}
             onChange={onInputChange}
@@ -312,9 +312,9 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             Frauen
           </StyledRadioLabel>
           <StyledRadioInput
+            name="gender"
             id="gender__input-men"
             type="radio"
-            name="gender"
             value="Männer"
             checked={data.gender === 'Männer' ? data.gender : ''}
             onChange={onInputChange}
@@ -328,12 +328,12 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       <StyledInputArea>
         <StyledLabel htmlFor="tags__input">Detailliertes Targeting</StyledLabel>
         <input
+          name="tags"
           id="tags__input"
           onInput={onInputChange}
           value={data.tags}
           type="text"
           placeholder="Demografie, Interessen oder Verhalten"
-          name="tags"
         />
       </StyledInputArea>
       <Sections text="4. Publisher-Playlist" />
@@ -342,25 +342,29 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       <StyledInputArea>
         <StyledLabel htmlFor="budget__input">Budget</StyledLabel>
         <input
+          name="budget"
           id="budget__input"
           onInput={onInputChange}
           value={data.budget}
           type="number"
           min="1"
           placeholder="Gesamtbudget in € EUR"
-          name="budget"
+          pattern="[0-9]+([,\.][0-9]+)?"
+          formnovalidate
         />
       </StyledInputArea>
       <StyledInputArea>
         <StyledLabel htmlFor="bid__input">Gebot</StyledLabel>
         <input
+          name="bid"
           id="bid__input"
           onInput={onInputChange}
           value={data.bid}
           type="number"
           min="1"
           placeholder="TAP in € EUR"
-          name="bid"
+          pattern="[0-9]+([,\.][0-9]+)?"
+          formnovalidate
         />
         <StyledHintHeadline>Erklärung TAP</StyledHintHeadline>
         <StyledHint>
