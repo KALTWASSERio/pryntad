@@ -16,12 +16,11 @@ import {
 const Grid = styled.div`
   display: grid;
   grid-template-rows: 60px auto 48px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: scroll;
 `
 
 const Nav = styled.nav`

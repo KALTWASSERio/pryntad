@@ -5,8 +5,14 @@ import Campaign from './Campaign'
 const PageGrid = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
-  margin: 12px 12px 0 12px;
+  overflow-y: scroll;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @media (max-width: 800px) {
+    margin: 12px;
+  }
 `
 
 export default function CampaignsPage({ campaigns }) {

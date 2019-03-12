@@ -9,14 +9,13 @@ export default createGlobalStyle`
     font-family: 'Open Sans',sans-serif;
     font-size: 16px;
     color: #28233c;
-    margin: 0;
   }
 
   html, body {
-    position: fixed;
+   /*  position: fixed; */
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6,
@@ -29,7 +28,7 @@ export default createGlobalStyle`
   }
 
   input {
-    /* appearance: none; */
+    appearance: none;
     border: 1px solid #dcdcdc;
     background: white;
     padding-left: 4px;
@@ -51,7 +50,6 @@ input[type=file]::-webkit-file-upload-button {
   background-color: #d70064;
   color: white;
 } 
-
 
   ::placeholder {
     color: #a0a09b;
@@ -79,5 +77,4 @@ input[type=file]::-webkit-file-upload-button {
     margin-bottom:12px;
     padding: 12px;
   }
-
 `

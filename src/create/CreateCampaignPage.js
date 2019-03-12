@@ -8,9 +8,11 @@ import uid from 'uid'
 const PageGrid = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
-  margin: 12px 12px 0 12px;
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 `
 
 const defaultData = {

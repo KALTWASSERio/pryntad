@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const StyledCampaign = styled.section`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: auto;
   grid-template-rows: auto 160px auto;
   grid-column-gap: 12px;
   border-radius: 6px;

@@ -7,6 +7,9 @@ import Sections from '../common/Sections'
 const PageGrid = styled.form`
   display: grid;
   grid-gap: 12px;
+  @media (max-width: 800px) {
+    margin: 12px;
+  }
 `
 
 const StyledInputArea = styled.section`
@@ -45,6 +48,10 @@ const StyledRadioHeadline = styled.p`
   margin-top: 12px;
   margin-bottom: 8px;
 `
+const StyledRadioAreas = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const StyledRadioInputGrid = styled.div`
   display: flex;
@@ -58,10 +65,14 @@ const StyledRadioLabel = styled.label`
   background-color: white;
   border: 1px solid #dcdcdc;
   text-align: center;
-  padding: 6px 14px;
+  padding: 6px 12px;
   font-family: 'OpenSans', sans-serif;
   align-self: center;
   margin-right: 12px;
+
+  :last-of-type {
+    margin: 0;
+  }
 `
 const StyledRadioInput = styled.input`
   align-self: center;
@@ -128,76 +139,88 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
         name="placement"
         value={data.placement}
       />
-      <StyledRadioHeadline>Satzspiegel</StyledRadioHeadline>
-      <StyledRadioInputGrid>
-        <StyledRadioInput
-          id="print_space__input-anschnitt"
-          type="radio"
-          name="printSpace"
-          value="Anschnitt"
-          checked={data.printSpace === 'Anschnitt' ? data.printSpace : ''}
-          onChange={onInputChange}
-          style={{ display: 'none' }}
-        />
-        <StyledRadioLabel htmlFor="print_space__input-anschnitt">
-          Anschnitt
-        </StyledRadioLabel>
-        <StyledRadioInput
-          id="print_space__input-satzspiegel"
-          type="radio"
-          name="printSpace"
-          value="Satzspiegel"
-          checked={data.printSpace === 'Satzspiegel' ? data.printSpace : ''}
-          onChange={onInputChange}
-          style={{ display: 'none' }}
-        />
-        <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
-          Satzspiegel
-        </StyledRadioLabel>
-      </StyledRadioInputGrid>
-      <StyledRadioHeadline>Farbigkeit</StyledRadioHeadline>
-      <StyledRadioInputGrid>
-        <StyledRadioInput
-          id="colorschema__input-bw"
-          type="radio"
-          name="colorSchema"
-          value="s/w"
-          checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
-          onChange={onInputChange}
-          style={{ display: 'none' }}
-        />
-        <StyledRadioLabel htmlFor="colorschema__input-bw">s/w</StyledRadioLabel>
-        <StyledRadioInput
-          id="colorschema__input-2c"
-          type="radio"
-          name="colorSchema"
-          value="2c"
-          checked={data.colorSchema === '2c' ? data.colorSchema : ''}
-          onChange={onInputChange}
-          style={{ display: 'none' }}
-        />
-        <StyledRadioLabel htmlFor="colorschema__input-2c">2c</StyledRadioLabel>
-        <StyledRadioInput
-          id="colorschema__input-3c"
-          type="radio"
-          name="colorSchema"
-          value="3c"
-          checked={data.colorSchema === '3c' ? data.colorSchema : ''}
-          onChange={onInputChange}
-          style={{ display: 'none' }}
-        />
-        <StyledRadioLabel htmlFor="colorschema__input-3c">3c</StyledRadioLabel>
-        <StyledRadioInput
-          id="colorschema__input-4c"
-          type="radio"
-          name="colorSchema"
-          value="4c"
-          checked={data.colorSchema === '4c' ? data.colorSchema : ''}
-          onChange={onInputChange}
-          style={{ display: 'none' }}
-        />
-        <StyledRadioLabel htmlFor="colorschema__input-4c">4c</StyledRadioLabel>
-      </StyledRadioInputGrid>
+      <StyledRadioAreas>
+        <StyledRadioHeadline>Satzspiegel</StyledRadioHeadline>
+        <StyledRadioInputGrid>
+          <StyledRadioInput
+            id="print_space__input-anschnitt"
+            type="radio"
+            name="printSpace"
+            value="Anschnitt"
+            checked={data.printSpace === 'Anschnitt' ? data.printSpace : ''}
+            onChange={onInputChange}
+            style={{ display: 'none' }}
+          />
+          <StyledRadioLabel htmlFor="print_space__input-anschnitt">
+            Anschnitt
+          </StyledRadioLabel>
+          <StyledRadioInput
+            id="print_space__input-satzspiegel"
+            type="radio"
+            name="printSpace"
+            value="Satzspiegel"
+            checked={data.printSpace === 'Satzspiegel' ? data.printSpace : ''}
+            onChange={onInputChange}
+            style={{ display: 'none' }}
+          />
+          <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
+            Satzspiegel
+          </StyledRadioLabel>
+        </StyledRadioInputGrid>
+      </StyledRadioAreas>
+      <StyledRadioAreas>
+        <StyledRadioHeadline>Farbigkeit</StyledRadioHeadline>
+        <StyledRadioInputGrid>
+          <StyledRadioInput
+            id="colorschema__input-bw"
+            type="radio"
+            name="colorSchema"
+            value="s/w"
+            checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
+            onChange={onInputChange}
+            style={{ display: 'none' }}
+          />
+          <StyledRadioLabel htmlFor="colorschema__input-bw">
+            s/w
+          </StyledRadioLabel>
+          <StyledRadioInput
+            id="colorschema__input-2c"
+            type="radio"
+            name="colorSchema"
+            value="2c"
+            checked={data.colorSchema === '2c' ? data.colorSchema : ''}
+            onChange={onInputChange}
+            style={{ display: 'none' }}
+          />
+          <StyledRadioLabel htmlFor="colorschema__input-2c">
+            2c
+          </StyledRadioLabel>
+          <StyledRadioInput
+            id="colorschema__input-3c"
+            type="radio"
+            name="colorSchema"
+            value="3c"
+            checked={data.colorSchema === '3c' ? data.colorSchema : ''}
+            onChange={onInputChange}
+            style={{ display: 'none' }}
+          />
+          <StyledRadioLabel htmlFor="colorschema__input-3c">
+            3c
+          </StyledRadioLabel>
+          <StyledRadioInput
+            id="colorschema__input-4c"
+            type="radio"
+            name="colorSchema"
+            value="4c"
+            checked={data.colorSchema === '4c' ? data.colorSchema : ''}
+            onChange={onInputChange}
+            style={{ display: 'none' }}
+          />
+          <StyledRadioLabel htmlFor="colorschema__input-4c">
+            4c
+          </StyledRadioLabel>
+        </StyledRadioInputGrid>
+      </StyledRadioAreas>
       <StyledInputArea>
         <StyledLabel htmlFor="ad__input">Creative Upload</StyledLabel>
         <input
@@ -249,41 +272,47 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           />
         </StyledSectionTo>
       </StyledInputAreaDates>
-      <StyledRadioHeadline>Geschlecht</StyledRadioHeadline>
-      <StyledRadioInputGrid>
-        <StyledRadioInput
-          id="gender__input-both"
-          type="radio"
-          name="gender"
-          value="Männer und Frauen"
-          checked={data.gender === 'Männer und Frauen' ? data.gender : ''}
-          onChange={onInputChange}
-          style={{ display: 'none' }}
-        />
-        <StyledRadioLabel htmlFor="gender__input-both">Beide</StyledRadioLabel>
-        <StyledRadioInput
-          id="gender__input-women"
-          type="radio"
-          name="gender"
-          value="Frauen"
-          checked={data.gender === 'Frauen' ? data.gender : ''}
-          onChange={onInputChange}
-          style={{ display: 'none' }}
-        />
-        <StyledRadioLabel htmlFor="gender__input-women">
-          Frauen
-        </StyledRadioLabel>
-        <StyledRadioInput
-          id="gender__input-men"
-          type="radio"
-          name="gender"
-          value="Männer"
-          checked={data.gender === 'Männer' ? data.gender : ''}
-          onChange={onInputChange}
-          style={{ display: 'none' }}
-        />
-        <StyledRadioLabel htmlFor="gender__input-men">Männer</StyledRadioLabel>
-      </StyledRadioInputGrid>
+      <StyledRadioAreas>
+        <StyledRadioHeadline>Geschlecht</StyledRadioHeadline>
+        <StyledRadioInputGrid>
+          <StyledRadioInput
+            id="gender__input-both"
+            type="radio"
+            name="gender"
+            value="Männer und Frauen"
+            checked={data.gender === 'Männer und Frauen' ? data.gender : ''}
+            onChange={onInputChange}
+            style={{ display: 'none' }}
+          />
+          <StyledRadioLabel htmlFor="gender__input-both">
+            Beide
+          </StyledRadioLabel>
+          <StyledRadioInput
+            id="gender__input-women"
+            type="radio"
+            name="gender"
+            value="Frauen"
+            checked={data.gender === 'Frauen' ? data.gender : ''}
+            onChange={onInputChange}
+            style={{ display: 'none' }}
+          />
+          <StyledRadioLabel htmlFor="gender__input-women">
+            Frauen
+          </StyledRadioLabel>
+          <StyledRadioInput
+            id="gender__input-men"
+            type="radio"
+            name="gender"
+            value="Männer"
+            checked={data.gender === 'Männer' ? data.gender : ''}
+            onChange={onInputChange}
+            style={{ display: 'none' }}
+          />
+          <StyledRadioLabel htmlFor="gender__input-men">
+            Männer
+          </StyledRadioLabel>
+        </StyledRadioInputGrid>
+      </StyledRadioAreas>
       <StyledInputArea>
         <StyledLabel htmlFor="tags__input">Detailliertes Targeting</StyledLabel>
         <input
