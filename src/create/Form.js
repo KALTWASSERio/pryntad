@@ -365,8 +365,6 @@ export default function Form({
           type="number"
           min="1"
           placeholder="Gesamtbudget in € EUR"
-          pattern="[0-9]+([,\.][0-9]+)?"
-          formnovalidate
         />
       </StyledInputArea>
       <StyledInputArea>
