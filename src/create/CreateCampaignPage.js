@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-// import { split } from '../utils'
 import Form from './Form'
 import uid from 'uid'
 
@@ -41,8 +40,20 @@ const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 export default function CreateCampaignPage(props) {
   const [data, setData] = useState(defaultData)
   const [ad, setAd] = useState('')
-  const [tags, setTags] = useState(['a', 'b'])
+  const [tags, setTags] = useState([])
   const [tagsInput, setTagsInput] = useState('')
+
+  function onTagsInputChange(event) {
+    setTagsInput(event.target.value)
+  }
+
+  function onSubmit(event) {
+    event.preventDefault()
+    data.tags = tags
+    data.ad = ad
+    props.onSubmit(data)
+    setData(defaultData)
+  }
 
   function inputKeyDown(event) {
     const val = event.target.value
@@ -56,8 +67,6 @@ export default function CreateCampaignPage(props) {
       }
       setTags([...tags, val])
       setTagsInput('')
-    } else if (event.key === 'Backspace' && !val) {
-      removeTag(tags.length - 1)
     }
   }
 
@@ -96,31 +105,18 @@ export default function CreateCampaignPage(props) {
     })
   }
 
-  function onTagsInputChange(e) {
-    setTagsInput(e.target.value)
-  }
-
-  function onSubmit(event) {
-    event.preventDefault()
-    // const tags = split(data.tags)
-    data.tags = tags
-    data.ad = ad
-    props.onSubmit(data)
-    setData(defaultData)
-  }
-
   return (
     <PageGrid>
       <Form
+        onInputChange={onInputChange}
+        onSubmit={onSubmit}
+        inputKeyDown={inputKeyDown}
+        removeTag={removeTag}
         onTagsInputChange={onTagsInputChange}
         tagsInput={tagsInput}
         tagsArray={tags}
-        removeTag={removeTag}
-        inputKeyDown={inputKeyDown}
         data={data}
-        onSubmit={onSubmit}
         onImageUpload={onImageUpload}
-        onInputChange={onInputChange}
       />
     </PageGrid>
   )
