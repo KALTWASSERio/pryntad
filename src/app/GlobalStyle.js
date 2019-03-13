@@ -35,11 +35,13 @@ export default createGlobalStyle`
     font-family: sans-serif;
     font-weight: lighter; 
     min-height: 1.5em;
+    left: -9999px;
 }
 
 input[type="date"]
 {
     min-height: 1.5em;
+    left: -9999px;
 }
 
 input[type=file]::-webkit-file-upload-button {
@@ -49,11 +51,13 @@ input[type=file]::-webkit-file-upload-button {
     color: #a0a09b;
     padding: 8px;
     font-weight: lighter; 
+    left: -9999px;
   }
 
   input[type=radio]:checked + label {
   background-color: #d70064;
   color: white;
+  left: -9999px;
 } 
 
   ::placeholder {
@@ -67,6 +71,7 @@ input[type=file]::-webkit-file-upload-button {
     width: 100%;
     font-weight: lighter; 
     min-height: 1.5em;
+    left: -9999px;
   }
 
   :invalid {
