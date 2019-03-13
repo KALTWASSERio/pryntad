@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import { split } from '../utils'
+// import { split } from '../utils'
 import Form from './Form'
 import uid from 'uid'
 
@@ -13,6 +13,7 @@ const PageGrid = styled.div`
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  scroll-behavior: auto;
 `
 
 const defaultData = {
@@ -40,6 +41,31 @@ const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 export default function CreateCampaignPage(props) {
   const [data, setData] = useState(defaultData)
   const [ad, setAd] = useState('')
+  const [tags, setTags] = useState(['a', 'b'])
+  const [tagsInput, setTagsInput] = useState('')
+
+  function inputKeyDown(event) {
+    const val = event.target.value
+    if (
+      (event.key === 'Enter' || event.keyCode === 0 || event.keyCode === 32) &&
+      val
+    ) {
+      event.preventDefault()
+      if (tags.find(tag => tag.toLowerCase() === val.toLowerCase())) {
+        return
+      }
+      setTags([...tags, val])
+      setTagsInput('')
+    } else if (event.key === 'Backspace' && !val) {
+      removeTag(tags.length - 1)
+    }
+  }
+
+  function removeTag(i) {
+    const newTags = [...tags]
+    newTags.splice(i, 1)
+    setTags(newTags)
+  }
 
   function onImageUpload(event) {
     alert('Deine Datei wurde hochgeladen')
@@ -70,16 +96,27 @@ export default function CreateCampaignPage(props) {
     })
   }
 
+  function onTagsInputChange(e) {
+    setTagsInput(e.target.value)
+  }
+
   function onSubmit(event) {
     event.preventDefault()
-    const tags = split(data.tags)
-    props.onSubmit({ ...data, ad, tags })
+    // const tags = split(data.tags)
+    data.tags = tags
+    data.ad = ad
+    props.onSubmit(data)
     setData(defaultData)
   }
 
   return (
     <PageGrid>
       <Form
+        onTagsInputChange={onTagsInputChange}
+        tagsInput={tagsInput}
+        tagsArray={tags}
+        removeTag={removeTag}
+        inputKeyDown={inputKeyDown}
         data={data}
         onSubmit={onSubmit}
         onImageUpload={onImageUpload}

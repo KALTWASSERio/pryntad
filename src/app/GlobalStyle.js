@@ -28,13 +28,18 @@ export default createGlobalStyle`
   }
 
   input {
-    appearance: none;
     border: 1px solid #dcdcdc;
     background: white;
     padding-left: 4px;
     width: 100%;
     font-family: sans-serif;
     font-weight: lighter; 
+    min-height: 1.5em;
+}
+
+input[type="date"]
+{
+    min-height: 1.5em;
 }
 
 input[type=file]::-webkit-file-upload-button {
@@ -56,12 +61,12 @@ input[type=file]::-webkit-file-upload-button {
   }
 
   select {
-    appearance: none;
     border: 1px solid #dcdcdc;
     background: white;
     padding-left: 4px;
     width: 100%;
     font-weight: lighter; 
+    min-height: 1.5em;
   }
 
   :invalid {

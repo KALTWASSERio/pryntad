@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
 import SelectPlacement from './SelectPlacement'
+import InputTag from './InputTag'
 import Sections from '../common/Sections'
 
 const PageGrid = styled.form`
@@ -81,16 +82,28 @@ const StyledHintHeadline = styled.h3`
   color: #28233c;
   font-size: 0.9em;
   font-weight: bold;
-  margin-top: 12px;
+  margin-top: 24px;
 `
 
 const StyledHint = styled.p`
   color: #28233c;
   font-size: 0.8em;
-  width: 50%;
+  @media (min-width: 800px) {
+    width: 50%;
+  }
 `
 
-export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
+export default function Form({
+  tagsInput,
+  tagsArray,
+  data,
+  onSubmit,
+  onTagsInputChange,
+  onInputChange,
+  onImageUpload,
+  inputKeyDown,
+  removeTag,
+}) {
   return (
     <PageGrid onSubmit={onSubmit}>
       <Sections text="1. Kampagne erstellen" />
@@ -161,7 +174,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             value="Anschnitt"
             checked={data.printSpace === 'Anschnitt' ? data.printSpace : ''}
             onChange={onInputChange}
-            style={{ display: 'none' }}
+            style={{ display: 'none', left: '-9999px' }}
           />
           <StyledRadioLabel htmlFor="print_space__input-anschnitt">
             Anschnitt
@@ -173,7 +186,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             value="Satzspiegel"
             checked={data.printSpace === 'Satzspiegel' ? data.printSpace : ''}
             onChange={onInputChange}
-            style={{ display: 'none' }}
+            style={{ display: 'none', left: '-9999px' }}
           />
           <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
             Satzspiegel
@@ -190,7 +203,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             value="s/w"
             checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
             onChange={onInputChange}
-            style={{ display: 'none' }}
+            style={{ display: 'none', left: '-9999px' }}
           />
           <StyledRadioLabel htmlFor="colorschema__input-bw">
             s/w
@@ -202,7 +215,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             value="2c"
             checked={data.colorSchema === '2c' ? data.colorSchema : ''}
             onChange={onInputChange}
-            style={{ display: 'none' }}
+            style={{ display: 'none', left: '-9999px' }}
           />
           <StyledRadioLabel htmlFor="colorschema__input-2c">
             2c
@@ -214,7 +227,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             value="3c"
             checked={data.colorSchema === '3c' ? data.colorSchema : ''}
             onChange={onInputChange}
-            style={{ display: 'none' }}
+            style={{ display: 'none', left: '-9999px' }}
           />
           <StyledRadioLabel htmlFor="colorschema__input-3c">
             3c
@@ -226,7 +239,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             value="4c"
             checked={data.colorSchema === '4c' ? data.colorSchema : ''}
             onChange={onInputChange}
-            style={{ display: 'none' }}
+            style={{ display: 'none', left: '-9999px' }}
           />
           <StyledRadioLabel htmlFor="colorschema__input-4c">
             4c
@@ -294,7 +307,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             value="Männer und Frauen"
             checked={data.gender === 'Männer und Frauen' ? data.gender : ''}
             onChange={onInputChange}
-            style={{ display: 'none' }}
+            style={{ display: 'none', left: '-9999px' }}
           />
           <StyledRadioLabel htmlFor="gender__input-both">
             Beide
@@ -306,7 +319,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             value="Frauen"
             checked={data.gender === 'Frauen' ? data.gender : ''}
             onChange={onInputChange}
-            style={{ display: 'none' }}
+            style={{ display: 'none', left: '-9999px' }}
           />
           <StyledRadioLabel htmlFor="gender__input-women">
             Frauen
@@ -318,7 +331,7 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
             value="Männer"
             checked={data.gender === 'Männer' ? data.gender : ''}
             onChange={onInputChange}
-            style={{ display: 'none' }}
+            style={{ display: 'none', left: '-9999px' }}
           />
           <StyledRadioLabel htmlFor="gender__input-men">
             Männer
@@ -327,11 +340,14 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
       </StyledRadioAreas>
       <StyledInputArea>
         <StyledLabel htmlFor="tags__input">Detailliertes Targeting</StyledLabel>
-        <input
+        <InputTag
+          tagsInput={tagsInput}
+          tagsArray={tagsArray}
+          inputKeyDown={inputKeyDown}
+          removeTag={removeTag}
           name="tags"
           id="tags__input"
-          onInput={onInputChange}
-          value={data.tags}
+          onTagsInputChange={onTagsInputChange}
           type="text"
           placeholder="Demografie, Interessen oder Verhalten"
         />
@@ -363,13 +379,11 @@ export default function Form({ data, onSubmit, onInputChange, onImageUpload }) {
           type="number"
           min="1"
           placeholder="TAP in € EUR"
-          pattern="[0-9]+([,\.][0-9]+)?"
-          formnovalidate
         />
         <StyledHintHeadline>Erklärung TAP</StyledHintHeadline>
         <StyledHint>
           Der Tausend-Auflagen-Preis (TAP) gibt den Geldbetrag an, wie viel eine
-          Anzeige für 1000 Exemplare eines Werbeträgers kostet.
+          Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
         </StyledHint>
       </StyledInputArea>
       <button>Hinzufügen</button>

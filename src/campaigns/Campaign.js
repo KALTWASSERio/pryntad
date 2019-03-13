@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
-import NumberFormat from 'react-number-format'
 
 const StyledCampaign = styled.section`
   display: grid;
@@ -109,6 +108,7 @@ export default function Campaign({
             value={budget}
             displayType={'text'}
             thousandSeparator={true}
+            decimalSeparator={'.'}
             suffix={' € EUR'}
           />
         </StyledCampaignContents>
@@ -118,6 +118,7 @@ export default function Campaign({
             value={bid}
             displayType={'text'}
             thousandSeparator={true}
+            decimalSeparator={'.'}
             suffix={' € EUR'}
           />
         </StyledCampaignContents>
