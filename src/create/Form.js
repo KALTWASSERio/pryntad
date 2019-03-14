@@ -87,7 +87,8 @@ const StyledPlaylistEntry = styled.div`
   grid-template-columns: repeat(4, 1fr);
 
   @media (max-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2px;
   }
 `
 
@@ -99,50 +100,78 @@ const StyledDivider = styled.div`
 
 const StyledPlaylistImage = styled.img`
   display: flex;
-  max-height: 200px;
+  max-height: 150px;
+  grid-row: 1 / 4;
 
-  @media (max-width: 400px) {
-    max-height: 150px;
+  @media (max-width: 5600px) {
+    max-height: 120px;
+    grid-column: 1 / 2;
+  }
+`
+const StyledPlaylistProduct = styled.div`
+  margin: 0;
+  @media (max-width: 5600px) {
+    grid-column: 2 / 5;
   }
 `
 
-const StyledPlaylistTitle = styled.h3`
+const StyledPlaylistProductDetail = styled.div`
   color: #28233c;
   font-size: 1em;
   font-weight: bold;
-  grid-column: 2 / 3;
-`
-const StyledPlaylistDescription = styled.p`
-  font-size: 0.8em;
-  font-weight: lighter;
   grid-column: 3 / 5;
-  margin-top: 0;
+  grid-gap: 12px;
 
-  @media (max-width: 600px) {
-    display: none;
+  @media (max-width: 560px) {
+    grid-column: 2 / 4;
   }
 `
 
-const StyledPublisher = styled.div`
+const StyledProduct = styled.h3`
+  color: #28233c;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 12px;
+
+  @media (max-width: 5600px) {
+    font-size: 1.2em;
+    grid-column: 2 / 4;
+    margin-bottom: 6px;
+  }
+`
+const StyledPublisher = styled.p`
   font-size: 0.8em;
   text-transform: uppercase;
   color: #d70064;
   margin-bottom: 12px;
-`
-const StyledProduct = styled.h3`
-  color: #28233c;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-bottom: 12px;
-`
-const StyledCirculation = styled.div`
-  font-size: 0.8em;
-  color: #28233c;
-  margin-bottom: 0;
+
+  @media (max-width: 560px) {
+    grid-column: 2 / 4;
+    font-size: 0.6em;
+    margin: 0;
+  }
 `
 const StyledReach = styled.div`
-  font-size: 0.8em;
+  font-size: 1.2em;
   color: #28233c;
+  margin-bottom: 12px;
+  grid-column: 3 / 5;
+
+  @media (max-width: 560px) {
+    font-size: 1em;
+    margin-bottom: 6px;
+  }
+`
+const StyledCirculation = styled.div`
+  font-size: 1.2em;
+  color: #28233c;
+  margin-bottom: 12px;
+  grid-column: 3 / 5;
+
+  @media (max-width: 560px) {
+    font-size: 1em;
+    margin-bottom: 6px;
+  }
 `
 
 const StyledHintHeadline = styled.h3`
@@ -438,11 +467,23 @@ export default function Form({
               <StyledPlaylistEntry>
                 <StyledPlaylistImage
                   src={publisherDetail.product_image}
-                  alt=""
+                  alt={publisherDetail.product_title}
                 />
-                <StyledPlaylistTitle>
-                  <StyledPublisher>{publisherDetail.publisher}</StyledPublisher>
+                <StyledPlaylistProduct>
                   <StyledProduct>{publisherDetail.product_title}</StyledProduct>
+                  <StyledPublisher>{publisherDetail.publisher}</StyledPublisher>
+                </StyledPlaylistProduct>
+                <StyledPlaylistProductDetail>
+                  <StyledReach>
+                    <NumberFormat
+                      value={publisherDetail.reach}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      decimalSeparator={'.'}
+                      prefix={'Reichweite Gesamt: '}
+                    />
+                  </StyledReach>
+
                   <StyledCirculation>
                     <NumberFormat
                       value={publisherDetail.paid_circulation}
@@ -452,19 +493,7 @@ export default function Form({
                       prefix={'Verkaufte Auflage: '}
                     />
                   </StyledCirculation>
-                  <StyledReach>
-                    <NumberFormat
-                      value={publisherDetail.reach}
-                      displayType={'text'}
-                      thousandSeparator={true}
-                      decimalSeparator={'.'}
-                      prefix={'Reichweite: '}
-                    />
-                  </StyledReach>
-                </StyledPlaylistTitle>
-                <StyledPlaylistDescription>
-                  {publisherDetail.product_description}
-                </StyledPlaylistDescription>
+                </StyledPlaylistProductDetail>
               </StyledPlaylistEntry>
               <StyledDivider />
             </React.Fragment>
