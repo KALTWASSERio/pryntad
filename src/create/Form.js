@@ -79,19 +79,120 @@ const StyledRadioLabel = styled.label`
 const StyledRadioInput = styled.input`
   align-self: center;
 `
+
+const StyledPlaylistEntry = styled.div`
+  display: grid;
+  grid-gap: 12px;
+  margin-top: 12px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2px;
+  }
+`
+
+const StyledDivider = styled.div`
+  border: 0.5px solid #dcdcdc;
+  margin-top: 12px;
+  margin-bottom: 12px;
+`
+
+const StyledPlaylistImage = styled.img`
+  display: flex;
+  max-height: 150px;
+  grid-row: 1 / 4;
+
+  @media (max-width: 560px) {
+    max-height: 120px;
+    grid-column: 1 / 2;
+  }
+`
+const StyledPlaylistProduct = styled.div`
+  margin: 0;
+  grid-column: 2 / 3;
+  @media (max-width: 560px) {
+    grid-column: 2 / 5;
+  }
+`
+
+const StyledPlaylistProductDetail = styled.div`
+  color: #28233c;
+  font-size: 1em;
+  font-weight: bold;
+  grid-column: 3 / 5;
+  grid-gap: 12px;
+
+  @media (max-width: 560px) {
+    grid-column: 2 / 4;
+  }
+`
+
+const StyledProduct = styled.h3`
+  color: #28233c;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 12px;
+
+  @media (max-width: 560px) {
+    font-size: 1.2em;
+    grid-column: 2 / 4;
+    margin-bottom: 6px;
+  }
+`
+const StyledPublisher = styled.p`
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #d70064;
+  margin-bottom: 12px;
+
+  @media (max-width: 560px) {
+    grid-column: 2 / 4;
+    font-size: 0.6em;
+    margin: 0;
+  }
+`
+const StyledReach = styled.div`
+  font-size: 1.2em;
+  color: #28233c;
+  margin-bottom: 12px;
+  grid-column: 3 / 5;
+
+  @media (max-width: 560px) {
+    font-size: 1em;
+    margin-bottom: 6px;
+  }
+`
+const StyledCirculation = styled.div`
+  font-size: 1.2em;
+  color: #28233c;
+  margin-bottom: 12px;
+  grid-column: 3 / 5;
+
+  @media (max-width: 560px) {
+    font-size: 1em;
+    margin-bottom: 6px;
+  }
+`
+
 const StyledHintHeadline = styled.h3`
   color: #28233c;
   font-size: 0.9em;
   font-weight: bold;
   margin-top: 24px;
 `
-
 const StyledHint = styled.p`
   color: #28233c;
   font-size: 0.8em;
+  line-height: 1.5em;
   @media (min-width: 800px) {
     width: 50%;
   }
+`
+const StyledExplanation = styled.p`
+  color: #28233c;
+  font-size: 1em;
+  line-height: 1.5em;
 `
 
 export default function Form({
@@ -105,6 +206,7 @@ export default function Form({
   inputKeyDown,
   removeTag,
 }) {
+  var NumberFormat = require('react-number-format')
   return (
     <PageGrid onSubmit={onSubmit}>
       <Sections text="1. Kampagne erstellen" />
@@ -355,12 +457,47 @@ export default function Form({
       </StyledInputArea>
       <Sections text="4. Publisher-Playlist" />
       <StyledInputArea>
+        <StyledExplanation>
+          Deine Publisher Playlist wird auf Basis deiner Kampagneninformationenm
+          erzeugt und zeigt alle Printerzeugnisse, die zu deinem Targeting
+          matchen.
+        </StyledExplanation>
         {publisher.map((publisherDetail, index) => {
           return (
-            <div>
-              <h1>{publisherDetail.product_title}</h1>
-              <p>{publisherDetail.product_description}</p>
-            </div>
+            <React.Fragment>
+              <StyledPlaylistEntry>
+                <StyledPlaylistImage
+                  src={publisherDetail.product_image}
+                  alt={publisherDetail.product_title}
+                />
+                <StyledPlaylistProduct>
+                  <StyledProduct>{publisherDetail.product_title}</StyledProduct>
+                  <StyledPublisher>{publisherDetail.publisher}</StyledPublisher>
+                </StyledPlaylistProduct>
+                <StyledPlaylistProductDetail>
+                  <StyledReach>
+                    <NumberFormat
+                      value={publisherDetail.reach}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      decimalSeparator={'.'}
+                      prefix={'Reichweite Gesamt: '}
+                    />
+                  </StyledReach>
+
+                  <StyledCirculation>
+                    <NumberFormat
+                      value={publisherDetail.paid_circulation}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      decimalSeparator={'.'}
+                      prefix={'Verkaufte Auflage: '}
+                    />
+                  </StyledCirculation>
+                </StyledPlaylistProductDetail>
+              </StyledPlaylistEntry>
+              <StyledDivider />
+            </React.Fragment>
           )
         })}
       </StyledInputArea>
