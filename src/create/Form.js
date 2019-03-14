@@ -85,6 +85,10 @@ const StyledPlaylistEntry = styled.div`
   grid-gap: 12px;
   margin-top: 12px;
   grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 const StyledDivider = styled.div`
@@ -94,40 +98,50 @@ const StyledDivider = styled.div`
 `
 
 const StyledPlaylistImage = styled.img`
+  display: flex;
   max-height: 200px;
+
+  @media (max-width: 400px) {
+    max-height: 150px;
+  }
 `
 
 const StyledPlaylistTitle = styled.h3`
   color: #28233c;
   font-size: 1em;
   font-weight: bold;
+  grid-column: 2 / 3;
 `
 const StyledPlaylistDescription = styled.p`
   font-size: 0.8em;
   font-weight: lighter;
   grid-column: 3 / 5;
   margin-top: 0;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
 `
 
-const StyledPublisher = styled.p`
+const StyledPublisher = styled.div`
   font-size: 0.8em;
   text-transform: uppercase;
   color: #d70064;
-  margin-top: 0;
+  margin-bottom: 12px;
 `
 const StyledProduct = styled.h3`
   color: #28233c;
   font-size: 1.2em;
   font-weight: bold;
+  margin-bottom: 12px;
 `
-const StyledCirculation = styled.p`
+const StyledCirculation = styled.div`
   font-size: 0.8em;
-  text-transform: uppercase;
   color: #28233c;
+  margin-bottom: 0;
 `
-const StyledReach = styled.p`
+const StyledReach = styled.div`
   font-size: 0.8em;
-  text-transform: uppercase;
   color: #28233c;
 `
 
@@ -140,6 +154,7 @@ const StyledHintHeadline = styled.h3`
 const StyledHint = styled.p`
   color: #28233c;
   font-size: 0.8em;
+  line-height: 1.5em;
   @media (min-width: 800px) {
     width: 50%;
   }
@@ -147,6 +162,7 @@ const StyledHint = styled.p`
 const StyledExplanation = styled.p`
   color: #28233c;
   font-size: 1em;
+  line-height: 1.5em;
 `
 
 export default function Form({
@@ -160,6 +176,7 @@ export default function Form({
   inputKeyDown,
   removeTag,
 }) {
+  var NumberFormat = require('react-number-format')
   return (
     <PageGrid onSubmit={onSubmit}>
       <Sections text="1. Kampagne erstellen" />
@@ -427,9 +444,23 @@ export default function Form({
                   <StyledPublisher>{publisherDetail.publisher}</StyledPublisher>
                   <StyledProduct>{publisherDetail.product_title}</StyledProduct>
                   <StyledCirculation>
-                    Verkaufte Auflage: {publisherDetail.paid_circulation}
+                    <NumberFormat
+                      value={publisherDetail.paid_circulation}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      decimalSeparator={'.'}
+                      prefix={'Verkaufte Auflage: '}
+                    />
                   </StyledCirculation>
-                  <StyledReach>Reichweite: {publisherDetail.reach}</StyledReach>
+                  <StyledReach>
+                    <NumberFormat
+                      value={publisherDetail.reach}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      decimalSeparator={'.'}
+                      prefix={'Reichweite: '}
+                    />
+                  </StyledReach>
                 </StyledPlaylistTitle>
                 <StyledPlaylistDescription>
                   {publisherDetail.product_description}
