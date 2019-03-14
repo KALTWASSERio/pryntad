@@ -5,6 +5,16 @@ import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
 import publisher from '../data/publisher.json'
+import donna from '../images/donna.png'
+import greenLifestyleMag from '../images/green-lifestyle-mag.png'
+import happinez from '../images/happinez.png'
+import happyWay from '../images/happy-way.png'
+import herzstueck from '../images/herzstueck.png'
+import landidee from '../images/landidee.png'
+import landlust from '../images/landlust.png'
+import hygge from '../images/hygge.png'
+import myself from '../images/myself.png'
+import yogajournal from '../images/yoga-journal.png'
 
 const PageGrid = styled.form`
   display: grid;
@@ -358,6 +368,7 @@ export default function Form({
         {publisher.map((publisherDetail, index) => {
           return (
             <div>
+              <img src={publisherDetail.product_image} alt="" />
               <h1>{publisherDetail.product_title}</h1>
               <p>{publisherDetail.product_description}</p>
             </div>
