@@ -103,14 +103,15 @@ const StyledPlaylistImage = styled.img`
   max-height: 150px;
   grid-row: 1 / 4;
 
-  @media (max-width: 5600px) {
+  @media (max-width: 560px) {
     max-height: 120px;
     grid-column: 1 / 2;
   }
 `
 const StyledPlaylistProduct = styled.div`
   margin: 0;
-  @media (max-width: 5600px) {
+  grid-column: 2 / 3;
+  @media (max-width: 560px) {
     grid-column: 2 / 5;
   }
 `
@@ -133,7 +134,7 @@ const StyledProduct = styled.h3`
   font-weight: bold;
   margin-bottom: 12px;
 
-  @media (max-width: 5600px) {
+  @media (max-width: 560px) {
     font-size: 1.2em;
     grid-column: 2 / 4;
     margin-bottom: 6px;
