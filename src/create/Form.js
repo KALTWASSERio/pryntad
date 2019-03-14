@@ -4,6 +4,7 @@ import Select from './Select'
 import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
+import publisher from '../data/publisher.json'
 
 const PageGrid = styled.form`
   display: grid;
@@ -353,7 +354,16 @@ export default function Form({
         />
       </StyledInputArea>
       <Sections text="4. Publisher-Playlist" />
-      <StyledInputArea>PLAYLIST</StyledInputArea>
+      <StyledInputArea>
+        {publisher.map((publisherDetail, index) => {
+          return (
+            <div>
+              <h1>{publisherDetail.product_title}</h1>
+              <p>{publisherDetail.product_description}</p>
+            </div>
+          )
+        })}
+      </StyledInputArea>
       <Sections text="5. Budget" />
       <StyledInputArea>
         <StyledLabel htmlFor="budget__input">Budget</StyledLabel>
