@@ -5,16 +5,6 @@ import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
 import publisher from '../data/publisher.json'
-import donna from '../images/donna.png'
-import greenLifestyleMag from '../images/green-lifestyle-mag.png'
-import happinez from '../images/happinez.png'
-import happyWay from '../images/happy-way.png'
-import herzstueck from '../images/herzstueck.png'
-import landidee from '../images/landidee.png'
-import landlust from '../images/landlust.png'
-import hygge from '../images/hygge.png'
-import myself from '../images/myself.png'
-import yogajournal from '../images/yoga-journal.png'
 
 const PageGrid = styled.form`
   display: grid;
@@ -89,19 +79,74 @@ const StyledRadioLabel = styled.label`
 const StyledRadioInput = styled.input`
   align-self: center;
 `
+
+const StyledPlaylistEntry = styled.div`
+  display: grid;
+  grid-gap: 12px;
+  margin-top: 12px;
+  grid-template-columns: repeat(4, 1fr);
+`
+
+const StyledDivider = styled.div`
+  border: 0.5px solid #dcdcdc;
+  margin-top: 12px;
+  margin-bottom: 12px;
+`
+
+const StyledPlaylistImage = styled.img`
+  max-height: 200px;
+`
+
+const StyledPlaylistTitle = styled.h3`
+  color: #28233c;
+  font-size: 1em;
+  font-weight: bold;
+`
+const StyledPlaylistDescription = styled.p`
+  font-size: 0.8em;
+  font-weight: lighter;
+  grid-column: 3 / 5;
+  margin-top: 0;
+`
+
+const StyledPublisher = styled.p`
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #d70064;
+  margin-top: 0;
+`
+const StyledProduct = styled.h3`
+  color: #28233c;
+  font-size: 1.2em;
+  font-weight: bold;
+`
+const StyledCirculation = styled.p`
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #28233c;
+`
+const StyledReach = styled.p`
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #28233c;
+`
+
 const StyledHintHeadline = styled.h3`
   color: #28233c;
   font-size: 0.9em;
   font-weight: bold;
   margin-top: 24px;
 `
-
 const StyledHint = styled.p`
   color: #28233c;
   font-size: 0.8em;
   @media (min-width: 800px) {
     width: 50%;
   }
+`
+const StyledExplanation = styled.p`
+  color: #28233c;
+  font-size: 1em;
 `
 
 export default function Form({
@@ -365,13 +410,33 @@ export default function Form({
       </StyledInputArea>
       <Sections text="4. Publisher-Playlist" />
       <StyledInputArea>
+        <StyledExplanation>
+          Deine Publisher Playlist wird auf Basis deiner Kampagneninformationenm
+          erzeugt und zeigt alle Printerzeugnisse, die zu deinem Targeting
+          matchen.
+        </StyledExplanation>
         {publisher.map((publisherDetail, index) => {
           return (
-            <div>
-              <img src={publisherDetail.product_image} alt="" />
-              <h1>{publisherDetail.product_title}</h1>
-              <p>{publisherDetail.product_description}</p>
-            </div>
+            <React.Fragment>
+              <StyledPlaylistEntry>
+                <StyledPlaylistImage
+                  src={publisherDetail.product_image}
+                  alt=""
+                />
+                <StyledPlaylistTitle>
+                  <StyledPublisher>{publisherDetail.publisher}</StyledPublisher>
+                  <StyledProduct>{publisherDetail.product_title}</StyledProduct>
+                  <StyledCirculation>
+                    Verkaufte Auflage: {publisherDetail.paid_circulation}
+                  </StyledCirculation>
+                  <StyledReach>Reichweite: {publisherDetail.reach}</StyledReach>
+                </StyledPlaylistTitle>
+                <StyledPlaylistDescription>
+                  {publisherDetail.product_description}
+                </StyledPlaylistDescription>
+              </StyledPlaylistEntry>
+              <StyledDivider />
+            </React.Fragment>
           )
         })}
       </StyledInputArea>
