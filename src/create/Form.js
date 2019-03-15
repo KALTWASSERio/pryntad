@@ -458,48 +458,56 @@ export default function Form({
       <Sections text="4. Publisher-Playlist" />
       <StyledInputArea>
         <StyledExplanation>
-          Deine Publisher Playlist wird auf Basis deiner Kampagneninformationenm
+          Deine Publisher Playlist wird auf Basis deiner Kampagneninformationen
           erzeugt und zeigt alle Printerzeugnisse, die zu deinem Targeting
           matchen.
         </StyledExplanation>
-        {publisher.map((publisherDetail, index) => {
-          return (
-            <React.Fragment>
-              <StyledPlaylistEntry>
-                <StyledPlaylistImage
-                  src={publisherDetail.product_image}
-                  alt={publisherDetail.product_title}
-                />
-                <StyledPlaylistProduct>
-                  <StyledProduct>{publisherDetail.product_title}</StyledProduct>
-                  <StyledPublisher>{publisherDetail.publisher}</StyledPublisher>
-                </StyledPlaylistProduct>
-                <StyledPlaylistProductDetail>
-                  <StyledReach>
-                    <NumberFormat
-                      value={publisherDetail.reach}
-                      displayType={'text'}
-                      thousandSeparator={true}
-                      decimalSeparator={'.'}
-                      prefix={'Reichweite Gesamt: '}
-                    />
-                  </StyledReach>
-
-                  <StyledCirculation>
-                    <NumberFormat
-                      value={publisherDetail.paid_circulation}
-                      displayType={'text'}
-                      thousandSeparator={true}
-                      decimalSeparator={'.'}
-                      prefix={'Verkaufte Auflage: '}
-                    />
-                  </StyledCirculation>
-                </StyledPlaylistProductDetail>
-              </StyledPlaylistEntry>
-              <StyledDivider />
-            </React.Fragment>
+        {publisher
+          .filter(publisherDetail =>
+            tagsArray.some(tag => publisherDetail.interests.includes(tag))
           )
-        })}
+          .map(publisherDetail => {
+            return (
+              <React.Fragment>
+                <StyledPlaylistEntry key={publisherDetail.id}>
+                  <StyledPlaylistImage
+                    src={publisherDetail.product_image}
+                    alt={publisherDetail.product_title}
+                  />
+                  <StyledPlaylistProduct>
+                    <StyledProduct>
+                      {publisherDetail.product_title}
+                    </StyledProduct>
+                    <StyledPublisher>
+                      {publisherDetail.publisher}
+                    </StyledPublisher>
+                  </StyledPlaylistProduct>
+                  <StyledPlaylistProductDetail>
+                    <StyledReach>
+                      <NumberFormat
+                        value={publisherDetail.reach}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                        decimalSeparator={'.'}
+                        prefix={'Reichweite Gesamt: '}
+                      />
+                    </StyledReach>
+
+                    <StyledCirculation>
+                      <NumberFormat
+                        value={publisherDetail.paid_circulation}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                        decimalSeparator={'.'}
+                        prefix={'Verkaufte Auflage: '}
+                      />
+                    </StyledCirculation>
+                  </StyledPlaylistProductDetail>
+                </StyledPlaylistEntry>
+                <StyledDivider />
+              </React.Fragment>
+            )
+          })}
       </StyledInputArea>
       <Sections text="5. Budget" />
       <StyledInputArea>
