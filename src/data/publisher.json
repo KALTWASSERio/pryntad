@@ -190,10 +190,7 @@
       "Yoga",
       "Gesundheit",
       "Psychologie",
-      "DIY",
-      "Politik",
-      "Film",
-      "Kino"
+      "DIY"
     ],
     "demography": [
       { "ageFrom": "20" },
@@ -257,9 +254,7 @@
       "Bedeutung",
       "Mindstyle",
       "Nachhaltigkeit",
-      "DIY",
-      "Politik",
-      "Film"
+      "DIY"
     ],
     "demography": [
       { "ageFrom": "30" },
@@ -304,8 +299,7 @@
       "Bewusst ernähren",
       "Bewusst leben",
       "Tradition",
-      "DIY",
-      "Politik"
+      "DIY"
     ],
     "demography": [
       { "ageFrom": "20" },
@@ -380,7 +374,22 @@
     "ad_format": ["2/1", "1/1", "1/2 hoch", "1/2 quer", "1/3 hoch"],
     "ad_color_schema": ["sw", "4c"],
     "ad_placements": [],
-    "interests": ["Entschleunigung", "Gelassenheit", "Sport", "Natur"],
+    "interests": [
+      "Entschleunigung",
+      "Gelassenheit",
+      "Natur",
+      "Nachhaltigkeit",
+      "Regionalität",
+      "Kochen",
+      "Stil",
+      "Wohnen",
+      "Zuhause",
+      "Freunde",
+      "Bewusst ernähren",
+      "Bewusst leben",
+      "Glücklichsein",
+      "DIY"
+    ],
     "demography": [
       { "ageFrom": "20" },
       { "ageTo": "40" },

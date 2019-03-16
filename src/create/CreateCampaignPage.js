@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import Form from './Form'
-import uid from 'uid'
 
 const PageGrid = styled.div`
   display: flex;
@@ -26,12 +25,12 @@ const defaultData = {
   colorSchema: '',
   ad: '',
   location: 'Deutschland',
+  gender: '',
   ageFrom: '',
   ageTo: '',
   tags: '',
   budget: '',
   bid: '',
-  id: uid(),
 }
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME

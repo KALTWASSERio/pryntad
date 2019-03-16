@@ -207,6 +207,7 @@ export default function Form({
   removeTag,
 }) {
   var NumberFormat = require('react-number-format')
+
   return (
     <PageGrid onSubmit={onSubmit}>
       <Sections text="1. Kampagne erstellen" />
@@ -462,11 +463,21 @@ export default function Form({
           erzeugt und zeigt alle Printerzeugnisse, die zu deinem Targeting
           matchen.
         </StyledExplanation>
+
         {publisher
           .filter(publisherDetail =>
-            tagsArray.some(tag => publisherDetail.interests.includes(tag))
+            publisherDetail.ad_color_schema.includes(data.colorSchema)
           )
+          .filter(publisherDetail =>
+            tagsArray.some(tag =>
+              publisherDetail.interests
+                .map(interest => interest.toLowerCase())
+                .includes(tag.toLowerCase())
+            )
+          )
+
           .map(publisherDetail => {
+            console.log(publisherDetail.interests)
             return (
               <React.Fragment>
                 <StyledPlaylistEntry key={publisherDetail.id}>
