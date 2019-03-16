@@ -302,27 +302,15 @@ export default function Form({
         <StyledRadioInputGrid>
           <StyledRadioInput
             name="colorSchema"
-            id="colorschema__input-bw"
+            id="colorschema__input-4c"
             type="radio"
-            value="s/w"
-            checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
+            value="4c"
+            checked={data.colorSchema === '4c' ? data.colorSchema : ''}
             onChange={onInputChange}
             style={{ display: 'none', left: '-9999px' }}
           />
-          <StyledRadioLabel htmlFor="colorschema__input-bw">
-            s/w
-          </StyledRadioLabel>
-          <StyledRadioInput
-            name="colorSchema"
-            id="colorschema__input-2c"
-            type="radio"
-            value="2c"
-            checked={data.colorSchema === '2c' ? data.colorSchema : ''}
-            onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
-          />
-          <StyledRadioLabel htmlFor="colorschema__input-2c">
-            2c
+          <StyledRadioLabel htmlFor="colorschema__input-4c">
+            4c
           </StyledRadioLabel>
           <StyledRadioInput
             name="colorSchema"
@@ -338,15 +326,27 @@ export default function Form({
           </StyledRadioLabel>
           <StyledRadioInput
             name="colorSchema"
-            id="colorschema__input-4c"
+            id="colorschema__input-2c"
             type="radio"
-            value="4c"
-            checked={data.colorSchema === '4c' ? data.colorSchema : ''}
+            value="2c"
+            checked={data.colorSchema === '2c' ? data.colorSchema : ''}
             onChange={onInputChange}
             style={{ display: 'none', left: '-9999px' }}
           />
-          <StyledRadioLabel htmlFor="colorschema__input-4c">
-            4c
+          <StyledRadioLabel htmlFor="colorschema__input-2c">
+            2c
+          </StyledRadioLabel>
+          <StyledRadioInput
+            name="colorSchema"
+            id="colorschema__input-bw"
+            type="radio"
+            value="s/w"
+            checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
+            onChange={onInputChange}
+            style={{ display: 'none', left: '-9999px' }}
+          />
+          <StyledRadioLabel htmlFor="colorschema__input-bw">
+            s/w
           </StyledRadioLabel>
         </StyledRadioInputGrid>
       </StyledRadioAreas>
@@ -466,13 +466,37 @@ export default function Form({
 
         {publisher
           .filter(publisherDetail =>
-            publisherDetail.ad_color_schema.includes(data.colorSchema)
-          )
-          .filter(publisherDetail =>
             tagsArray.some(tag =>
               publisherDetail.interests
                 .map(interest => interest.toLowerCase())
                 .includes(tag.toLowerCase())
+            )
+          )
+          .filter(publisherDetail =>
+            publisherDetail.ad_color_schema.includes(data.colorSchema)
+          )
+
+          .filter(publisherDetail =>
+            publisherDetail.ad_format.includes(data.format)
+          )
+
+          .filter(publisherDetail =>
+            publisherDetail.demography.filter(
+              item => item.gender === data.gender
+            )
+          )
+
+          .filter(publisherDetail =>
+            publisherDetail.demography.filter(
+              item =>
+                Number(item.ageFrom) >= Number(data.ageFrom) &&
+                Number(item.ageFrom) < Number(data.ageTo)
+            )
+          )
+
+          .filter(publisherDetail =>
+            publisherDetail.demography.filter(
+              item => Number(item.ageTo) <= Number(data.ageTo)
             )
           )
 
