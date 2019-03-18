@@ -100,9 +100,9 @@ function App() {
           />
           <Nav>
             <StyledLink exact to="/">
-              Dashboard
+              Dashoard
             </StyledLink>
-            <StyledLink to="/create">Kampagne</StyledLink>
+            <StyledLink to="/create">Kampagne anlegen</StyledLink>
           </Nav>
           <GlobalStyle />
         </Grid>

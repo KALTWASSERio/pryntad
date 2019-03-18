@@ -476,7 +476,7 @@ export default function Form({
             publisherDetail.ad_color_schema.includes(data.colorSchema)
           )
 
-          .filter(publisherDetail =>
+          /*  .filter(publisherDetail =>
             publisherDetail.ad_format.includes(data.format)
           )
 
@@ -484,13 +484,11 @@ export default function Form({
             publisherDetail.demography.filter(
               item => item.gender === data.gender
             )
-          )
+          ) */
 
-          .filter(publisherDetail =>
+          /*  .filter(publisherDetail =>
             publisherDetail.demography.filter(
-              item =>
-                Number(item.ageFrom) >= Number(data.ageFrom) &&
-                Number(item.ageFrom) < Number(data.ageTo)
+              item => Number(item.ageFrom) >= Number(data.ageFrom)
             )
           )
 
@@ -498,10 +496,9 @@ export default function Form({
             publisherDetail.demography.filter(
               item => Number(item.ageTo) <= Number(data.ageTo)
             )
-          )
+          ) */
 
           .map(publisherDetail => {
-            console.log(publisherDetail.interests)
             return (
               <React.Fragment>
                 <StyledPlaylistEntry key={publisherDetail.id}>
