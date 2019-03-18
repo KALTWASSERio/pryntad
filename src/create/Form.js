@@ -576,11 +576,11 @@ export default function Form({
               eine Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
             </StyledHint>
           </StyledInputArea>
-          <button onClick={() => setStep(2)}>Zurück</button>
-          <button onClick={() => setStep(4)}>Fortfahren</button>
+          <button onClick={() => setStep(3)}>Zurück</button>
+          <button onClick={() => setStep(5)}>Fortfahren</button>
         </React.Fragment>
       ) : null}
-      {step === 4 ? <button>Hinzufügen</button> : null}
+      {step === 5 ? <button>Hinzufügen</button> : null}
     </PageGrid>
   )
 }

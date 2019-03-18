@@ -118,7 +118,7 @@ function CreateCampaignPage(props) {
               item => Number(item.ageFrom) >= Number(data.ageFrom)
             )
           )
-
+          
           .filter(publisherDetail =>
             publisherDetail.demography.filter(
               item => Number(item.ageTo) <= Number(data.ageTo)
