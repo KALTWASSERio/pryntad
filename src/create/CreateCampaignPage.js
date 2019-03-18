@@ -4,6 +4,7 @@ import axios from 'axios'
 import Form from './Form'
 import publisher from '../data/publisher.json'
 import uid from 'uid'
+import { withRouter } from 'react-router'
 
 const PageGrid = styled.div`
   display: flex;
@@ -40,7 +41,8 @@ const defaultData = {
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 
-export default function CreateCampaignPage(props) {
+function CreateCampaignPage(props) {
+  console.log(props)
   const [data, setData] = useState(defaultData)
   const [ad, setAd] = useState('')
   const [tags, setTags] = useState([])
@@ -49,7 +51,7 @@ export default function CreateCampaignPage(props) {
 
   function onTagsInputChange(event) {
     setTagsInput(event.target.value)
-    PlaylistUpdate()
+    playlistUpdate()
   }
 
   function onSubmit(event) {
@@ -60,6 +62,7 @@ export default function CreateCampaignPage(props) {
     props.onSubmit(data)
     setData(defaultData)
     setPlaylist([])
+    props.history.push('/marketplace')
   }
 
   function inputKeyDown(event) {
@@ -74,7 +77,7 @@ export default function CreateCampaignPage(props) {
       }
       setTags([...tags, val])
       setTagsInput('')
-      PlaylistUpdate()
+      playlistUpdate()
     }
   }
 
@@ -82,7 +85,7 @@ export default function CreateCampaignPage(props) {
     const newTags = [...tags]
     newTags.splice(i, 1)
     setTags(newTags)
-    PlaylistUpdate()
+    playlistUpdate()
   }
 
   function onInputChange(event) {
@@ -90,26 +93,26 @@ export default function CreateCampaignPage(props) {
       ...data,
       [event.target.name]: event.target.value,
     })
-    PlaylistUpdate()
+    playlistUpdate()
   }
 
-  function PlaylistUpdate() {
+  function playlistUpdate() {
     setPlaylist(
-      publisher.filter(publisherDetail =>
-        tags.some(tag =>
-          publisherDetail.interests
-            .map(interest => interest.toLowerCase())
-            .includes(tag.toLowerCase())
+      publisher
+        .filter(publisherDetail =>
+          tags.some(tag =>
+            publisherDetail.interests
+              .map(interest => interest.toLowerCase())
+              .includes(tag.toLowerCase())
+          )
         )
-      )
-      /*   .filter(publisherDetail =>
+        .filter(publisherDetail =>
           publisherDetail.ad_format.includes(data.format)
-        ) */
+        )
 
-      /* .filter(publisherDetail =>
+        .filter(publisherDetail =>
           publisherDetail.demography.filter(item => item.gender === data.gender)
         )
- */
       /*  .filter(publisherDetail =>
             publisherDetail.demography.filter(
               item => Number(item.ageFrom) >= Number(data.ageFrom)
@@ -160,7 +163,10 @@ export default function CreateCampaignPage(props) {
         data={data}
         onImageUpload={onImageUpload}
         playlistArray={playlist}
+        playlistUpdate={playlistUpdate}
       />
     </PageGrid>
   )
 }
+
+export default withRouter(CreateCampaignPage)

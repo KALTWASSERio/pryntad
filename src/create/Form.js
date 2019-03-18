@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Select from './Select'
 import SelectPlacement from './SelectPlacement'
@@ -205,341 +205,382 @@ export default function Form({
   inputKeyDown,
   removeTag,
   playlistArray,
+  playlistUpdate,
 }) {
+  const [step, setStep] = useState(0)
+
   var NumberFormat = require('react-number-format')
+
+  function onClickPlaylistLoad(event) {
+    setStep(4)
+    playlistUpdate()
+  }
 
   return (
     <PageGrid onSubmit={onSubmit}>
-      <Sections text="1. Kampagne erstellen" />
-      <StyledInputArea>
-        <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
-        <input
-          name="title"
-          id="campaign__name__input"
-          onInput={onInputChange}
-          value={data.title}
-          type="text"
-          placeholder="Kampagnenname"
-        />
-      </StyledInputArea>
-      <StyledInputArea>
-        <StyledLabel htmlFor="brand__input">Brand</StyledLabel>
-        <input
-          name="brand"
-          id="brand__input"
-          onInput={onInputChange}
-          value={data.brand}
-          type="Text"
-          placeholder="Brand"
-        />
-      </StyledInputArea>
-      <StyledInputAreaDates>
-        <StyledSectionFrom>
-          <StyledLabel htmlFor="schedule__input__from">
-            Zeitraum (von)
-          </StyledLabel>
-          <input
-            name="scheduleFrom"
-            id="schedule__input__from"
-            onInput={onInputChange}
-            type="date"
-            value={data.scheduleFrom}
-            required
-          />
-        </StyledSectionFrom>
-        <StyledSectionTo>
-          <StyledLabel htmlFor="schedule__input__to">
-            Zeitraum (bis)
-          </StyledLabel>
-          <input
-            name="scheduleTo"
-            id="schedule__input__to"
-            onInput={onInputChange}
-            type="date"
-            value={data.scheduleTo}
-            required
-          />
-        </StyledSectionTo>
-      </StyledInputAreaDates>
-      <Sections text="2. Werbemittel" />
-      <Select onChange={onInputChange} name="format" value={data.format} />
-      <SelectPlacement
-        name="placement"
-        onChange={onInputChange}
-        value={data.placement}
-      />
-      <StyledRadioAreas>
-        <StyledRadioHeadline>Satzspiegel</StyledRadioHeadline>
-        <StyledRadioInputGrid>
-          <StyledRadioInput
-            name="printSpace"
-            id="print_space__input-anschnitt"
-            type="radio"
-            value="Anschnitt"
-            checked={data.printSpace === 'Anschnitt' ? data.printSpace : ''}
+      {step === 0 ? (
+        <React.Fragment>
+          <Sections text="1. Kampagne erstellen" />
+          <StyledInputArea>
+            <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
+            <input
+              name="title"
+              id="campaign__name__input"
+              onInput={onInputChange}
+              value={data.title}
+              type="text"
+              placeholder="Kampagnenname"
+            />
+          </StyledInputArea>
+          <StyledInputArea>
+            <StyledLabel htmlFor="brand__input">Brand</StyledLabel>
+            <input
+              name="brand"
+              id="brand__input"
+              onInput={onInputChange}
+              value={data.brand}
+              type="Text"
+              placeholder="Brand"
+            />
+          </StyledInputArea>
+          <StyledInputAreaDates>
+            <StyledSectionFrom>
+              <StyledLabel htmlFor="schedule__input__from">
+                Zeitraum (von)
+              </StyledLabel>
+              <input
+                name="scheduleFrom"
+                id="schedule__input__from"
+                onInput={onInputChange}
+                type="date"
+                value={data.scheduleFrom}
+                required
+              />
+            </StyledSectionFrom>
+            <StyledSectionTo>
+              <StyledLabel htmlFor="schedule__input__to">
+                Zeitraum (bis)
+              </StyledLabel>
+              <input
+                name="scheduleTo"
+                id="schedule__input__to"
+                onInput={onInputChange}
+                type="date"
+                value={data.scheduleTo}
+                required
+              />
+            </StyledSectionTo>
+          </StyledInputAreaDates>
+          <button onClick={() => setStep(1)}>Fortfahren</button>
+        </React.Fragment>
+      ) : null}
+      {step === 1 ? (
+        <React.Fragment>
+          <Sections text="2. Werbemittel" />
+          <Select onChange={onInputChange} name="format" value={data.format} />
+          <SelectPlacement
+            name="placement"
             onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
+            value={data.placement}
           />
-          <StyledRadioLabel htmlFor="print_space__input-anschnitt">
-            Anschnitt
-          </StyledRadioLabel>
-          <StyledRadioInput
-            name="printSpace"
-            id="print_space__input-satzspiegel"
-            type="radio"
-            value="Satzspiegel"
-            checked={data.printSpace === 'Satzspiegel' ? data.printSpace : ''}
-            onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
-          />
-          <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
-            Satzspiegel
-          </StyledRadioLabel>
-        </StyledRadioInputGrid>
-      </StyledRadioAreas>
-      <StyledRadioAreas>
-        <StyledRadioHeadline>Farbigkeit</StyledRadioHeadline>
-        <StyledRadioInputGrid>
-          <StyledRadioInput
-            name="colorSchema"
-            id="colorschema__input-4c"
-            type="radio"
-            value="4c"
-            checked={data.colorSchema === '4c' ? data.colorSchema : ''}
-            onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
-          />
-          <StyledRadioLabel htmlFor="colorschema__input-4c">
-            4c
-          </StyledRadioLabel>
-          <StyledRadioInput
-            name="colorSchema"
-            id="colorschema__input-3c"
-            type="radio"
-            value="3c"
-            checked={data.colorSchema === '3c' ? data.colorSchema : ''}
-            onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
-          />
-          <StyledRadioLabel htmlFor="colorschema__input-3c">
-            3c
-          </StyledRadioLabel>
-          <StyledRadioInput
-            name="colorSchema"
-            id="colorschema__input-2c"
-            type="radio"
-            value="2c"
-            checked={data.colorSchema === '2c' ? data.colorSchema : ''}
-            onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
-          />
-          <StyledRadioLabel htmlFor="colorschema__input-2c">
-            2c
-          </StyledRadioLabel>
-          <StyledRadioInput
-            name="colorSchema"
-            id="colorschema__input-bw"
-            type="radio"
-            value="s/w"
-            checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
-            onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
-          />
-          <StyledRadioLabel htmlFor="colorschema__input-bw">
-            s/w
-          </StyledRadioLabel>
-        </StyledRadioInputGrid>
-      </StyledRadioAreas>
-      <StyledInputArea>
-        <StyledLabel htmlFor="ad__input">Creative Upload</StyledLabel>
-        <input
-          name="ad"
-          id="ad__input"
-          type="file"
-          value={data.ad}
-          onChange={onImageUpload}
-          style={{ color: 'white', border: 'none' }}
-        />
-      </StyledInputArea>
-      <Sections text="3. Zielgruppe definieren" />
-      <StyledInputArea>
-        <StyledLabel htmlFor="location__input">Ort</StyledLabel>
-        <input
-          name="location"
-          id="location__input"
-          onInput={onInputChange}
-          value={data.location}
-          type="text"
-          placeholder="Orte"
-        />
-      </StyledInputArea>
-      <StyledInputAreaDates>
-        <StyledSectionFrom>
-          <StyledLabel htmlFor="age__input__from">Alter (ab)</StyledLabel>
-          <input
-            name="ageFrom"
-            id="age__input__from"
-            onInput={onInputChange}
-            type="number"
-            min="10"
-            placeholder="min. 10 Jahre"
-            value={data.ageFrom}
-            required
-          />
-        </StyledSectionFrom>
-        <StyledSectionTo>
-          <StyledLabel htmlFor="age__input__to">Alter (bis)</StyledLabel>
-          <input
-            name="ageTo"
-            id="age__input__to"
-            onInput={onInputChange}
-            type="number"
-            max="65+"
-            placeholder="max. 65+ Jahre"
-            value={data.ageTo}
-            required
-          />
-        </StyledSectionTo>
-      </StyledInputAreaDates>
-      <StyledRadioAreas>
-        <StyledRadioHeadline>Geschlecht</StyledRadioHeadline>
-        <StyledRadioInputGrid>
-          <StyledRadioInput
-            name="gender"
-            id="gender__input-both"
-            type="radio"
-            value="Männer und Frauen"
-            checked={data.gender === 'Männer und Frauen' ? data.gender : ''}
-            onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
-          />
-          <StyledRadioLabel htmlFor="gender__input-both">
-            Beide
-          </StyledRadioLabel>
-          <StyledRadioInput
-            name="gender"
-            id="gender__input-women"
-            type="radio"
-            value="Frauen"
-            checked={data.gender === 'Frauen' ? data.gender : ''}
-            onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
-          />
-          <StyledRadioLabel htmlFor="gender__input-women">
-            Frauen
-          </StyledRadioLabel>
-          <StyledRadioInput
-            name="gender"
-            id="gender__input-men"
-            type="radio"
-            value="Männer"
-            checked={data.gender === 'Männer' ? data.gender : ''}
-            onChange={onInputChange}
-            style={{ display: 'none', left: '-9999px' }}
-          />
-          <StyledRadioLabel htmlFor="gender__input-men">
-            Männer
-          </StyledRadioLabel>
-        </StyledRadioInputGrid>
-      </StyledRadioAreas>
-      <StyledInputArea>
-        <StyledLabel htmlFor="tags__input">Detailliertes Targeting</StyledLabel>
-        <InputTag
-          tagsInput={tagsInput}
-          tagsArray={tagsArray}
-          inputKeyDown={inputKeyDown}
-          removeTag={removeTag}
-          name="tags"
-          id="tags__input"
-          onTagsInputChange={onTagsInputChange}
-          type="text"
-          placeholder="Demografie, Interessen oder Verhalten"
-        />
-      </StyledInputArea>
-      <Sections text="4. Publisher-Playlist" />
-      <StyledInputArea>
-        <StyledExplanation>
-          Deine Publisher Playlist wird auf Basis deiner Kampagneninformationen
-          erzeugt und zeigt alle Printerzeugnisse, die zu deinem Targeting
-          matchen.
-        </StyledExplanation>
+          <StyledRadioAreas>
+            <StyledRadioHeadline>Satzspiegel</StyledRadioHeadline>
+            <StyledRadioInputGrid>
+              <StyledRadioInput
+                name="printSpace"
+                id="print_space__input-anschnitt"
+                type="radio"
+                value="Anschnitt"
+                checked={data.printSpace === 'Anschnitt' ? data.printSpace : ''}
+                onChange={onInputChange}
+                style={{ display: 'none', left: '-9999px' }}
+              />
+              <StyledRadioLabel htmlFor="print_space__input-anschnitt">
+                Anschnitt
+              </StyledRadioLabel>
+              <StyledRadioInput
+                name="printSpace"
+                id="print_space__input-satzspiegel"
+                type="radio"
+                value="Satzspiegel"
+                checked={
+                  data.printSpace === 'Satzspiegel' ? data.printSpace : ''
+                }
+                onChange={onInputChange}
+                style={{ display: 'none', left: '-9999px' }}
+              />
+              <StyledRadioLabel htmlFor="print_space__input-satzspiegel">
+                Satzspiegel
+              </StyledRadioLabel>
+            </StyledRadioInputGrid>
+          </StyledRadioAreas>
+          <StyledRadioAreas>
+            <StyledRadioHeadline>Farbigkeit</StyledRadioHeadline>
+            <StyledRadioInputGrid>
+              <StyledRadioInput
+                name="colorSchema"
+                id="colorschema__input-4c"
+                type="radio"
+                value="4c"
+                checked={data.colorSchema === '4c' ? data.colorSchema : ''}
+                onChange={onInputChange}
+                style={{ display: 'none', left: '-9999px' }}
+              />
+              <StyledRadioLabel htmlFor="colorschema__input-4c">
+                4c
+              </StyledRadioLabel>
+              <StyledRadioInput
+                name="colorSchema"
+                id="colorschema__input-3c"
+                type="radio"
+                value="3c"
+                checked={data.colorSchema === '3c' ? data.colorSchema : ''}
+                onChange={onInputChange}
+                style={{ display: 'none', left: '-9999px' }}
+              />
+              <StyledRadioLabel htmlFor="colorschema__input-3c">
+                3c
+              </StyledRadioLabel>
+              <StyledRadioInput
+                name="colorSchema"
+                id="colorschema__input-2c"
+                type="radio"
+                value="2c"
+                checked={data.colorSchema === '2c' ? data.colorSchema : ''}
+                onChange={onInputChange}
+                style={{ display: 'none', left: '-9999px' }}
+              />
+              <StyledRadioLabel htmlFor="colorschema__input-2c">
+                2c
+              </StyledRadioLabel>
+              <StyledRadioInput
+                name="colorSchema"
+                id="colorschema__input-bw"
+                type="radio"
+                value="s/w"
+                checked={data.colorSchema === 's/w' ? data.colorSchema : ''}
+                onChange={onInputChange}
+                style={{ display: 'none', left: '-9999px' }}
+              />
+              <StyledRadioLabel htmlFor="colorschema__input-bw">
+                s/w
+              </StyledRadioLabel>
+            </StyledRadioInputGrid>
+          </StyledRadioAreas>
+          <StyledInputArea>
+            <StyledLabel htmlFor="ad__input">Creative Upload</StyledLabel>
+            <input
+              name="ad"
+              id="ad__input"
+              type="file"
+              value={data.ad}
+              onChange={onImageUpload}
+              style={{ color: 'white', border: 'none' }}
+            />
+          </StyledInputArea>
+          <button onClick={() => setStep(0)}>Zurück</button>
+          <button onClick={() => setStep(2)}>Fortfahren</button>
+        </React.Fragment>
+      ) : null}
+      {step === 2 ? (
+        <React.Fragment>
+          <Sections text="3. Zielgruppe definieren" />
+          <StyledInputArea>
+            <StyledLabel htmlFor="location__input">Ort</StyledLabel>
+            <input
+              name="location"
+              id="location__input"
+              onInput={onInputChange}
+              value={data.location}
+              type="text"
+              placeholder="Orte"
+            />
+          </StyledInputArea>
+          <StyledInputAreaDates>
+            <StyledSectionFrom>
+              <StyledLabel htmlFor="age__input__from">Alter (ab)</StyledLabel>
+              <input
+                name="ageFrom"
+                id="age__input__from"
+                onInput={onInputChange}
+                type="number"
+                min="10"
+                placeholder="min. 10 Jahre"
+                value={data.ageFrom}
+                required
+              />
+            </StyledSectionFrom>
+            <StyledSectionTo>
+              <StyledLabel htmlFor="age__input__to">Alter (bis)</StyledLabel>
+              <input
+                name="ageTo"
+                id="age__input__to"
+                onInput={onInputChange}
+                type="number"
+                max="65+"
+                placeholder="max. 65+ Jahre"
+                value={data.ageTo}
+                required
+              />
+            </StyledSectionTo>
+          </StyledInputAreaDates>
+          <StyledRadioAreas>
+            <StyledRadioHeadline>Geschlecht</StyledRadioHeadline>
+            <StyledRadioInputGrid>
+              <StyledRadioInput
+                name="gender"
+                id="gender__input-both"
+                type="radio"
+                value="Männer und Frauen"
+                checked={data.gender === 'Männer und Frauen' ? data.gender : ''}
+                onChange={onInputChange}
+                style={{ display: 'none', left: '-9999px' }}
+              />
+              <StyledRadioLabel htmlFor="gender__input-both">
+                Beide
+              </StyledRadioLabel>
+              <StyledRadioInput
+                name="gender"
+                id="gender__input-women"
+                type="radio"
+                value="Frauen"
+                checked={data.gender === 'Frauen' ? data.gender : ''}
+                onChange={onInputChange}
+                style={{ display: 'none', left: '-9999px' }}
+              />
+              <StyledRadioLabel htmlFor="gender__input-women">
+                Frauen
+              </StyledRadioLabel>
+              <StyledRadioInput
+                name="gender"
+                id="gender__input-men"
+                type="radio"
+                value="Männer"
+                checked={data.gender === 'Männer' ? data.gender : ''}
+                onChange={onInputChange}
+                style={{ display: 'none', left: '-9999px' }}
+              />
+              <StyledRadioLabel htmlFor="gender__input-men">
+                Männer
+              </StyledRadioLabel>
+            </StyledRadioInputGrid>
+          </StyledRadioAreas>
+          <StyledInputArea>
+            <StyledLabel htmlFor="tags__input">
+              Detailliertes Targeting
+            </StyledLabel>
+            <InputTag
+              tagsInput={tagsInput}
+              tagsArray={tagsArray}
+              inputKeyDown={inputKeyDown}
+              removeTag={removeTag}
+              name="tags"
+              id="tags__input"
+              onTagsInputChange={onTagsInputChange}
+              type="text"
+              placeholder="Demografie, Interessen oder Verhalten"
+            />
+          </StyledInputArea>
+          <button onClick={() => setStep(1)}>Zurück</button>
+          <button onClick={() => setStep(3)}>Fortfahren</button>
+        </React.Fragment>
+      ) : null}
+      {step === 3 ? (
+        <React.Fragment>
+          <Sections text="4. Publisher-Playlist" />
+          <StyledInputArea>
+            <StyledExplanation>
+              Deine Publisher Playlist wird auf Basis deiner
+              Kampagneninformationen erzeugt und zeigt alle Printerzeugnisse,
+              die zu deinem Targeting matchen.
+            </StyledExplanation>
 
-        {playlistArray
-          ? playlistArray.map(publisherDetail => {
-              return (
-                <React.Fragment>
-                  <StyledPlaylistEntry>
-                    <StyledPlaylistImage
-                      src={publisherDetail.product_image}
-                      alt={publisherDetail.product_title}
-                    />
-                    <StyledPlaylistProduct key={publisherDetail.id}>
-                      <StyledProduct>
-                        {publisherDetail.product_title}
-                      </StyledProduct>
-                      <StyledPublisher>
-                        {publisherDetail.publisher}
-                      </StyledPublisher>
-                    </StyledPlaylistProduct>
-                    <StyledPlaylistProductDetail>
-                      <StyledReach>
-                        <NumberFormat
-                          value={publisherDetail.reach}
-                          displayType={'text'}
-                          thousandSeparator={true}
-                          decimalSeparator={'.'}
-                          prefix={'Reichweite Gesamt: '}
+            {playlistArray
+              ? playlistArray.map(publisherDetail => {
+                  return (
+                    <React.Fragment>
+                      <StyledPlaylistEntry>
+                        <StyledPlaylistImage
+                          src={publisherDetail.product_image}
+                          alt={publisherDetail.product_title}
                         />
-                      </StyledReach>
+                        <StyledPlaylistProduct key={publisherDetail.id}>
+                          <StyledProduct>
+                            {publisherDetail.product_title}
+                          </StyledProduct>
+                          <StyledPublisher>
+                            {publisherDetail.publisher}
+                          </StyledPublisher>
+                        </StyledPlaylistProduct>
+                        <StyledPlaylistProductDetail>
+                          <StyledReach>
+                            <NumberFormat
+                              value={publisherDetail.reach}
+                              displayType={'text'}
+                              thousandSeparator={true}
+                              decimalSeparator={'.'}
+                              prefix={'Reichweite Gesamt: '}
+                            />
+                          </StyledReach>
 
-                      <StyledCirculation>
-                        <NumberFormat
-                          value={publisherDetail.paid_circulation}
-                          displayType={'text'}
-                          thousandSeparator={true}
-                          decimalSeparator={'.'}
-                          prefix={'Verkaufte Auflage: '}
-                        />
-                      </StyledCirculation>
-                    </StyledPlaylistProductDetail>
-                  </StyledPlaylistEntry>
-                  <StyledDivider />
-                </React.Fragment>
-              )
-            })
-          : null}
-      </StyledInputArea>
-      <Sections text="5. Budget" />
-      <StyledInputArea>
-        <StyledLabel htmlFor="budget__input">Budget (€)</StyledLabel>
-        <input
-          name="budget"
-          id="budget__input"
-          onInput={onInputChange}
-          value={data.budget}
-          type="number"
-          min="1"
-          placeholder="Gesamtbudget in € EUR"
-        />
-      </StyledInputArea>
-      <StyledInputArea>
-        <StyledLabel htmlFor="bid__input">Gebot (€)</StyledLabel>
-        <input
-          name="bid"
-          id="bid__input"
-          onInput={onInputChange}
-          value={data.bid}
-          type="number"
-          min="1"
-          placeholder="TAP in € EUR"
-        />
-        <StyledHintHeadline>Erklärung TAP</StyledHintHeadline>
-        <StyledHint>
-          Der Tausend-Auflagen-Preis (TAP) gibt den Geldbetrag an, wie viel eine
-          Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
-        </StyledHint>
-      </StyledInputArea>
-      <button>Hinzufügen</button>
+                          <StyledCirculation>
+                            <NumberFormat
+                              value={publisherDetail.paid_circulation}
+                              displayType={'text'}
+                              thousandSeparator={true}
+                              decimalSeparator={'.'}
+                              prefix={'Verkaufte Auflage: '}
+                            />
+                          </StyledCirculation>
+                        </StyledPlaylistProductDetail>
+                      </StyledPlaylistEntry>
+                      <StyledDivider />
+                    </React.Fragment>
+                  )
+                })
+              : null}
+          </StyledInputArea>
+          <button onClick={() => setStep(2)}>Zurück</button>
+          <button onClick={() => onClickPlaylistLoad()}>Fortfahren</button>
+        </React.Fragment>
+      ) : null}
+      {step === 4 ? (
+        <React.Fragment>
+          <Sections text="5. Budget" />
+          <StyledInputArea>
+            <StyledLabel htmlFor="budget__input">Budget (€)</StyledLabel>
+            <input
+              name="budget"
+              id="budget__input"
+              onInput={onInputChange}
+              value={data.budget}
+              type="number"
+              min="1"
+              placeholder="Gesamtbudget in € EUR"
+            />
+          </StyledInputArea>
+          <StyledInputArea>
+            <StyledLabel htmlFor="bid__input">Gebot (€)</StyledLabel>
+            <input
+              name="bid"
+              id="bid__input"
+              onInput={onInputChange}
+              value={data.bid}
+              type="number"
+              min="1"
+              placeholder="TAP in € EUR"
+            />
+            <StyledHintHeadline>Erklärung TAP</StyledHintHeadline>
+            <StyledHint>
+              Der Tausend-Auflagen-Preis (TAP) gibt den Geldbetrag an, wie viel
+              eine Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
+            </StyledHint>
+          </StyledInputArea>
+          <button onClick={() => setStep(2)}>Zurück</button>
+          <button onClick={() => setStep(4)}>Fortfahren</button>
+        </React.Fragment>
+      ) : null}
+      {step === 4 ? <button>Hinzufügen</button> : null}
     </PageGrid>
   )
 }
