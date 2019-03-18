@@ -4,10 +4,9 @@ import dayjs from 'dayjs'
 
 const StyledCampaign = styled.section`
   display: grid;
-  grid-gap: 12px;
+  grid-gap: 6px;
   grid-template-columns: auto;
   grid-template-rows: auto 160px auto;
-  grid-column-gap: 12px;
   border-radius: 6px;
   box-shadow: 0 2px 4px #a0a09b;
   margin: 12px;
@@ -23,12 +22,13 @@ const StyledCampaignLabels = styled.div`
   text-transform: uppercase;
   color: #dcdcdc;
   align-self: center;
-  padding-left: 12px;
+  margin: 12px;
 `
 
 const StyledCampaignContents = styled.div`
   font-size: 0.9em;
   grid-column: 2 / 7;
+  margin: 12px;
 `
 
 const StyledAd = styled.div`
@@ -75,10 +75,6 @@ export default function Campaign({
 }) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
-  }
-
-  function renderPub(text, uid) {
-    return <Tag key={uid}>{text}</Tag>
   }
 
   var NumberFormat = require('react-number-format')
@@ -150,7 +146,7 @@ export default function Campaign({
         </StyledCampaignContents>
         <StyledCampaignLabels>Playlist</StyledCampaignLabels>
         <StyledCampaignContents>
-          {playlist && <TagList>{playlist.map(renderPub)}</TagList>}
+          {playlist && <TagList>{playlist}</TagList>}
         </StyledCampaignContents>
       </StyledCampaign>
     </div>

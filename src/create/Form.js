@@ -468,12 +468,12 @@ export default function Form({
           ? playlistArray.map(publisherDetail => {
               return (
                 <React.Fragment>
-                  <StyledPlaylistEntry key={publisherDetail.id}>
+                  <StyledPlaylistEntry>
                     <StyledPlaylistImage
                       src={publisherDetail.product_image}
                       alt={publisherDetail.product_title}
                     />
-                    <StyledPlaylistProduct>
+                    <StyledPlaylistProduct key={publisherDetail.id}>
                       <StyledProduct>
                         {publisherDetail.product_title}
                       </StyledProduct>

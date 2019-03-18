@@ -85,6 +85,46 @@ export default function CreateCampaignPage(props) {
     PlaylistUpdate()
   }
 
+  function onInputChange(event) {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    })
+    PlaylistUpdate()
+  }
+
+  function PlaylistUpdate() {
+    setPlaylist(
+      publisher.filter(publisherDetail =>
+        tags.some(tag =>
+          publisherDetail.interests
+            .map(interest => interest.toLowerCase())
+            .includes(tag.toLowerCase())
+        )
+      )
+      /*   .filter(publisherDetail =>
+          publisherDetail.ad_format.includes(data.format)
+        ) */
+
+      /* .filter(publisherDetail =>
+          publisherDetail.demography.filter(item => item.gender === data.gender)
+        )
+ */
+      /*  .filter(publisherDetail =>
+            publisherDetail.demography.filter(
+              item => Number(item.ageFrom) >= Number(data.ageFrom)
+            )
+          )
+
+          .filter(publisherDetail =>
+            publisherDetail.demography.filter(
+              item => Number(item.ageTo) <= Number(data.ageTo)
+            )
+          ) */
+    )
+    console.log(playlist)
+  }
+
   function onImageUpload(event) {
     alert('Deine Datei wurde hochgeladen')
     const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`
@@ -105,26 +145,6 @@ export default function CreateCampaignPage(props) {
 
   function onAdSave(response) {
     setAd(response.data.url)
-  }
-
-  function onInputChange(event) {
-    setData({
-      ...data,
-      [event.target.name]: event.target.value,
-    })
-    PlaylistUpdate()
-  }
-
-  function PlaylistUpdate() {
-    setPlaylist(
-      publisher.filter(publisherDetail =>
-        tags.some(tag =>
-          publisherDetail.interests
-            .map(interest => interest.toLowerCase())
-            .includes(tag.toLowerCase())
-        )
-      )
-    )
   }
 
   return (
