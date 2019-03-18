@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 
 const StyledCampaign = styled.section`
   display: grid;
+  grid-gap: 12px;
   grid-template-columns: auto;
   grid-template-rows: auto 160px auto;
   grid-column-gap: 12px;
@@ -15,7 +16,7 @@ const StyledCampaign = styled.section`
   }
 `
 
-const StyledCampaignLabels = styled.p`
+const StyledCampaignLabels = styled.div`
   grid-column: 1 / 2;
   grid-auto-flow: column;
   font-size: 0.8em;
@@ -25,7 +26,7 @@ const StyledCampaignLabels = styled.p`
   padding-left: 12px;
 `
 
-const StyledCampaignContents = styled.p`
+const StyledCampaignContents = styled.div`
   font-size: 0.9em;
   grid-column: 2 / 7;
 `
@@ -68,11 +69,16 @@ export default function Campaign({
   ageFrom,
   ageTo,
   tags,
+  playlist,
   budget,
   bid,
 }) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
+  }
+
+  function renderPub(text, uid) {
+    return <Tag key={uid}>{text}</Tag>
   }
 
   var NumberFormat = require('react-number-format')
@@ -141,6 +147,10 @@ export default function Campaign({
         <StyledCampaignLabels>Keywords</StyledCampaignLabels>
         <StyledCampaignContents>
           {tags && <TagList>{tags.map(renderTag)}</TagList>}
+        </StyledCampaignContents>
+        <StyledCampaignLabels>Playlist</StyledCampaignLabels>
+        <StyledCampaignContents>
+          {playlist && <TagList>{playlist.map(renderPub)}</TagList>}
         </StyledCampaignContents>
       </StyledCampaign>
     </div>

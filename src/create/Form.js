@@ -4,7 +4,6 @@ import Select from './Select'
 import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
-import publisher from '../data/publisher.json'
 
 const PageGrid = styled.form`
   display: grid;
@@ -43,7 +42,7 @@ const StyledLabel = styled.label`
   margin-top: 12px;
   margin-bottom: 8px;
 `
-const StyledRadioHeadline = styled.p`
+const StyledRadioHeadline = styled.div`
   color: #28233c;
   display: flex;
   align-items: flex-end;
@@ -140,7 +139,7 @@ const StyledProduct = styled.h3`
     margin-bottom: 6px;
   }
 `
-const StyledPublisher = styled.p`
+const StyledPublisher = styled.div`
   font-size: 0.8em;
   text-transform: uppercase;
   color: #d70064;
@@ -205,6 +204,7 @@ export default function Form({
   onImageUpload,
   inputKeyDown,
   removeTag,
+  playlistArray,
 }) {
   var NumberFormat = require('react-number-format')
 
@@ -464,86 +464,54 @@ export default function Form({
           matchen.
         </StyledExplanation>
 
-        {publisher
-          .filter(publisherDetail =>
-            tagsArray.some(tag =>
-              publisherDetail.interests
-                .map(interest => interest.toLowerCase())
-                .includes(tag.toLowerCase())
-            )
-          )
-          .filter(publisherDetail =>
-            publisherDetail.ad_color_schema.includes(data.colorSchema)
-          )
+        {playlistArray
+          ? playlistArray.map(publisherDetail => {
+              return (
+                <React.Fragment>
+                  <StyledPlaylistEntry key={publisherDetail.id}>
+                    <StyledPlaylistImage
+                      src={publisherDetail.product_image}
+                      alt={publisherDetail.product_title}
+                    />
+                    <StyledPlaylistProduct>
+                      <StyledProduct>
+                        {publisherDetail.product_title}
+                      </StyledProduct>
+                      <StyledPublisher>
+                        {publisherDetail.publisher}
+                      </StyledPublisher>
+                    </StyledPlaylistProduct>
+                    <StyledPlaylistProductDetail>
+                      <StyledReach>
+                        <NumberFormat
+                          value={publisherDetail.reach}
+                          displayType={'text'}
+                          thousandSeparator={true}
+                          decimalSeparator={'.'}
+                          prefix={'Reichweite Gesamt: '}
+                        />
+                      </StyledReach>
 
-          /*  .filter(publisherDetail =>
-            publisherDetail.ad_format.includes(data.format)
-          )
-
-          .filter(publisherDetail =>
-            publisherDetail.demography.filter(
-              item => item.gender === data.gender
-            )
-          ) */
-
-          /*  .filter(publisherDetail =>
-            publisherDetail.demography.filter(
-              item => Number(item.ageFrom) >= Number(data.ageFrom)
-            )
-          )
-
-          .filter(publisherDetail =>
-            publisherDetail.demography.filter(
-              item => Number(item.ageTo) <= Number(data.ageTo)
-            )
-          ) */
-
-          .map(publisherDetail => {
-            return (
-              <React.Fragment>
-                <StyledPlaylistEntry key={publisherDetail.id}>
-                  <StyledPlaylistImage
-                    src={publisherDetail.product_image}
-                    alt={publisherDetail.product_title}
-                  />
-                  <StyledPlaylistProduct>
-                    <StyledProduct>
-                      {publisherDetail.product_title}
-                    </StyledProduct>
-                    <StyledPublisher>
-                      {publisherDetail.publisher}
-                    </StyledPublisher>
-                  </StyledPlaylistProduct>
-                  <StyledPlaylistProductDetail>
-                    <StyledReach>
-                      <NumberFormat
-                        value={publisherDetail.reach}
-                        displayType={'text'}
-                        thousandSeparator={true}
-                        decimalSeparator={'.'}
-                        prefix={'Reichweite Gesamt: '}
-                      />
-                    </StyledReach>
-
-                    <StyledCirculation>
-                      <NumberFormat
-                        value={publisherDetail.paid_circulation}
-                        displayType={'text'}
-                        thousandSeparator={true}
-                        decimalSeparator={'.'}
-                        prefix={'Verkaufte Auflage: '}
-                      />
-                    </StyledCirculation>
-                  </StyledPlaylistProductDetail>
-                </StyledPlaylistEntry>
-                <StyledDivider />
-              </React.Fragment>
-            )
-          })}
+                      <StyledCirculation>
+                        <NumberFormat
+                          value={publisherDetail.paid_circulation}
+                          displayType={'text'}
+                          thousandSeparator={true}
+                          decimalSeparator={'.'}
+                          prefix={'Verkaufte Auflage: '}
+                        />
+                      </StyledCirculation>
+                    </StyledPlaylistProductDetail>
+                  </StyledPlaylistEntry>
+                  <StyledDivider />
+                </React.Fragment>
+              )
+            })
+          : null}
       </StyledInputArea>
       <Sections text="5. Budget" />
       <StyledInputArea>
-        <StyledLabel htmlFor="budget__input">Budget</StyledLabel>
+        <StyledLabel htmlFor="budget__input">Budget (€)</StyledLabel>
         <input
           name="budget"
           id="budget__input"
@@ -555,7 +523,7 @@ export default function Form({
         />
       </StyledInputArea>
       <StyledInputArea>
-        <StyledLabel htmlFor="bid__input">Gebot</StyledLabel>
+        <StyledLabel htmlFor="bid__input">Gebot (€)</StyledLabel>
         <input
           name="bid"
           id="bid__input"

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import Form from './Form'
+import publisher from '../data/publisher.json'
+import uid from 'uid'
 
 const PageGrid = styled.div`
   display: flex;
@@ -28,9 +30,11 @@ const defaultData = {
   gender: '',
   ageFrom: '',
   ageTo: '',
+  playlist: '',
   tags: '',
   budget: '',
   bid: '',
+  id: uid(),
 }
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
@@ -41,17 +45,21 @@ export default function CreateCampaignPage(props) {
   const [ad, setAd] = useState('')
   const [tags, setTags] = useState([])
   const [tagsInput, setTagsInput] = useState('')
+  const [playlist, setPlaylist] = useState([])
 
   function onTagsInputChange(event) {
     setTagsInput(event.target.value)
+    PlaylistUpdate()
   }
 
   function onSubmit(event) {
     event.preventDefault()
     data.tags = tags
     data.ad = ad
+    data.playlist = playlist
     props.onSubmit(data)
     setData(defaultData)
+    setPlaylist([])
   }
 
   function inputKeyDown(event) {
@@ -66,6 +74,7 @@ export default function CreateCampaignPage(props) {
       }
       setTags([...tags, val])
       setTagsInput('')
+      PlaylistUpdate()
     }
   }
 
@@ -73,6 +82,7 @@ export default function CreateCampaignPage(props) {
     const newTags = [...tags]
     newTags.splice(i, 1)
     setTags(newTags)
+    PlaylistUpdate()
   }
 
   function onImageUpload(event) {
@@ -102,6 +112,19 @@ export default function CreateCampaignPage(props) {
       ...data,
       [event.target.name]: event.target.value,
     })
+    PlaylistUpdate()
+  }
+
+  function PlaylistUpdate() {
+    setPlaylist(
+      publisher.filter(publisherDetail =>
+        tags.some(tag =>
+          publisherDetail.interests
+            .map(interest => interest.toLowerCase())
+            .includes(tag.toLowerCase())
+        )
+      )
+    )
   }
 
   return (
@@ -116,6 +139,7 @@ export default function CreateCampaignPage(props) {
         tagsArray={tags}
         data={data}
         onImageUpload={onImageUpload}
+        playlistArray={playlist}
       />
     </PageGrid>
   )
