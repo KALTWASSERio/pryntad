@@ -4,10 +4,10 @@ import dayjs from 'dayjs'
 
 const StyledCampaign = styled.section`
   display: grid;
-  grid-gap: 6px;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto 160px auto;
-  border-radius: 6px;
+  border-radius: 8px;
+  margin-bottom: 12px;
   box-shadow: 0 2px 4px #a0a09b;
 `
 

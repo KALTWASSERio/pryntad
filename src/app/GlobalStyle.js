@@ -23,6 +23,7 @@ export default createGlobalStyle`
   h1, h2, h3, h4, h5, h6,
   ul, ol {
     margin: 0;
+    line-height: 1.5em;
   }
 
   input, select, button {

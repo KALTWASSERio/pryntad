@@ -6,6 +6,7 @@ import GlobalStyle from './GlobalStyle'
 import Header from '../common/Header'
 import CampaignsPage from '../campaigns/CampaignsPage'
 import CreateCampaignPage from '../create/CreateCampaignPage'
+import Confirmation from '../create/Confirmation'
 import {
   getAllCampaigns,
   getCampaignsFromStorage,
@@ -98,7 +99,7 @@ function App() {
             path="/create"
             render={() => <CreateCampaignPage onSubmit={createCampaign} />}
           />
-          <Route path="/marketplace" render={() => <div>success</div>} />
+          <Route path="/confirmation" component={Confirmation} />
           <Nav>
             <StyledLink exact to="/">
               Dashoard

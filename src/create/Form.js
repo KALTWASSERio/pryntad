@@ -650,6 +650,7 @@ export default function Form({
             ageTo={data.ageTo}
             gender={data.gender}
             tags={tagsArray}
+            step={step}
           />
           <StyledButtonArea>
             <StyledButtonPassiv onClick={() => setStep(4)}>
