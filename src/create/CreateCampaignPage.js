@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import Form from './Form'
+import publisher from '../data/publisher.json'
 import uid from 'uid'
+import { withRouter } from 'react-router'
 
 const PageGrid = styled.div`
   display: flex;
@@ -26,8 +28,10 @@ const defaultData = {
   colorSchema: '',
   ad: '',
   location: 'Deutschland',
+  gender: '',
   ageFrom: '',
   ageTo: '',
+  playlist: '',
   tags: '',
   budget: '',
   bid: '',
@@ -37,22 +41,28 @@ const defaultData = {
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 
-export default function CreateCampaignPage(props) {
+function CreateCampaignPage(props) {
+  console.log(props)
   const [data, setData] = useState(defaultData)
   const [ad, setAd] = useState('')
   const [tags, setTags] = useState([])
   const [tagsInput, setTagsInput] = useState('')
+  const [playlist, setPlaylist] = useState([])
 
   function onTagsInputChange(event) {
     setTagsInput(event.target.value)
+    playlistUpdate()
   }
 
   function onSubmit(event) {
     event.preventDefault()
     data.tags = tags
     data.ad = ad
+    data.playlist = playlist
     props.onSubmit(data)
     setData(defaultData)
+    setPlaylist([])
+    props.history.push('/marketplace')
   }
 
   function inputKeyDown(event) {
@@ -67,6 +77,7 @@ export default function CreateCampaignPage(props) {
       }
       setTags([...tags, val])
       setTagsInput('')
+      playlistUpdate()
     }
   }
 
@@ -74,6 +85,47 @@ export default function CreateCampaignPage(props) {
     const newTags = [...tags]
     newTags.splice(i, 1)
     setTags(newTags)
+    playlistUpdate()
+  }
+
+  function onInputChange(event) {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    })
+    playlistUpdate()
+  }
+
+  function playlistUpdate() {
+    setPlaylist(
+      publisher
+        .filter(publisherDetail =>
+          tags.some(tag =>
+            publisherDetail.interests
+              .map(interest => interest.toLowerCase())
+              .includes(tag.toLowerCase())
+          )
+        )
+        .filter(publisherDetail =>
+          publisherDetail.ad_format.includes(data.format)
+        )
+
+        .filter(publisherDetail =>
+          publisherDetail.demography.filter(item => item.gender === data.gender)
+        )
+      /*  .filter(publisherDetail =>
+            publisherDetail.demography.filter(
+              item => Number(item.ageFrom) >= Number(data.ageFrom)
+            )
+          )
+          
+          .filter(publisherDetail =>
+            publisherDetail.demography.filter(
+              item => Number(item.ageTo) <= Number(data.ageTo)
+            )
+          ) */
+    )
+    console.log(playlist)
   }
 
   function onImageUpload(event) {
@@ -98,13 +150,6 @@ export default function CreateCampaignPage(props) {
     setAd(response.data.url)
   }
 
-  function onInputChange(event) {
-    setData({
-      ...data,
-      [event.target.name]: event.target.value,
-    })
-  }
-
   return (
     <PageGrid>
       <Form
@@ -117,7 +162,11 @@ export default function CreateCampaignPage(props) {
         tagsArray={tags}
         data={data}
         onImageUpload={onImageUpload}
+        playlistArray={playlist}
+        playlistUpdate={playlistUpdate}
       />
     </PageGrid>
   )
 }
+
+export default withRouter(CreateCampaignPage)

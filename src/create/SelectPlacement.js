@@ -25,7 +25,7 @@ export default function Select({ name, value, onChange }) {
         required
       >
         <option value="">-- Wähle ein Platzierung --</option>
-        <option value="Keine Platzierung">Keine Platzierung</option>
+        <option value="Keine Platzierung">Keine Sonderplatzierung</option>
         <option value="U2 / Seite 2">U2 / Seite 2</option>
         <option value="U2 + Seite 3">U2 + Seite 3</option>
         <option value="U3">U3</option>

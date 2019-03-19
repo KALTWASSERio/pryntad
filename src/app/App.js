@@ -92,17 +92,21 @@ function App() {
           <Route
             exact
             path="/"
-            render={() => <CampaignsPage campaigns={campaigns} />}
+            render={props => <CampaignsPage campaigns={campaigns} />}
           />
           <Route
             path="/create"
-            render={() => <CreateCampaignPage onSubmit={createCampaign} />}
+            render={props => {
+              console.log(props, '###')
+              return <CreateCampaignPage onSubmit={createCampaign} />
+            }}
           />
+          <Route path="/marketplace" render={() => <div>success</div>} />
           <Nav>
             <StyledLink exact to="/">
-              Dashboard
+              Dashoard
             </StyledLink>
-            <StyledLink to="/create">Kampagne</StyledLink>
+            <StyledLink to="/create">Kampagne anlegen</StyledLink>
           </Nav>
           <GlobalStyle />
         </Grid>

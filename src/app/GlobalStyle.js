@@ -12,6 +12,7 @@ export default createGlobalStyle`
     line-height: 1.5em;
   }
 
+
   html, body {
    /*  position: fixed; */
     width: 100%;

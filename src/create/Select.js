@@ -25,11 +25,16 @@ export default function Select({ name, value, onChange }) {
         required
       >
         <option value="">-- Wähle ein Format --</option>
-        <option value="1/4">1/4</option>
-        <option value="1/3">1/3</option>
-        <option value="1/2">1/2</option>
-        <option value="1/1">1/1</option>
         <option value="2/1">2/1</option>
+        <option value="1/1">1/1</option>
+        <option value="2/3 hoch">2/3 hoch</option>
+        <option value="2/3 quer">2/3 quer</option>
+        <option value="1/2 hoch">1/2 hoch</option>
+        <option value="1/2 quer">1/2 quer</option>
+        <option value="1/3 hoch">1/3 hoch</option>
+        <option value="1/3 quer">1/3 quer</option>
+        <option value="1/4 hoch">1/4 hoch</option>
+        <option value="1/4 quer">1/4 quer</option>
       </select>
     </StyledInputArea>
   )

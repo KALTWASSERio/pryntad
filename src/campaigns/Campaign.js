@@ -4,9 +4,9 @@ import dayjs from 'dayjs'
 
 const StyledCampaign = styled.section`
   display: grid;
+  grid-gap: 6px;
   grid-template-columns: auto;
   grid-template-rows: auto 160px auto;
-  grid-column-gap: 12px;
   border-radius: 6px;
   box-shadow: 0 2px 4px #a0a09b;
   margin: 12px;
@@ -15,19 +15,20 @@ const StyledCampaign = styled.section`
   }
 `
 
-const StyledCampaignLabels = styled.p`
+const StyledCampaignLabels = styled.div`
   grid-column: 1 / 2;
   grid-auto-flow: column;
   font-size: 0.8em;
   text-transform: uppercase;
   color: #dcdcdc;
   align-self: center;
-  padding-left: 12px;
+  margin: 12px;
 `
 
-const StyledCampaignContents = styled.p`
+const StyledCampaignContents = styled.div`
   font-size: 0.9em;
   grid-column: 2 / 7;
+  margin: 12px;
 `
 
 const StyledAd = styled.div`
@@ -68,6 +69,7 @@ export default function Campaign({
   ageFrom,
   ageTo,
   tags,
+  playlist,
   budget,
   bid,
 }) {
@@ -141,6 +143,10 @@ export default function Campaign({
         <StyledCampaignLabels>Keywords</StyledCampaignLabels>
         <StyledCampaignContents>
           {tags && <TagList>{tags.map(renderTag)}</TagList>}
+        </StyledCampaignContents>
+        <StyledCampaignLabels>Playlist</StyledCampaignLabels>
+        <StyledCampaignContents>
+          {playlist && <TagList>{playlist}</TagList>}
         </StyledCampaignContents>
       </StyledCampaign>
     </div>
