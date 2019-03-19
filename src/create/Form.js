@@ -194,9 +194,10 @@ const StyledExplanation = styled.p`
   line-height: 1.5em;
 `
 const StyledButtonArea = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 12px;
+  justify-content: center;
   padding: 36px;
 `
 const StyledButtonPassiv = styled.button`
