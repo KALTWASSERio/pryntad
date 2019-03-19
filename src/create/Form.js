@@ -176,17 +176,18 @@ const StyledCirculation = styled.div`
 `
 
 const StyledHintHeadline = styled.h3`
-  color: #28233c;
+  color: #dcdcdc;
   font-size: 0.9em;
   font-weight: bold;
-  margin-top: 24px;
+  margin-top: 12px;
 `
 const StyledHint = styled.p`
-  color: #28233c;
+  color: #dcdcdc;
   font-size: 0.8em;
   line-height: 1.5em;
   @media (min-width: 800px) {
     width: 50%;
+    justify-self: center;
   }
 `
 const StyledExplanation = styled.p`
@@ -199,7 +200,7 @@ const StyledButtonArea = styled.div`
   grid-template-columns: auto auto;
   grid-column-gap: 12px;
   justify-content: center;
-  padding: 36px;
+  padding: 12px;
 `
 const StyledButtonPassiv = styled.button`
   background: #fac8d7;
@@ -613,8 +614,8 @@ export default function Form({
             />
             <StyledHintHeadline>Erklärung TAP</StyledHintHeadline>
             <StyledHint>
-              Der Tausend-Auflagen-Preis (TAP) gibt den Geldbetrag an, wie viel
-              eine Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
+              Der Tausend-Auflagen-Preis (TAP) gibt Eurobetrag an, den eine
+              Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
             </StyledHint>
           </StyledInputArea>
           <StyledButtonArea>
@@ -627,8 +628,11 @@ export default function Form({
       ) : null}
       {step === 5 ? (
         <React.Fragment>
-          <h2>Kampagne prüfen</h2>
-          <p>Deine Kampagne ist startklar</p>
+          <Sections text="Kampagne prüfen" />
+          <StyledExplanation>
+            Deine Kampagne ist startklar, überprüfe deine Einstellungen für
+            diese Kampagne.
+          </StyledExplanation>
           <Campaign
             title={data.title}
             ad={ad}
@@ -653,6 +657,10 @@ export default function Form({
             </StyledButtonPassiv>
             <StyledButtonCommit>Bestätigen</StyledButtonCommit>
           </StyledButtonArea>
+          <StyledHint>
+            Mit Klick auf Bestätigung, wird die Kampagne auf den Marktplatz von
+            pryntad gestellt und ist ür Publisher sichtbar.
+          </StyledHint>
         </React.Fragment>
       ) : null}
     </PageGrid>

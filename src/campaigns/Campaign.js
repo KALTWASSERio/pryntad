@@ -9,10 +9,6 @@ const StyledCampaign = styled.section`
   grid-template-rows: auto 160px auto;
   border-radius: 6px;
   box-shadow: 0 2px 4px #a0a09b;
-  margin: 12px;
-  @media (max-width: 800px) {
-    margin: 12px;
-  }
 `
 
 const StyledCampaignLabels = styled.div`
