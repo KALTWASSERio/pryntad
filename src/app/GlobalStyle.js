@@ -81,12 +81,23 @@ input[type=file]::-webkit-file-upload-button {
 }
 
   button {
-    background: #d70064;
-    border: none;
-    border-radius: 20px;
-    color: white;
+    background-color: #d70064;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1.2em;
     font-weight: bold;
-    margin-bottom:12px;
-    padding: 12px;
+    text-decoration: none;
+    margin: 24px;
+    color: white;
+    display: inline-block;
+    border: none;
+    width: 40%;
+
+    :hover {
+    background-color: white;
+    border: 2px solid #d70064;
+    color: #d70064;
+}
   }
+
 `

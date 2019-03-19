@@ -193,6 +193,20 @@ const StyledExplanation = styled.p`
   font-size: 1em;
   line-height: 1.5em;
 `
+const StyledButtonArea = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`
+const StyledButtonPassiv = styled.button`
+  background: #fac8d7;
+
+  :hover {
+    background-color: white;
+    border: 2px solid #fac8d7;
+    color: #fac8d7;
+  }
+`
 
 export default function Form({
   tagsInput,
@@ -271,7 +285,9 @@ export default function Form({
               />
             </StyledSectionTo>
           </StyledInputAreaDates>
-          <button onClick={() => setStep(1)}>Fortfahren</button>
+          <StyledButtonArea>
+            <button onClick={() => setStep(1)}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 1 ? (
@@ -378,8 +394,12 @@ export default function Form({
               style={{ color: 'white', border: 'none' }}
             />
           </StyledInputArea>
-          <button onClick={() => setStep(0)}>Zurück</button>
-          <button onClick={() => setStep(2)}>Fortfahren</button>
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(0)}>
+              Zurück
+            </StyledButtonPassiv>
+            <button onClick={() => setStep(2)}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 2 ? (
@@ -481,8 +501,12 @@ export default function Form({
               placeholder="Demografie, Interessen oder Verhalten"
             />
           </StyledInputArea>
-          <button onClick={() => setStep(1)}>Zurück</button>
-          <button onClick={() => setStep(3)}>Fortfahren</button>
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(1)}>
+              Zurück
+            </StyledButtonPassiv>
+            <button onClick={() => setStep(3)}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 3 ? (
@@ -540,8 +564,12 @@ export default function Form({
                 })
               : null}
           </StyledInputArea>
-          <button onClick={() => setStep(2)}>Zurück</button>
-          <button onClick={() => onClickPlaylistLoad()}>Fortfahren</button>
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(2)}>
+              Zurück
+            </StyledButtonPassiv>
+            <button onClick={() => onClickPlaylistLoad()}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 4 ? (
@@ -576,8 +604,12 @@ export default function Form({
               eine Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
             </StyledHint>
           </StyledInputArea>
-          <button onClick={() => setStep(3)}>Zurück</button>
-          <button onClick={() => setStep(5)}>Fortfahren</button>
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(3)}>
+              Zurück
+            </StyledButtonPassiv>
+            <button onClick={() => setStep(5)}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 5 ? <button>Hinzufügen</button> : null}
