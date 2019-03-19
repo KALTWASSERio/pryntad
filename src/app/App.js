@@ -92,14 +92,11 @@ function App() {
           <Route
             exact
             path="/"
-            render={props => <CampaignsPage campaigns={campaigns} />}
+            render={() => <CampaignsPage campaigns={campaigns} />}
           />
           <Route
             path="/create"
-            render={props => {
-              console.log(props, '###')
-              return <CreateCampaignPage onSubmit={createCampaign} />
-            }}
+            render={() => <CreateCampaignPage onSubmit={createCampaign} />}
           />
           <Route path="/marketplace" render={() => <div>success</div>} />
           <Nav>

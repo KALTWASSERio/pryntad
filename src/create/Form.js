@@ -4,6 +4,7 @@ import Select from './Select'
 import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
+import Campaign from '../campaigns/Campaign'
 
 const PageGrid = styled.form`
   display: grid;
@@ -623,16 +624,28 @@ export default function Form({
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
-
       {step === 5 ? (
         <React.Fragment>
-          <Sections text="Kampagne prüfen" />
-          <StyledInputArea>
-            <p>Deine Kampagne ist startklar</p>
-          </StyledInputArea>
-          <StyledHintHeadline>
-            Überprüfe deinen Kampagneneinstellungen
-          </StyledHintHeadline>
+          <h2>Kampagne prüfen</h2>
+          <p>Deine Kampagne ist startklar</p>
+          <Campaign
+            title={data.title}
+            /* backgroundImage={'url(' + data.ad + ')'} */
+            brand={data.brand}
+            scheduleFrom={data.scheduleFrom}
+            sheduleTo={data.scheduleTo}
+            budget={data.budget}
+            bid={data.bid}
+            format={data.format}
+            colorSchema={data.colorSchema}
+            printSpace={data.printSpace}
+            location={data.location}
+            placement={data.placement}
+            ageFrom={data.ageFrom}
+            ageTo={data.ageTo}
+            gender={data.gender}
+            tags={tagsArray}
+          />
           <StyledButtonArea>
             <StyledButtonPassiv onClick={() => setStep(4)}>
               Zurück
