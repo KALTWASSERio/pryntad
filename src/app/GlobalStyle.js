@@ -48,19 +48,28 @@ input[type="date"]
 
 input[type=file]::-webkit-file-upload-button {
     background: white;
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
-    color: #a0a09b;
+    border: 1px solid #d70064;
+    border-radius: 8px;
+    color: #d70064;
     padding: 8px;
     font-weight: lighter; 
     left: -9999px;
+    width: 100%;
   }
 
-  input[type=radio]:checked + label {
+  input[type=radio] {
+  background-color: white;
+  border: 1px solid #d70064;
+  color: #d70064;;
+  left: -9999px;
+
+  :checked + label {
   background-color: #d70064;
   color: white;
   left: -9999px;
 } 
+
+  }
 
   ::placeholder {
     color: #a0a09b;

@@ -209,6 +209,15 @@ const StyledButtonPassiv = styled.button`
     color: #fac8d7;
   }
 `
+const StyledButtonCommit = styled.button`
+  background: #64a56e;
+
+  :hover {
+    background-color: white;
+    border: 2px solid #64a56e;
+    color: #64a56e;
+  }
+`
 
 export default function Form({
   tagsInput,
@@ -229,7 +238,7 @@ export default function Form({
 
   function onClickPlaylistLoad(event) {
     setStep(4)
-    playlistUpdate()
+    playlistUpdate(event)
   }
 
   return (
@@ -616,12 +625,21 @@ export default function Form({
       ) : null}
 
       {step === 5 ? (
-        <StyledButtonArea>
-          <StyledButtonPassiv onClick={() => setStep(4)}>
-            Zurück
-          </StyledButtonPassiv>
-          <button>Hinzufügen</button>
-        </StyledButtonArea>
+        <React.Fragment>
+          <Sections text="Kampagne prüfen" />
+          <StyledInputArea>
+            <p>Deine Kampagne ist startklar</p>
+          </StyledInputArea>
+          <StyledHintHeadline>
+            Überprüfe deinen Kampagneneinstellungen
+          </StyledHintHeadline>
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(4)}>
+              Zurück
+            </StyledButtonPassiv>
+            <StyledButtonCommit>Bestätigen</StyledButtonCommit>
+          </StyledButtonArea>
+        </React.Fragment>
       ) : null}
     </PageGrid>
   )
