@@ -232,6 +232,7 @@ export default function Form({
   removeTag,
   playlistArray,
   playlistUpdate,
+  ad,
 }) {
   const [step, setStep] = useState(0)
 
@@ -630,7 +631,7 @@ export default function Form({
           <p>Deine Kampagne ist startklar</p>
           <Campaign
             title={data.title}
-            /* backgroundImage={'url(' + data.ad + ')'} */
+            ad={ad}
             brand={data.brand}
             scheduleFrom={data.scheduleFrom}
             sheduleTo={data.scheduleTo}

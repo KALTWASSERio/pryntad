@@ -164,6 +164,7 @@ function CreateCampaignPage(props) {
         onImageUpload={onImageUpload}
         playlistArray={playlist}
         playlistUpdate={playlistUpdate}
+        ad={ad}
       />
     </PageGrid>
   )

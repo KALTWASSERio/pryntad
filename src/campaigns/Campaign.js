@@ -77,6 +77,8 @@ export default function Campaign({
     return <Tag key={index}>{text}</Tag>
   }
 
+  console.log(ad)
+
   var NumberFormat = require('react-number-format')
   return (
     <StyledCampaign>
