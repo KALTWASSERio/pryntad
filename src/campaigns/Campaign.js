@@ -49,6 +49,7 @@ const Tag = styled.li`
   font-size: 0.9em;
   font-weight: lighter;
 `
+const Item = styled.div``
 
 export default function Campaign({
   title,
@@ -143,7 +144,7 @@ export default function Campaign({
       </StyledCampaignContents>
       <StyledCampaignLabels>Playlist</StyledCampaignLabels>
       <StyledCampaignContents>
-        {playlist && <TagList>{playlist}</TagList>}
+        {playlist.map(item => item.product_title).join(', ')}
       </StyledCampaignContents>
     </StyledCampaign>
   )

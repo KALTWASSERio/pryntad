@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
 
 const PageGrid = styled.div`
   display: flex;
