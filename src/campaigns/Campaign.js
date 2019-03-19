@@ -4,15 +4,11 @@ import dayjs from 'dayjs'
 
 const StyledCampaign = styled.section`
   display: grid;
-  grid-gap: 6px;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto 160px auto;
-  border-radius: 6px;
+  border-radius: 8px;
+  margin-bottom: 12px;
   box-shadow: 0 2px 4px #a0a09b;
-  margin: 12px;
-  @media (max-width: 800px) {
-    margin: 12px;
-  }
 `
 
 const StyledCampaignLabels = styled.div`
@@ -77,78 +73,78 @@ export default function Campaign({
     return <Tag key={index}>{text}</Tag>
   }
 
+  console.log(ad)
+
   var NumberFormat = require('react-number-format')
   return (
-    <div css="scroll-snap-align: start">
-      <StyledCampaign>
-        <StyledCampaignLabels>Kampage</StyledCampaignLabels>
-        <StyledCampaignContents
-          style={{ color: '#28233c', fontWeight: 'bold', padding: '4px' }}
-        >
-          {title}
-        </StyledCampaignContents>
-        <StyledAd
-          style={{
-            backgroundImage: 'url(' + ad + ')',
-            height: '100%',
-            width: '100%',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-          }}
+    <StyledCampaign>
+      <StyledCampaignLabels>Kampage</StyledCampaignLabels>
+      <StyledCampaignContents
+        style={{ color: '#28233c', fontWeight: 'bold', padding: '4px' }}
+      >
+        {title}
+      </StyledCampaignContents>
+      <StyledAd
+        style={{
+          backgroundImage: 'url(' + ad + ')',
+          height: '100%',
+          width: '100%',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+        }}
+      />
+      <StyledCampaignLabels>Marke</StyledCampaignLabels>
+      <StyledCampaignContents>{brand}</StyledCampaignContents>
+      <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
+      <StyledCampaignContents>
+        {dayjs(scheduleFrom).format('DD/MM/YYYY')} -{' '}
+        {dayjs(scheduleTo).format('DD/MM/YYYY')}
+      </StyledCampaignContents>
+      <StyledCampaignLabels>Budget (Gesamt)</StyledCampaignLabels>
+      <StyledCampaignContents>
+        <NumberFormat
+          value={budget}
+          displayType={'text'}
+          thousandSeparator={true}
+          decimalSeparator={'.'}
+          suffix={' € EUR'}
         />
-        <StyledCampaignLabels>Marke</StyledCampaignLabels>
-        <StyledCampaignContents>{brand}</StyledCampaignContents>
-        <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
-        <StyledCampaignContents>
-          {dayjs(scheduleFrom).format('DD/MM/YYYY')} -{' '}
-          {dayjs(scheduleTo).format('DD/MM/YYYY')}
-        </StyledCampaignContents>
-        <StyledCampaignLabels>Budget (Gesamt)</StyledCampaignLabels>
-        <StyledCampaignContents>
-          <NumberFormat
-            value={budget}
-            displayType={'text'}
-            thousandSeparator={true}
-            decimalSeparator={'.'}
-            suffix={' € EUR'}
-          />
-        </StyledCampaignContents>
-        <StyledCampaignLabels>Gebot (TAP)</StyledCampaignLabels>
-        <StyledCampaignContents>
-          <NumberFormat
-            value={bid}
-            displayType={'text'}
-            thousandSeparator={true}
-            decimalSeparator={'.'}
-            suffix={' € EUR'}
-          />
-        </StyledCampaignContents>
-        <StyledCampaignLabels>Format (Farbigkeit)</StyledCampaignLabels>
-        <StyledCampaignContents>
-          {format} ({colorSchema})
-        </StyledCampaignContents>
-        <StyledCampaignLabels>Satzspiegel</StyledCampaignLabels>
-        <StyledCampaignContents>{printSpace}</StyledCampaignContents>
-        <StyledCampaignLabels>Platzierung</StyledCampaignLabels>
-        <StyledCampaignContents>{placement}</StyledCampaignContents>
-        <StyledCampaignLabels>Ort</StyledCampaignLabels>
-        <StyledCampaignContents>{location}</StyledCampaignContents>
-        <StyledCampaignLabels>Alter</StyledCampaignLabels>
-        <StyledCampaignContents>
-          {ageFrom} - {ageTo} Jahre
-        </StyledCampaignContents>
-        <StyledCampaignLabels>Geschlecht</StyledCampaignLabels>
-        <StyledCampaignContents>{gender}</StyledCampaignContents>
-        <StyledCampaignLabels>Keywords</StyledCampaignLabels>
-        <StyledCampaignContents>
-          {tags && <TagList>{tags.map(renderTag)}</TagList>}
-        </StyledCampaignContents>
-        <StyledCampaignLabels>Playlist</StyledCampaignLabels>
-        <StyledCampaignContents>
-          {playlist && <TagList>{playlist}</TagList>}
-        </StyledCampaignContents>
-      </StyledCampaign>
-    </div>
+      </StyledCampaignContents>
+      <StyledCampaignLabels>Gebot (TAP)</StyledCampaignLabels>
+      <StyledCampaignContents>
+        <NumberFormat
+          value={bid}
+          displayType={'text'}
+          thousandSeparator={true}
+          decimalSeparator={'.'}
+          suffix={' € EUR'}
+        />
+      </StyledCampaignContents>
+      <StyledCampaignLabels>Format (Farbigkeit)</StyledCampaignLabels>
+      <StyledCampaignContents>
+        {format} ({colorSchema})
+      </StyledCampaignContents>
+      <StyledCampaignLabels>Satzspiegel</StyledCampaignLabels>
+      <StyledCampaignContents>{printSpace}</StyledCampaignContents>
+      <StyledCampaignLabels>Platzierung</StyledCampaignLabels>
+      <StyledCampaignContents>{placement}</StyledCampaignContents>
+      <StyledCampaignLabels>Ort</StyledCampaignLabels>
+      <StyledCampaignContents>{location}</StyledCampaignContents>
+      <StyledCampaignLabels>Alter</StyledCampaignLabels>
+      <StyledCampaignContents>
+        {ageFrom} - {ageTo} Jahre
+      </StyledCampaignContents>
+      <StyledCampaignLabels>Geschlecht</StyledCampaignLabels>
+      <StyledCampaignContents>{gender}</StyledCampaignContents>
+      <StyledCampaignLabels>Keywords</StyledCampaignLabels>
+      <StyledCampaignContents>
+        {tags && <TagList>{tags.map(renderTag)}</TagList>}
+      </StyledCampaignContents>
+      <StyledCampaignLabels>Playlist</StyledCampaignLabels>
+      <StyledCampaignContents>
+        {playlist && <TagList>{playlist}</TagList>}
+      </StyledCampaignContents>
+    </StyledCampaign>
   )
 }

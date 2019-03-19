@@ -13,6 +13,7 @@ const PageGrid = styled.div`
     display: none;
   }
   scroll-behavior: auto;
+  padding: 14px 14px 0 14px;
 `
 
 export default function CampaignsPage({ campaigns }) {

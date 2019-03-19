@@ -23,6 +23,7 @@ export default createGlobalStyle`
   h1, h2, h3, h4, h5, h6,
   ul, ol {
     margin: 0;
+    line-height: 1.5em;
   }
 
   input, select, button {
@@ -48,19 +49,28 @@ input[type="date"]
 
 input[type=file]::-webkit-file-upload-button {
     background: white;
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
-    color: #a0a09b;
+    border: 1px solid #d70064;
+    border-radius: 8px;
+    color: #d70064;
     padding: 8px;
     font-weight: lighter; 
     left: -9999px;
+    width: 100%;
   }
 
-  input[type=radio]:checked + label {
+  input[type=radio] {
+  background-color: white;
+  border: 1px solid #d70064;
+  color: #d70064;;
+  left: -9999px;
+
+  :checked + label {
   background-color: #d70064;
   color: white;
   left: -9999px;
 } 
+
+  }
 
   ::placeholder {
     color: #a0a09b;
@@ -81,12 +91,21 @@ input[type=file]::-webkit-file-upload-button {
 }
 
   button {
-    background: #d70064;
-    border: none;
-    border-radius: 20px;
-    color: white;
+    background-color: #d70064;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1.2em;
     font-weight: bold;
-    margin-bottom:12px;
-    padding: 12px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    border: none;
+
+    :hover {
+    background-color: white;
+    border: 2px solid #d70064;
+    color: #d70064;
+}
   }
+
 `

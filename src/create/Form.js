@@ -4,6 +4,7 @@ import Select from './Select'
 import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
+import Campaign from '../campaigns/Campaign'
 
 const PageGrid = styled.form`
   display: grid;
@@ -175,23 +176,49 @@ const StyledCirculation = styled.div`
 `
 
 const StyledHintHeadline = styled.h3`
-  color: #28233c;
+  color: #dcdcdc;
   font-size: 0.9em;
   font-weight: bold;
-  margin-top: 24px;
+  margin-top: 12px;
 `
 const StyledHint = styled.p`
-  color: #28233c;
+  color: #dcdcdc;
   font-size: 0.8em;
   line-height: 1.5em;
   @media (min-width: 800px) {
     width: 50%;
+    justify-self: center;
   }
 `
 const StyledExplanation = styled.p`
   color: #28233c;
   font-size: 1em;
   line-height: 1.5em;
+`
+const StyledButtonArea = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 12px;
+  justify-content: center;
+  padding: 12px;
+`
+const StyledButtonPassiv = styled.button`
+  background: #fac8d7;
+
+  :hover {
+    background-color: white;
+    border: 2px solid #fac8d7;
+    color: #fac8d7;
+  }
+`
+const StyledButtonCommit = styled.button`
+  background: #64a56e;
+
+  :hover {
+    background-color: white;
+    border: 2px solid #64a56e;
+    color: #64a56e;
+  }
 `
 
 export default function Form({
@@ -206,6 +233,7 @@ export default function Form({
   removeTag,
   playlistArray,
   playlistUpdate,
+  ad,
 }) {
   const [step, setStep] = useState(0)
 
@@ -213,7 +241,7 @@ export default function Form({
 
   function onClickPlaylistLoad(event) {
     setStep(4)
-    playlistUpdate()
+    playlistUpdate(event)
   }
 
   return (
@@ -271,7 +299,9 @@ export default function Form({
               />
             </StyledSectionTo>
           </StyledInputAreaDates>
-          <button onClick={() => setStep(1)}>Fortfahren</button>
+          <StyledButtonArea>
+            <button onClick={() => setStep(1)}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 1 ? (
@@ -378,8 +408,12 @@ export default function Form({
               style={{ color: 'white', border: 'none' }}
             />
           </StyledInputArea>
-          <button onClick={() => setStep(0)}>Zurück</button>
-          <button onClick={() => setStep(2)}>Fortfahren</button>
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(0)}>
+              Zurück
+            </StyledButtonPassiv>
+            <button onClick={() => setStep(2)}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 2 ? (
@@ -481,8 +515,12 @@ export default function Form({
               placeholder="Demografie, Interessen oder Verhalten"
             />
           </StyledInputArea>
-          <button onClick={() => setStep(1)}>Zurück</button>
-          <button onClick={() => setStep(3)}>Fortfahren</button>
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(1)}>
+              Zurück
+            </StyledButtonPassiv>
+            <button onClick={() => setStep(3)}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 3 ? (
@@ -540,8 +578,12 @@ export default function Form({
                 })
               : null}
           </StyledInputArea>
-          <button onClick={() => setStep(2)}>Zurück</button>
-          <button onClick={() => onClickPlaylistLoad()}>Fortfahren</button>
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(2)}>
+              Zurück
+            </StyledButtonPassiv>
+            <button onClick={() => onClickPlaylistLoad()}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 4 ? (
@@ -572,15 +614,56 @@ export default function Form({
             />
             <StyledHintHeadline>Erklärung TAP</StyledHintHeadline>
             <StyledHint>
-              Der Tausend-Auflagen-Preis (TAP) gibt den Geldbetrag an, wie viel
-              eine Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
+              Der Tausend-Auflagen-Preis (TAP) gibt Eurobetrag an, den eine
+              Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
             </StyledHint>
           </StyledInputArea>
-          <button onClick={() => setStep(3)}>Zurück</button>
-          <button onClick={() => setStep(5)}>Fortfahren</button>
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(3)}>
+              Zurück
+            </StyledButtonPassiv>
+            <button onClick={() => setStep(5)}>Weiter</button>
+          </StyledButtonArea>
         </React.Fragment>
       ) : null}
-      {step === 5 ? <button>Hinzufügen</button> : null}
+      {step === 5 ? (
+        <React.Fragment>
+          <Sections text="Kampagne prüfen" />
+          <StyledExplanation>
+            Deine Kampagne ist startklar, überprüfe deine Einstellungen für
+            diese Kampagne.
+          </StyledExplanation>
+          <Campaign
+            title={data.title}
+            ad={ad}
+            brand={data.brand}
+            scheduleFrom={data.scheduleFrom}
+            sheduleTo={data.scheduleTo}
+            budget={data.budget}
+            bid={data.bid}
+            format={data.format}
+            colorSchema={data.colorSchema}
+            printSpace={data.printSpace}
+            location={data.location}
+            placement={data.placement}
+            ageFrom={data.ageFrom}
+            ageTo={data.ageTo}
+            gender={data.gender}
+            tags={tagsArray}
+            step={step}
+          />
+          <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => setStep(4)}>
+              Zurück
+            </StyledButtonPassiv>
+            <StyledButtonCommit>Bestätigen</StyledButtonCommit>
+          </StyledButtonArea>
+          <StyledHint>
+            Mit Klick auf Bestätigung, wird die Kampagne auf den Marktplatz von
+            pryntad gestellt und ist ür Publisher sichtbar.
+          </StyledHint>
+        </React.Fragment>
+      ) : null}
     </PageGrid>
   )
 }

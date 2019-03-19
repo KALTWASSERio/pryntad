@@ -15,6 +15,7 @@ const PageGrid = styled.div`
   max-width: 800px;
   margin: 0 auto;
   scroll-behavior: auto;
+  padding: 14px 14px 0 14px;
 `
 
 const defaultData = {
@@ -62,7 +63,7 @@ function CreateCampaignPage(props) {
     props.onSubmit(data)
     setData(defaultData)
     setPlaylist([])
-    props.history.push('/marketplace')
+    props.history.push('/confirmation')
   }
 
   function inputKeyDown(event) {
@@ -164,6 +165,7 @@ function CreateCampaignPage(props) {
         onImageUpload={onImageUpload}
         playlistArray={playlist}
         playlistUpdate={playlistUpdate}
+        ad={ad}
       />
     </PageGrid>
   )
