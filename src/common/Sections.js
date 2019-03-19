@@ -5,7 +5,6 @@ const StyledSections = styled.div`
   display: flex;
   border-bottom: 2px solid #dcdcdc;
   height: 30px;
-  margin-top: 24px;
 `
 const StyledSectionHeadline = styled.h2`
   align-self: center;

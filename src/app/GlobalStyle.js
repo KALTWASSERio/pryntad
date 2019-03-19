@@ -87,11 +87,9 @@ input[type=file]::-webkit-file-upload-button {
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: none;
-    margin: 24px;
     color: white;
     display: inline-block;
     border: none;
-    width: 40%;
 
     :hover {
     background-color: white;

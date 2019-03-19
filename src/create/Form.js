@@ -197,6 +197,7 @@ const StyledButtonArea = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  padding: 36px;
 `
 const StyledButtonPassiv = styled.button`
   background: #fac8d7;
@@ -612,7 +613,15 @@ export default function Form({
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
-      {step === 5 ? <button>Hinzufügen</button> : null}
+
+      {step === 5 ? (
+        <StyledButtonArea>
+          <StyledButtonPassiv onClick={() => setStep(4)}>
+            Zurück
+          </StyledButtonPassiv>
+          <button>Hinzufügen</button>
+        </StyledButtonArea>
+      ) : null}
     </PageGrid>
   )
 }
