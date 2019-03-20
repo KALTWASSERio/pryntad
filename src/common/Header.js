@@ -17,6 +17,7 @@ const StyledImage = styled.img`
   display: flex;
   justify-content: center;
   height: 30px;
+  cursor: pointer;
 `
 function Header(props) {
   return (

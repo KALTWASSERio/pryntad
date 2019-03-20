@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { MdHome } from 'react-icons/md'
+import { MdList } from 'react-icons/md'
+import { MdAdd } from 'react-icons/md'
 
 const Nav = styled.nav`
   display: grid;
@@ -11,6 +14,7 @@ const Nav = styled.nav`
 
 const StyledLink = styled(NavLink)`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #28233c;
@@ -21,14 +25,24 @@ const StyledLink = styled(NavLink)`
     background: #d70064;
   }
 `
+const MenuItem = styled.h4`
+  font-size: 0.5em;
+`
 
 export default function Footer() {
   return (
     <Nav>
       <StyledLink exact to="/">
-        Dashoard
+        <MdHome size="1.5em" /> <MenuItem>Home</MenuItem>
       </StyledLink>
-      <StyledLink to="/create">Kampagne anlegen</StyledLink>
+      <StyledLink to="/create">
+        <MdAdd size="1.5em" />
+        <MenuItem>Hinzufügen</MenuItem>
+      </StyledLink>
+      <StyledLink to="/create">
+        <MdList size="1.5em" />
+        <MenuItem>Kampagnen</MenuItem>
+      </StyledLink>
     </Nav>
   )
 }
