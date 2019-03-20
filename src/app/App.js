@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import GlobalStyle from './GlobalStyle'
@@ -24,7 +24,7 @@ const Grid = styled.div`
   height: 100%;
 `
 
-const Nav = styled.nav`
+/* const Nav = styled.nav`
   display: grid;
   grid-auto-flow: column;
   grid-gap: 2px;
@@ -41,7 +41,7 @@ const StyledLink = styled(NavLink)`
   &.active {
     background: #d70064;
   }
-`
+` */
 
 function App() {
   const [campaigns, setCampaigns] = useState(getCampaignsFromStorage())
@@ -93,11 +93,15 @@ function App() {
           <Route
             exact
             path="/"
-            render={() => <CampaignsPage campaigns={campaigns} />}
+            render={props => (
+              <CampaignsPage campaigns={campaigns} props={props} />
+            )}
           />
           <Route
             path="/create"
-            render={() => <CreateCampaignPage onSubmit={createCampaign} />}
+            render={props => (
+              <CreateCampaignPage onSubmit={createCampaign} props={props} />
+            )}
           />
           <Route path="/confirmation" component={Confirmation} />
           <GlobalStyle />

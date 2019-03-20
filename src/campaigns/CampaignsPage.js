@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Campaign from './Campaign'
-import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const PageGrid = styled.div`
   display: flex;
@@ -15,6 +15,7 @@ const PageGrid = styled.div`
   }
   scroll-behavior: auto;
   padding: 14px 14px 0 14px;
+  background: white;
 `
 const Nav = styled.nav`
   display: grid;

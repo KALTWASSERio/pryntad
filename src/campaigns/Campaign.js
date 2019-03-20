@@ -50,7 +50,6 @@ const Tag = styled.li`
   font-size: 0.9em;
   font-weight: lighter;
 `
-const Item = styled.div``
 
 export default function Campaign({
   title,

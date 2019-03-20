@@ -5,6 +5,7 @@ import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
 import Campaign from '../campaigns/Campaign'
+import { Link } from 'react-router-dom'
 
 const PageGrid = styled.form`
   display: grid;
@@ -198,12 +199,16 @@ const StyledExplanation = styled.p`
 const StyledButtonArea = styled.div`
   display: grid;
   grid-template-columns: auto auto;
-  grid-column-gap: 12px;
+  grid-template-rows: auto auto;
+  grid-row-gap: 24px;
   justify-content: center;
   padding: 12px;
 `
 const StyledButtonPassiv = styled.button`
   background: #fac8d7;
+  grid-column: 1 / 1;
+  justify-content: center;
+  margin: 0 12px 0 12px;
 
   :hover {
     background-color: white;
@@ -211,8 +216,31 @@ const StyledButtonPassiv = styled.button`
     color: #fac8d7;
   }
 `
+
+const StyledButtonActive = styled.button`
+  background: #d70064;
+  justify-content: center;
+  margin: 0 12px 0 12px;
+
+  :hover {
+    background-color: white;
+    border: 2px solid #d70064;
+    color: #d70064;
+  }
+`
+
+const AbortLink = styled.div`
+  color: #dcdcdc;
+  text-decoration: underline;
+  font-size: 0.8em;
+  grid-column: 1 / -1;
+  justify-self: center;
+  cursor: pointer;
+`
+
 const StyledButtonCommit = styled.button`
   background: #64a56e;
+  margin: 0 12px 0 12px;
 
   :hover {
     background-color: white;
@@ -234,7 +262,9 @@ export default function Form({
   playlistArray,
   playlistUpdate,
   ad,
+  props,
 }) {
+  console.log(props)
   const [step, setStep] = useState(0)
 
   var NumberFormat = require('react-number-format')
@@ -300,7 +330,12 @@ export default function Form({
             </StyledSectionTo>
           </StyledInputAreaDates>
           <StyledButtonArea>
-            <button onClick={() => setStep(1)}>Weiter</button>
+            <StyledButtonActive onClick={() => setStep(1)}>
+              Weiter
+            </StyledButtonActive>
+            <AbortLink onClick={() => props.history.push('/')}>
+              Abbrechen
+            </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
@@ -412,7 +447,12 @@ export default function Form({
             <StyledButtonPassiv onClick={() => setStep(0)}>
               Zurück
             </StyledButtonPassiv>
-            <button onClick={() => setStep(2)}>Weiter</button>
+            <StyledButtonActive onClick={() => setStep(2)}>
+              Weiter
+            </StyledButtonActive>
+            <AbortLink onClick={() => props.history.push('/')}>
+              Abbrechen
+            </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
@@ -519,7 +559,12 @@ export default function Form({
             <StyledButtonPassiv onClick={() => setStep(1)}>
               Zurück
             </StyledButtonPassiv>
-            <button onClick={() => setStep(3)}>Weiter</button>
+            <StyledButtonActive onClick={() => setStep(3)}>
+              Weiter
+            </StyledButtonActive>
+            <AbortLink onClick={() => props.history.push('/')}>
+              Abbrechen
+            </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
@@ -582,7 +627,12 @@ export default function Form({
             <StyledButtonPassiv onClick={() => setStep(2)}>
               Zurück
             </StyledButtonPassiv>
-            <button onClick={() => onClickPlaylistLoad()}>Weiter</button>
+            <StyledButtonActive onClick={() => onClickPlaylistLoad()}>
+              Weiter
+            </StyledButtonActive>
+            <AbortLink onClick={() => props.history.push('/')}>
+              Abbrechen
+            </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
@@ -622,7 +672,12 @@ export default function Form({
             <StyledButtonPassiv onClick={() => setStep(3)}>
               Zurück
             </StyledButtonPassiv>
-            <button onClick={() => setStep(5)}>Weiter</button>
+            <StyledButtonActive onClick={() => setStep(5)}>
+              Weiter
+            </StyledButtonActive>
+            <AbortLink onClick={() => props.history.push('/')}>
+              Abbrechen
+            </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
@@ -658,6 +713,9 @@ export default function Form({
               Zurück
             </StyledButtonPassiv>
             <StyledButtonCommit>Bestätigen</StyledButtonCommit>
+            <AbortLink onClick={() => props.history.push('/')}>
+              Abbrechen
+            </AbortLink>
           </StyledButtonArea>
           <StyledHint>
             Mit Klick auf Bestätigung, wird die Kampagne auf den Marktplatz von

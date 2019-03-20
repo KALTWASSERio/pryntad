@@ -167,6 +167,7 @@ function CreateCampaignPage(props) {
         playlistArray={playlist}
         playlistUpdate={playlistUpdate}
         ad={ad}
+        props={props}
       />
     </PageGrid>
   )
