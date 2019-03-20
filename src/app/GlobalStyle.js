@@ -18,6 +18,7 @@ export default createGlobalStyle`
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    background: #f6f6f6;
   }
 
   h1, h2, h3, h4, h5, h6,

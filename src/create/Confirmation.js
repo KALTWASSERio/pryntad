@@ -23,6 +23,7 @@ const StyledConfirmation = styled.section`
   max-width: 800px;
   margin: 0 auto;
   align-content: center;
+  background: white;
 `
 const StyledButton = styled.button`
   justify-self: center;

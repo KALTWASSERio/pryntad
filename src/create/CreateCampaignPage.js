@@ -16,6 +16,7 @@ const PageGrid = styled.div`
   margin: 0 auto;
   scroll-behavior: auto;
   padding: 14px 14px 0 14px;
+  background: white;
 `
 
 const defaultData = {

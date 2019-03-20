@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Campaign from './Campaign'
+import { BrowserRouter as Router, NavLink, Route } from 'react-router-dom'
 
 const PageGrid = styled.div`
   display: flex;
@@ -15,13 +16,40 @@ const PageGrid = styled.div`
   scroll-behavior: auto;
   padding: 14px 14px 0 14px;
 `
+const Nav = styled.nav`
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 2px;
+  height: 48px;
+`
+
+const StyledLink = styled(NavLink)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #28233c;
+  color: white;
+  text-decoration: none;
+
+  &.active {
+    background: #d70064;
+  }
+`
 
 export default function CampaignsPage({ campaigns }) {
   return (
-    <PageGrid>
-      {campaigns.map(campaign => (
-        <Campaign {...campaign} key={campaign._id} />
-      ))}
-    </PageGrid>
+    <React.Fragment>
+      <PageGrid>
+        {campaigns.map(campaign => (
+          <Campaign {...campaign} key={campaign._id} />
+        ))}
+      </PageGrid>
+      <Nav>
+        <StyledLink exact to="/">
+          Dashoard
+        </StyledLink>
+        <StyledLink to="/create">Kampagne anlegen</StyledLink>
+      </Nav>
+    </React.Fragment>
   )
 }

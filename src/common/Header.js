@@ -7,8 +7,12 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: center;
   height: 60px;
-  border-bottom: 1px solid #dcdcdc;
+  /* border-bottom: 1px solid #dcdcdc; */
   overflow: hidden;
+  z-index: 6502;
+  /*  border-bottom: 2px solid rgba(0, 0, 0, 0.1); */
+  background: white;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 `
 const StyledImage = styled.img`
   display: flex;

@@ -16,7 +16,7 @@ import {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 60px auto 48px;
+  grid-template-rows: 60px auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -100,12 +100,6 @@ function App() {
             render={() => <CreateCampaignPage onSubmit={createCampaign} />}
           />
           <Route path="/confirmation" component={Confirmation} />
-          <Nav>
-            <StyledLink exact to="/">
-              Dashoard
-            </StyledLink>
-            <StyledLink to="/create">Kampagne anlegen</StyledLink>
-          </Nav>
           <GlobalStyle />
         </Grid>
       </Router>

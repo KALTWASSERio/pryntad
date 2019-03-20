@@ -9,6 +9,7 @@ const StyledCampaign = styled.section`
   border-radius: 8px;
   margin-bottom: 12px;
   box-shadow: 0 2px 4px #a0a09b;
+  background: white;
 `
 
 const StyledCampaignLabels = styled.div`

@@ -650,6 +650,7 @@ export default function Form({
             ageTo={data.ageTo}
             gender={data.gender}
             tags={tagsArray}
+            playlist={playlistArray}
             step={step}
           />
           <StyledButtonArea>
