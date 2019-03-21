@@ -35,7 +35,7 @@ export default function Footer() {
       <StyledLink exact to="/">
         <MdHome size="1.4em" /> <MenuItem>Home</MenuItem>
       </StyledLink>
-      <StyledLink to="/create">
+      <StyledLink to="/dashboard">
         <MdList size="1.4em" />
         <MenuItem>Kampagnen</MenuItem>
       </StyledLink>

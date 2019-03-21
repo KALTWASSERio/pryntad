@@ -98,6 +98,12 @@ function App() {
             )}
           />
           <Route
+            path="/dashboard"
+            render={props => (
+              <CampaignsPage campaigns={campaigns} props={props} />
+            )}
+          />
+          <Route
             path="/create"
             render={props => (
               <CreateCampaignPage onSubmit={createCampaign} props={props} />
