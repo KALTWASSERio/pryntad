@@ -2,12 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
 
-const StyledCampaign = styled.section`
+const StyledCampaign = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto 160px auto;
   border-radius: 8px;
   margin-bottom: 12px;
+  padding-bottom: 12px;
   box-shadow: 0 2px 4px #a0a09b;
   background: white;
 `
@@ -19,13 +20,13 @@ const StyledCampaignLabels = styled.div`
   text-transform: uppercase;
   color: #dcdcdc;
   align-self: center;
-  margin: 12px;
+  margin: 4px 12px 4px 12px;
 `
 
 const StyledCampaignContents = styled.div`
   font-size: 0.9em;
   grid-column: 2 / 7;
-  margin: 12px;
+  margin: 4px 12px 4px 12px;
 `
 
 const StyledAd = styled.div`
@@ -102,30 +103,30 @@ export default function Campaign({
         {dayjs(scheduleFrom).format('DD/MM/YYYY')} -{' '}
         {dayjs(scheduleTo).format('DD/MM/YYYY')}
       </StyledCampaignContents>
-      <StyledCampaignLabels>Budget (Gesamt)</StyledCampaignLabels>
+      <StyledCampaignLabels>Budget</StyledCampaignLabels>
       <StyledCampaignContents>
         <NumberFormat
           value={budget}
           displayType={'text'}
           thousandSeparator={true}
           decimalSeparator={'.'}
-          suffix={' € EUR'}
+          suffix={' € EUR (Gesamt)'}
         />
       </StyledCampaignContents>
-      <StyledCampaignLabels>Gebot (TAP)</StyledCampaignLabels>
+      <StyledCampaignLabels>Gebot</StyledCampaignLabels>
       <StyledCampaignContents>
         <NumberFormat
           value={bid}
           displayType={'text'}
           thousandSeparator={true}
           decimalSeparator={'.'}
-          suffix={' € EUR'}
+          suffix={' € EUR (TAP)'}
         />
       </StyledCampaignContents>
-      <StyledCampaignLabels>Format (Farbigkeit)</StyledCampaignLabels>
-      <StyledCampaignContents>
-        {format} ({colorSchema})
-      </StyledCampaignContents>
+      <StyledCampaignLabels>Format</StyledCampaignLabels>
+      <StyledCampaignContents>{format}</StyledCampaignContents>
+      <StyledCampaignLabels>Farbschema</StyledCampaignLabels>
+      <StyledCampaignContents>{colorSchema}</StyledCampaignContents>
       <StyledCampaignLabels>Satzspiegel</StyledCampaignLabels>
       <StyledCampaignContents>{printSpace}</StyledCampaignContents>
       <StyledCampaignLabels>Platzierung</StyledCampaignLabels>

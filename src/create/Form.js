@@ -5,13 +5,13 @@ import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
 import Campaign from '../campaigns/Campaign'
-import { Link } from 'react-router-dom'
+/* import { MdClose } from 'react-icons/md' */
 
 const PageGrid = styled.form`
   display: grid;
   grid-gap: 12px;
   @media (max-width: 800px) {
-    margin: 12px;
+    position: 'relative';
   }
 `
 
@@ -20,21 +20,19 @@ const StyledInputArea = styled.section`
   flex-direction: column;
 `
 
-const StyledInputAreaDates = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-`
+/* const StyledInputAreaDates = styled.section`
+  display: flex;
+  grid-template-columns: row;
+` */
 
 const StyledSectionFrom = styled.section`
   display: flex;
   flex-direction: column;
-  margin-right: 6px;
 `
 
 const StyledSectionTo = styled.section`
   display: flex;
   flex-direction: column;
-  margin-left: 6px;
 `
 
 const StyledLabel = styled.label`
@@ -177,13 +175,13 @@ const StyledCirculation = styled.div`
 `
 
 const StyledHintHeadline = styled.h3`
-  color: #dcdcdc;
+  color: #a0a09b;
   font-size: 0.9em;
   font-weight: bold;
   margin-top: 12px;
 `
 const StyledHint = styled.p`
-  color: #dcdcdc;
+  color: #a0a09b;
   font-size: 0.8em;
   line-height: 1.5em;
   @media (min-width: 800px) {
@@ -196,19 +194,19 @@ const StyledExplanation = styled.p`
   font-size: 1em;
   line-height: 1.5em;
 `
+
 const StyledButtonArea = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
-  grid-row-gap: 24px;
-  justify-content: center;
-  padding: 12px;
+  grid-gap: 24px;
+  margin-top: 24px;
+  justify-self: center;
 `
 const StyledButtonPassiv = styled.button`
   background: #fac8d7;
-  grid-column: 1 / 1;
+  border: 2px solid #fac8d7;
   justify-content: center;
-  margin: 0 12px 0 12px;
 
   :hover {
     background-color: white;
@@ -219,8 +217,8 @@ const StyledButtonPassiv = styled.button`
 
 const StyledButtonActive = styled.button`
   background: #d70064;
-  justify-content: center;
-  margin: 0 12px 0 12px;
+  border: 2px solid #d70064;
+  justify-self: stretch;
 
   :hover {
     background-color: white;
@@ -240,7 +238,8 @@ const AbortLink = styled.div`
 
 const StyledButtonCommit = styled.button`
   background: #64a56e;
-  margin: 0 12px 0 12px;
+  border: 2px solid #64a56e;
+  justify-content: space-evenly;
 
   :hover {
     background-color: white;
@@ -275,9 +274,16 @@ export default function Form({
   }
 
   return (
-    <PageGrid onSubmit={onSubmit}>
+    <PageGrid onSubmit={onSubmit} style={{ position: 'relative' }}>
       {step === 0 ? (
         <React.Fragment>
+          {/*  <MdClose
+            style={{ position: 'absolute', right: '-4', top: '-2' }}
+            size="1.9em"
+            color="#28233c"
+            onClick={() => props.history.push('/')}
+          /> */}
+
           <Sections text="1. Kampagne erstellen" />
           <StyledInputArea>
             <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
@@ -301,46 +307,52 @@ export default function Form({
               placeholder="Brand"
             />
           </StyledInputArea>
-          <StyledInputAreaDates>
-            <StyledSectionFrom>
-              <StyledLabel htmlFor="schedule__input__from">
-                Zeitraum (von)
-              </StyledLabel>
-              <input
-                name="scheduleFrom"
-                id="schedule__input__from"
-                onInput={onInputChange}
-                type="date"
-                value={data.scheduleFrom}
-                required
-              />
-            </StyledSectionFrom>
-            <StyledSectionTo>
-              <StyledLabel htmlFor="schedule__input__to">
-                Zeitraum (bis)
-              </StyledLabel>
-              <input
-                name="scheduleTo"
-                id="schedule__input__to"
-                onInput={onInputChange}
-                type="date"
-                value={data.scheduleTo}
-                required
-              />
-            </StyledSectionTo>
-          </StyledInputAreaDates>
+
+          <StyledSectionFrom>
+            <StyledLabel htmlFor="schedule__input__from">
+              Zeitraum (von)
+            </StyledLabel>
+            <input
+              name="scheduleFrom"
+              id="schedule__input__from"
+              onInput={onInputChange}
+              type="date"
+              value={data.scheduleFrom}
+              required
+            />
+          </StyledSectionFrom>
+          <StyledSectionTo>
+            <StyledLabel htmlFor="schedule__input__to">
+              Zeitraum (bis)
+            </StyledLabel>
+            <input
+              name="scheduleTo"
+              id="schedule__input__to"
+              onInput={onInputChange}
+              type="date"
+              value={data.scheduleTo}
+              required
+            />
+          </StyledSectionTo>
+
           <StyledButtonArea>
+            <StyledButtonPassiv onClick={() => props.history.push('/')}>
+              Zurück
+            </StyledButtonPassiv>
             <StyledButtonActive onClick={() => setStep(1)}>
               Weiter
             </StyledButtonActive>
-            <AbortLink onClick={() => props.history.push('/')}>
-              Abbrechen
-            </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
       {step === 1 ? (
         <React.Fragment>
+          {/* <MdClose
+            style={{ position: 'absolute', right: '-4', top: '-2' }}
+            size="1.9em"
+            color="#28233c"
+            onClick={() => props.history.push('/')}
+          /> */}
           <Sections text="2. Werbemittel" />
           <Select onChange={onInputChange} name="format" value={data.format} />
           <SelectPlacement
@@ -458,6 +470,12 @@ export default function Form({
       ) : null}
       {step === 2 ? (
         <React.Fragment>
+          {/* <MdClose
+            style={{ position: 'absolute', right: '-4', top: '-2' }}
+            size="1.9em"
+            color="#28233c"
+            onClick={() => props.history.push('/')}
+          /> */}
           <Sections text="3. Zielgruppe definieren" />
           <StyledInputArea>
             <StyledLabel htmlFor="location__input">Ort</StyledLabel>
@@ -470,34 +488,33 @@ export default function Form({
               placeholder="Orte"
             />
           </StyledInputArea>
-          <StyledInputAreaDates>
-            <StyledSectionFrom>
-              <StyledLabel htmlFor="age__input__from">Alter (ab)</StyledLabel>
-              <input
-                name="ageFrom"
-                id="age__input__from"
-                onInput={onInputChange}
-                type="number"
-                min="10"
-                placeholder="min. 10 Jahre"
-                value={data.ageFrom}
-                required
-              />
-            </StyledSectionFrom>
-            <StyledSectionTo>
-              <StyledLabel htmlFor="age__input__to">Alter (bis)</StyledLabel>
-              <input
-                name="ageTo"
-                id="age__input__to"
-                onInput={onInputChange}
-                type="number"
-                max="65+"
-                placeholder="max. 65+ Jahre"
-                value={data.ageTo}
-                required
-              />
-            </StyledSectionTo>
-          </StyledInputAreaDates>
+
+          <StyledSectionFrom>
+            <StyledLabel htmlFor="age__input__from">Alter (ab)</StyledLabel>
+            <input
+              name="ageFrom"
+              id="age__input__from"
+              onInput={onInputChange}
+              type="number"
+              min="10"
+              placeholder="min. 10 Jahre"
+              value={data.ageFrom}
+              required
+            />
+          </StyledSectionFrom>
+          <StyledSectionTo>
+            <StyledLabel htmlFor="age__input__to">Alter (bis)</StyledLabel>
+            <input
+              name="ageTo"
+              id="age__input__to"
+              onInput={onInputChange}
+              type="number"
+              max="65+"
+              placeholder="max. 65+ Jahre"
+              value={data.ageTo}
+              required
+            />
+          </StyledSectionTo>
           <StyledRadioAreas>
             <StyledRadioHeadline>Geschlecht</StyledRadioHeadline>
             <StyledRadioInputGrid>
@@ -570,6 +587,12 @@ export default function Form({
       ) : null}
       {step === 3 ? (
         <React.Fragment>
+          {/* <MdClose
+            style={{ position: 'absolute', right: '-4', top: '-2' }}
+            size="1.9em"
+            color="#28233c"
+            onClick={() => props.history.push('/')}
+          /> */}
           <Sections text="4. Publisher-Playlist" />
           <StyledInputArea>
             <StyledExplanation>
@@ -623,6 +646,10 @@ export default function Form({
                 })
               : null}
           </StyledInputArea>
+          <StyledHint>
+            Mit Klick auf Weiter bestätigst du deine Playlist. Alle Publisher
+            dieser Playlist werden dein Angebot einsehen und annehmen können.
+          </StyledHint>
           <StyledButtonArea>
             <StyledButtonPassiv onClick={() => setStep(2)}>
               Zurück
@@ -638,6 +665,12 @@ export default function Form({
       ) : null}
       {step === 4 ? (
         <React.Fragment>
+          {/* <MdClose
+            style={{ position: 'absolute', right: '-4', top: '-2' }}
+            size="1.9em"
+            color="#28233c"
+            onClick={() => props.history.push('/')}
+          /> */}
           <Sections text="5. Budget" />
           <StyledInputArea>
             <StyledLabel htmlFor="budget__input">Budget (€)</StyledLabel>
@@ -660,12 +693,11 @@ export default function Form({
               value={data.bid}
               type="number"
               min="1"
-              placeholder="TAP in € EUR"
+              placeholder="TAP* in € EUR"
             />
-            <StyledHintHeadline>Erklärung TAP</StyledHintHeadline>
             <StyledHint>
-              Der Tausend-Auflagen-Preis (TAP) gibt Eurobetrag an, den eine
-              Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
+              *Der Tausend-Auflagen-Preis (TAP) gibt den Eurobetrag an, wie viel
+              eine Anzeige für 1.000 Exemplare eines Werbeträgers kostet.
             </StyledHint>
           </StyledInputArea>
           <StyledButtonArea>
@@ -683,6 +715,12 @@ export default function Form({
       ) : null}
       {step === 5 ? (
         <React.Fragment>
+          {/* <MdClose
+            style={{ position: 'absolute', right: '-4', top: '-2' }}
+            size="1.9em"
+            color="#28233c"
+            onClick={() => props.history.push('/')}
+          /> */}
           <Sections text="Kampagne prüfen" />
           <StyledExplanation>
             Deine Kampagne ist startklar, überprüfe deine Einstellungen für
@@ -708,6 +746,10 @@ export default function Form({
             playlist={playlistArray}
             step={step}
           />
+          <StyledHint>
+            Mit Klick auf Bestätigung, wird die Kampagne auf den Marktplatz von
+            pryntad gestellt und ist ür Publisher sichtbar.
+          </StyledHint>
           <StyledButtonArea>
             <StyledButtonPassiv onClick={() => setStep(4)}>
               Zurück
@@ -717,10 +759,6 @@ export default function Form({
               Abbrechen
             </AbortLink>
           </StyledButtonArea>
-          <StyledHint>
-            Mit Klick auf Bestätigung, wird die Kampagne auf den Marktplatz von
-            pryntad gestellt und ist ür Publisher sichtbar.
-          </StyledHint>
         </React.Fragment>
       ) : null}
     </PageGrid>

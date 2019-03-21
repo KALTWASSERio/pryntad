@@ -10,13 +10,16 @@ const PageGrid = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
   scroll-behavior: auto;
   padding: 14px 14px 0 14px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
   background: white;
+  z-index: -1;
 `
 
 const defaultData = {
