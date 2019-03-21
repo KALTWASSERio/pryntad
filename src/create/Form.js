@@ -5,7 +5,7 @@ import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
 import Campaign from '../campaigns/Campaign'
-/* import { MdClose } from 'react-icons/md' */
+import { MdClose } from 'react-icons/md'
 
 const PageGrid = styled.form`
   display: grid;
@@ -252,6 +252,7 @@ export default function Form({
   onImageUpload,
   inputKeyDown,
   removeTag,
+  removePublisher,
   playlistArray,
   playlistUpdate,
   ad,
@@ -596,36 +597,35 @@ export default function Form({
             </StyledExplanation>
 
             {playlistArray
-              ? playlistArray.map(publisherDetail => {
+              ? playlistArray.map((publisher, i) => {
                   return (
                     <React.Fragment>
-                      <StyledPlaylistEntry>
+                      <StyledPlaylistEntry key={publisher.id}>
                         <StyledPlaylistImage
-                          src={publisherDetail.product_image}
-                          alt={publisherDetail.product_title}
+                          src={publisher.product_image}
+                          alt={publisher.product_title}
                         />
-                        <StyledPlaylistProduct key={publisherDetail.id}>
+                        <StyledPlaylistProduct>
                           <StyledProduct>
-                            {publisherDetail.product_title}
+                            {publisher.product_title}
                           </StyledProduct>
                           <StyledPublisher>
-                            {publisherDetail.publisher}
+                            {publisher.publisher}
                           </StyledPublisher>
                         </StyledPlaylistProduct>
                         <StyledPlaylistProductDetail>
                           <StyledReach>
                             <NumberFormat
-                              value={publisherDetail.reach}
+                              value={publisher.reach}
                               displayType={'text'}
                               thousandSeparator={true}
                               decimalSeparator={'.'}
                               prefix={'Reichweite Gesamt: '}
                             />
                           </StyledReach>
-
                           <StyledCirculation>
                             <NumberFormat
-                              value={publisherDetail.paid_circulation}
+                              value={publisher.paid_circulation}
                               displayType={'text'}
                               thousandSeparator={true}
                               decimalSeparator={'.'}
@@ -633,6 +633,7 @@ export default function Form({
                             />
                           </StyledCirculation>
                         </StyledPlaylistProductDetail>
+                        <MdClose onClick={() => removePublisher(i)} />
                       </StyledPlaylistEntry>
                       <StyledDivider />
                     </React.Fragment>
