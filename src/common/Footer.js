@@ -26,22 +26,22 @@ const StyledLink = styled(NavLink)`
   }
 `
 const MenuItem = styled.h4`
-  font-size: 0.5em;
+  font-size: 0.7em;
 `
 
 export default function Footer() {
   return (
     <Nav>
       <StyledLink exact to="/">
-        <MdHome size="1.5em" /> <MenuItem>Home</MenuItem>
+        <MdHome size="1.4em" /> <MenuItem>Home</MenuItem>
       </StyledLink>
       <StyledLink to="/create">
-        <MdAdd size="1.5em" />
-        <MenuItem>Hinzufügen</MenuItem>
-      </StyledLink>
-      <StyledLink to="/create">
-        <MdList size="1.5em" />
+        <MdList size="1.4em" />
         <MenuItem>Kampagnen</MenuItem>
+      </StyledLink>
+      <StyledLink to="/create">
+        <MdAdd size="1.4em" />
+        <MenuItem>Hinzufügen</MenuItem>
       </StyledLink>
     </Nav>
   )

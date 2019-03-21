@@ -19,7 +19,6 @@ const StyledConfirmation = styled.section`
   border-radius: 8px;
   padding: 14px;
   box-shadow: 0 2px 4px #a0a09b;
-  max-height: 40vh;
   max-width: 800px;
   margin: 0 auto;
   align-content: center;

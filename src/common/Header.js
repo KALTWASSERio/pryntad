@@ -9,9 +9,10 @@ const StyledHeader = styled.header`
   justify-content: center;
   height: 60px;
   overflow: hidden;
-  z-index: 6502;
-  background: white;
+  background: white !important;
+  z-index: 10;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  position: relative;
 `
 const StyledImage = styled.img`
   display: flex;

@@ -10,6 +10,7 @@ export default createGlobalStyle`
     font-size: 16px;
     color: #28233c;
     line-height: 1.5em;
+    background: #f6f6f6;
   }
 
 
@@ -18,7 +19,6 @@ export default createGlobalStyle`
     width: 100%;
     height: 100%;
     overflow-x: hidden;
-    background: #f6f6f6;
   }
 
   h1, h2, h3, h4, h5, h6,
@@ -36,7 +36,7 @@ export default createGlobalStyle`
     background: white;
     padding-left: 4px;
     width: 100%;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: lighter; 
     min-height: 1.5em;
     left: -9999px;
@@ -94,13 +94,13 @@ input[type=file]::-webkit-file-upload-button {
   button {
     background-color: #d70064;
     border-radius: 8px;
-    padding: 12px 24px;
+    padding: 8px 16px;
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: none;
     color: white;
     display: inline-block;
-    border: none;
+    border: 1px solid #d70064;
 
     :hover {
     background-color: white;

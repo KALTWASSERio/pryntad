@@ -16,7 +16,7 @@ import {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 60px auto;
+  grid-template-rows: 60px 1fr;
   position: fixed;
   top: 0;
   left: 0;
