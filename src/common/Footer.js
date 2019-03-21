@@ -10,6 +10,7 @@ const Nav = styled.nav`
   grid-auto-flow: column;
   grid-gap: 2px;
   height: 48px;
+  border-top: 2px solid white;
 `
 
 const StyledLink = styled(NavLink)`

@@ -87,6 +87,11 @@ function App() {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="../assets/fonts/MyFontsWebfontsKit.css"
+        />
       </Helmet>
       <Router>
         <Grid>

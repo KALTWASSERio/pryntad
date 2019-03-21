@@ -174,12 +174,6 @@ const StyledCirculation = styled.div`
   }
 `
 
-const StyledHintHeadline = styled.h3`
-  color: #a0a09b;
-  font-size: 0.9em;
-  font-weight: bold;
-  margin-top: 12px;
-`
 const StyledHint = styled.p`
   color: #a0a09b;
   font-size: 0.8em;
