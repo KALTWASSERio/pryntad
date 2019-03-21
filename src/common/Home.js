@@ -1,12 +1,14 @@
 import React from 'react'
 import Footer from './Footer'
-import Element from '../images/Element-1.svg'
 import styled from 'styled-components'
+import Plattform from '../images/pryntad-plattform-white.png'
+import { withRouter } from 'react-router'
 
 const PageGrid = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr auto auto;
   overflow-y: scroll;
+  justify-content: center;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
@@ -15,28 +17,39 @@ const PageGrid = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
-  background: white;
-  z-index: -1;
+  background: #d70064;
 `
 
-export default function() {
-  const SVG = () => (
-    <svg
-      width="100%"
-      height="100%"
-      viewBox="0 0 32 32"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-    >
-      <path d="Element" fill="#000" />
-    </svg>
-  )
+const StyledImage = styled.img`
+justify-self: center;
+  height: 50vh;
+  width: 50vh;
+  grid-row: 1 / 2;
+`
+const StyledButton = styled.button`
+  background: #d70064;
+  border: 2px solid white;
+  justify-self: center;
+  padding: 8px 16px;
+  margin-bottom: 72px;
+
+  :hover {
+    background-color: white;
+    border: 2px solid #d70064;
+    color: #d70064;
+  }
+`
+
+function Home(props) {
   return (
     <React.Fragment>
       <PageGrid>
-        <div>{SVG}</div>
+        <StyledImage src={Plattform} alt="" />
+        <h1 style={{color: "white", textAlign: "center", fontSize: "2em"}}> Printwerbung einfach und effizient buchen </h1>
+        <StyledButton onClick={() => props.history.push('/create')}> Kampagne anlegen </StyledButton>
       </PageGrid>
-      <Footer />
     </React.Fragment>
   )
 }
+
+export default withRouter(Home)
