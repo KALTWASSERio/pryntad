@@ -3,6 +3,7 @@ import Footer from './Footer'
 import styled from 'styled-components'
 import Plattform from '../images/pryntad-plattform-white.png'
 import { withRouter } from 'react-router'
+import '../assets/fonts/MyFontsWebfontsKit.css'
 
 const PageGrid = styled.div`
   display: grid;
@@ -21,7 +22,7 @@ const PageGrid = styled.div`
 `
 
 const StyledImage = styled.img`
-justify-self: center;
+  justify-self: center;
   height: 50vh;
   width: 50vh;
   grid-row: 1 / 2;
@@ -40,14 +41,25 @@ const StyledButton = styled.button`
   }
 `
 
+const StyledTitle = styled.h1`
+  font-family: HurmeGeometricSans3-Bold;
+  font-weight: normal;
+  font-size: normal;
+`
+
 function Home(props) {
   return (
     <React.Fragment>
       <PageGrid>
         <StyledImage src={Plattform} alt="" />
-        <h1 style={{color: "white", textAlign: "center", fontSize: "2em"}}> Printwerbung einfach und effizient buchen </h1>
-        <StyledButton onClick={() => props.history.push('/create')}> Kampagne anlegen </StyledButton>
+        <StyledTitle
+          style={{ color: 'white', textAlign: 'center', fontSize: '2em' }}
+        >
+          Printwerbung einfach und effizient buchen
+        </StyledTitle>
+        {/* <StyledButton onClick={() => props.history.push('/create')}> Kampagne anlegen </StyledButton> */}
       </PageGrid>
+      <Footer />
     </React.Fragment>
   )
 }

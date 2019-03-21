@@ -1,0 +1,32 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3737461, 2019-03-21T11:13:59-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: HurmeGeometricSans3-Bold by Hurme
+ * URL: https://www.myfonts.com/fonts/hurme/geometric-sans-3/bold/
+ * Copyright: Copyright (c) 2012 by Toni Hurme. All rights reserved.
+ * Licensed pageviews: 1,010,000
+ * 
+ * 
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3737461
+ * 
+ * © 2019 MyFonts Inc
+*/
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url('//hello.myfonts.net/count/390775');
+
+@font-face {
+  font-family: 'HurmeGeometricSans3-Bold';
+  src: url('390775_0_0.eot');
+  src: url('390775_0_0.eot?#iefix') format('embedded-opentype'),
+    url('390775_0_0.woff2') format('woff2'),
+    url('390775_0_0.woff') format('woff'),
+    url('390775_0_0.ttf') format('truetype');
+}
