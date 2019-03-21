@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import GlobalStyle from './GlobalStyle'
 import Header from '../common/Header'
+import Home from '../common/Home'
 import CampaignsPage from '../campaigns/CampaignsPage'
 import CreateCampaignPage from '../create/CreateCampaignPage'
 import Confirmation from '../create/Confirmation'
@@ -90,13 +91,7 @@ function App() {
       <Router>
         <Grid>
           <Header />
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <CampaignsPage campaigns={campaigns} props={props} />
-            )}
-          />
+          <Route exact path="/" component={Home} />
           <Route
             path="/dashboard"
             render={props => (
