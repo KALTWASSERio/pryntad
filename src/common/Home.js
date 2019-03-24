@@ -7,7 +7,7 @@ import '../assets/fonts/MyFontsWebfontsKit.css'
 
 const PageGrid = styled.div`
   display: grid;
-  grid-template-rows: 1fr 1fr auto auto;
+  grid-template-rows: 1fr auto 1fr auto;
   overflow-y: scroll;
   justify-content: center;
   width: 100%;
@@ -27,24 +27,24 @@ const StyledImage = styled.img`
   width: 50vh;
   grid-row: 1 / 2;
 `
-const StyledButton = styled.button`
-  background: #d70064;
-  border: 2px solid white;
-  justify-self: center;
-  padding: 8px 16px;
-  margin-bottom: 72px;
-
-  :hover {
-    background-color: white;
-    border: 2px solid #d70064;
-    color: #d70064;
-  }
-`
-
 const StyledTitle = styled.h1`
   font-family: HurmeGeometricSans3-Bold;
   font-weight: normal;
   font-size: normal;
+`
+
+const StyledInfoText = styled.div`
+  font-size: 1.2em;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  text-align: center;
+  line-height: 1.5em;
+  padding: 12px;
+  margin: 0 64px;
+
+@media (max-width: 560px) {
+    display: none;
+  }
 `
 
 function Home(props) {
@@ -52,12 +52,15 @@ function Home(props) {
     <React.Fragment>
       <PageGrid>
         <StyledImage src={Plattform} alt="" />
+        <section>
         <StyledTitle
           style={{ color: 'white', textAlign: 'center', fontSize: '2em' }}
         >
           Printwerbung einfach und effizient buchen
-        </StyledTitle>
-        {/* <StyledButton onClick={() => props.history.push('/create')}> Kampagne anlegen </StyledButton> */}
+          </StyledTitle>
+        <StyledInfoText><p>pryntad bringt Advertiser, Agenturen und Publisher auf einem digitalen Marktplatz zusammen.</p> 
+        <p>Anzeigenbuchungen werden gegen Gebot und Targeting möglich. Publisher, deren Titel matchen, entscheiden, welche Gebote sie annehmen.</p></StyledInfoText>
+        </section>
       </PageGrid>
       <Footer />
     </React.Fragment>

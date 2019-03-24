@@ -37,9 +37,9 @@ export default function Confirmation(props) {
         <h3>Deine Kampagne wurde erfolgreich erstellt!</h3>
         <p>
           Sie ist nun für alle Publisher des pryntad-Marktplatzes sichtbar, die
-          deinem Zielgruppen und Keyword-targeting entsprechen.
+          deinem Zielgruppen und Keywordtargeting entsprechen.
         </p>
-        <StyledButton onClick={() => props.history.push('/')}>
+        <StyledButton onClick={() => props.history.push('/dashboard')}>
           Zum Dashboard
         </StyledButton>
       </StyledConfirmation>

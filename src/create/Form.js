@@ -265,7 +265,7 @@ export default function Form({
 
   function onClickPlaylistLoad(event) {
     setStep(4)
-    playlistUpdate(event)
+    playlistUpdate()
   }
 
   return (
@@ -588,12 +588,12 @@ export default function Form({
             color="#28233c"
             onClick={() => props.history.push('/')}
           /> */}
-          <Sections text="4. Publisher-Playlist" />
+          <Sections text="4. Titel-Playlist" />
           <StyledInputArea>
             <StyledExplanation>
-              Deine Publisher Playlist wird auf Basis deiner
-              Kampagneninformationen erzeugt und zeigt alle Printerzeugnisse,
-              die zu deinem Targeting matchen.
+              Deine Titel-Playlist wird auf Basis deiner Kampagneninformationen
+              erzeugt und zeigt alle Printerzeugnisse, die zu deinem Targeting
+              matchen.
             </StyledExplanation>
 
             {playlistArray
