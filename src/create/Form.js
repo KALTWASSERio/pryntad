@@ -110,20 +110,22 @@ const StyledPlaylistImage = styled.img`
 const StyledPlaylistProduct = styled.div`
   margin: 0;
   grid-column: 2 / 3;
+  grid-row: 1/ -1;
   @media (max-width: 560px) {
-    grid-column: 2 / 5;
+    grid-column: 2 / 3;
   }
 `
 
 const StyledPlaylistProductDetail = styled.div`
   color: #28233c;
   font-size: 1em;
-  font-weight: bold;
+  grid-row: 1 / 2;
   grid-column: 3 / 5;
   grid-gap: 12px;
 
   @media (max-width: 560px) {
     grid-column: 2 / 4;
+    grid-row: 2 / 3;
   }
 `
 
@@ -131,6 +133,7 @@ const StyledProduct = styled.h3`
   color: #28233c;
   font-size: 1.5em;
   font-weight: bold;
+  grid-row: 1 / -1;
   margin-bottom: 12px;
 
   @media (max-width: 560px) {
@@ -143,6 +146,7 @@ const StyledPublisher = styled.div`
   font-size: 0.8em;
   text-transform: uppercase;
   color: #d70064;
+  grid-row: 1 / 1;
   margin-bottom: 12px;
 
   @media (max-width: 560px) {
@@ -241,6 +245,21 @@ const StyledButtonCommit = styled.button`
     color: #64a56e;
   }
 `
+const StyledDelete = styled.div`
+  display: flex;
+  align-self: flex-start;
+  justify-self: flex-end;
+  grid-row: 1 / 2;
+  grid-column: 4 / 5;
+
+  @media (max-width: 600px) {
+    grid-gap: 2px;
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    align-self: flex-start;
+    justify-self: flex-end;
+  }
+`
 
 export default function Form({
   tagsInput,
@@ -337,6 +356,9 @@ export default function Form({
             <StyledButtonActive onClick={() => setStep(1)}>
               Weiter
             </StyledButtonActive>
+            <AbortLink onClick={() => props.history.push('/')}>
+              Abbrechen
+            </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
@@ -633,7 +655,13 @@ export default function Form({
                             />
                           </StyledCirculation>
                         </StyledPlaylistProductDetail>
-                        <MdClose onClick={() => removePublisher(i)} />
+                        <StyledDelete>
+                          <MdClose
+                            color="#dc695a"
+                            size="1.5em"
+                            onClick={() => removePublisher(i)}
+                          />
+                        </StyledDelete>
                       </StyledPlaylistEntry>
                       <StyledDivider />
                     </React.Fragment>
