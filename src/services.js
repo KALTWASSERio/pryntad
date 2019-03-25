@@ -1,6 +1,6 @@
 import axios from 'axios'
 const ip = process.env.REACT_APP_BACKEND_IP
-const campaignsPath = `http://172.16.100.74:4000/campaigns`
+const campaignsPath = `http://${ip}:4000/campaigns`
 
 export function getAllCampaigns() {
   return axios.get(campaignsPath)

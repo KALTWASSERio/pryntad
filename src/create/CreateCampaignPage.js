@@ -103,7 +103,7 @@ function CreateCampaignPage(props) {
     })
   }
 
-  function playlistUpdate() {
+  function playlistUpdate(event) {
     setPlaylist(
       publisher
         .filter(publisherDetail =>
