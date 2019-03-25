@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
 import { Link } from 'react-router-dom'
+import { MdKeyboardArrowRight } from 'react-icons/md'
 
 const StyledCampaign = styled.div`
   display: grid;
@@ -32,6 +33,14 @@ const StyledCampaignContents = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+`
+const StyledDetail = styled.div`
+  background: #d70064;
+  color: white;
+  font-size: bold;
+  grid-column: 6 / 7;
+  grid-row: 1/ -1;
+  align-items: center;
 `
 
 export default function CampaignListItem({
@@ -80,6 +89,10 @@ export default function CampaignListItem({
             suffix={' € EUR (TAP)'}
           />
         </StyledCampaignContents>
+        <StyledDetail>
+          Details
+          <MdKeyboardArrowRight color="white" size="1.5em" />
+        </StyledDetail>
       </StyledCampaign>
     </StyledLink>
   )
