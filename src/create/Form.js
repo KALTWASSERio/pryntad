@@ -282,9 +282,10 @@ export default function Form({
 
   var NumberFormat = require('react-number-format')
 
-  function onClickPlaylistLoad(event) {
-    setStep(4)
+  function onClickPlaylistLoad() {
+    setStep(3)
     playlistUpdate()
+    console.log('Klick')
   }
 
   return (
@@ -593,7 +594,7 @@ export default function Form({
             <StyledButtonPassiv onClick={() => setStep(1)}>
               Zurück
             </StyledButtonPassiv>
-            <StyledButtonActive onClick={() => setStep(3)}>
+            <StyledButtonActive onClick={() => onClickPlaylistLoad()}>
               Weiter
             </StyledButtonActive>
             <AbortLink onClick={() => props.history.push('/')}>
@@ -677,7 +678,7 @@ export default function Form({
             <StyledButtonPassiv onClick={() => setStep(2)}>
               Zurück
             </StyledButtonPassiv>
-            <StyledButtonActive onClick={() => onClickPlaylistLoad()}>
+            <StyledButtonActive onClick={() => setStep(4)}>
               Weiter
             </StyledButtonActive>
             <AbortLink onClick={() => props.history.push('/')}>
