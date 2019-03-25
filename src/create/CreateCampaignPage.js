@@ -56,7 +56,6 @@ function CreateCampaignPage(props) {
 
   function onTagsInputChange(event) {
     setTagsInput(event.target.value)
-    playlistUpdate()
   }
 
   function onSubmit(event) {
@@ -82,7 +81,6 @@ function CreateCampaignPage(props) {
       }
       setTags([...tags, val])
       setTagsInput('')
-      playlistUpdate()
     }
   }
 
@@ -90,7 +88,12 @@ function CreateCampaignPage(props) {
     const newTags = [...tags]
     newTags.splice(i, 1)
     setTags(newTags)
-    playlistUpdate()
+  }
+
+  function removePublisher(i) {
+    const newPublisher = [...playlist]
+    newPublisher.splice(i, 1)
+    setPlaylist(newPublisher)
   }
 
   function onInputChange(event) {
@@ -98,10 +101,9 @@ function CreateCampaignPage(props) {
       ...data,
       [event.target.name]: event.target.value,
     })
-    playlistUpdate()
   }
 
-  function playlistUpdate() {
+  function playlistUpdate(event) {
     setPlaylist(
       publisher
         .filter(publisherDetail =>
@@ -162,6 +164,7 @@ function CreateCampaignPage(props) {
         onSubmit={onSubmit}
         inputKeyDown={inputKeyDown}
         removeTag={removeTag}
+        removePublisher={removePublisher}
         onTagsInputChange={onTagsInputChange}
         tagsInput={tagsInput}
         tagsArray={tags}

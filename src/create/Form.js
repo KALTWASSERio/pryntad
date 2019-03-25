@@ -5,7 +5,7 @@ import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
 import Campaign from '../campaigns/Campaign'
-/* import { MdClose } from 'react-icons/md' */
+import { MdClose } from 'react-icons/md'
 
 const PageGrid = styled.form`
   display: grid;
@@ -110,20 +110,22 @@ const StyledPlaylistImage = styled.img`
 const StyledPlaylistProduct = styled.div`
   margin: 0;
   grid-column: 2 / 3;
+  grid-row: 1/ -1;
   @media (max-width: 560px) {
-    grid-column: 2 / 5;
+    grid-column: 2 / 3;
   }
 `
 
 const StyledPlaylistProductDetail = styled.div`
   color: #28233c;
   font-size: 1em;
-  font-weight: bold;
+  grid-row: 1 / 2;
   grid-column: 3 / 5;
   grid-gap: 12px;
 
   @media (max-width: 560px) {
     grid-column: 2 / 4;
+    grid-row: 2 / 3;
   }
 `
 
@@ -131,6 +133,7 @@ const StyledProduct = styled.h3`
   color: #28233c;
   font-size: 1.5em;
   font-weight: bold;
+  grid-row: 1 / -1;
   margin-bottom: 12px;
 
   @media (max-width: 560px) {
@@ -143,6 +146,7 @@ const StyledPublisher = styled.div`
   font-size: 0.8em;
   text-transform: uppercase;
   color: #d70064;
+  grid-row: 1 / 1;
   margin-bottom: 12px;
 
   @media (max-width: 560px) {
@@ -241,6 +245,21 @@ const StyledButtonCommit = styled.button`
     color: #64a56e;
   }
 `
+const StyledDelete = styled.div`
+  display: flex;
+  align-self: flex-start;
+  justify-self: flex-end;
+  grid-row: 1 / 2;
+  grid-column: 4 / 5;
+
+  @media (max-width: 600px) {
+    grid-gap: 2px;
+    grid-row: 1 / 2;
+    grid-column: 3 / 4;
+    align-self: flex-start;
+    justify-self: flex-end;
+  }
+`
 
 export default function Form({
   tagsInput,
@@ -252,6 +271,7 @@ export default function Form({
   onImageUpload,
   inputKeyDown,
   removeTag,
+  removePublisher,
   playlistArray,
   playlistUpdate,
   ad,
@@ -262,9 +282,10 @@ export default function Form({
 
   var NumberFormat = require('react-number-format')
 
-  function onClickPlaylistLoad(event) {
-    setStep(4)
-    playlistUpdate(event)
+  function onClickPlaylistLoad() {
+    setStep(3)
+    playlistUpdate()
+    console.log('Klick')
   }
 
   return (
@@ -336,6 +357,9 @@ export default function Form({
             <StyledButtonActive onClick={() => setStep(1)}>
               Weiter
             </StyledButtonActive>
+            <AbortLink onClick={() => props.history.push('/')}>
+              Abbrechen
+            </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
       ) : null}
@@ -570,7 +594,7 @@ export default function Form({
             <StyledButtonPassiv onClick={() => setStep(1)}>
               Zurück
             </StyledButtonPassiv>
-            <StyledButtonActive onClick={() => setStep(3)}>
+            <StyledButtonActive onClick={() => onClickPlaylistLoad()}>
               Weiter
             </StyledButtonActive>
             <AbortLink onClick={() => props.history.push('/')}>
@@ -587,45 +611,44 @@ export default function Form({
             color="#28233c"
             onClick={() => props.history.push('/')}
           /> */}
-          <Sections text="4. Publisher-Playlist" />
+          <Sections text="4. Titel-Playlist" />
           <StyledInputArea>
             <StyledExplanation>
-              Deine Publisher Playlist wird auf Basis deiner
-              Kampagneninformationen erzeugt und zeigt alle Printerzeugnisse,
-              die zu deinem Targeting matchen.
+              Deine Titel-Playlist wird auf Basis deiner Kampagneninformationen
+              erzeugt und zeigt alle Printerzeugnisse, die zu deinem Targeting
+              matchen.
             </StyledExplanation>
 
             {playlistArray
-              ? playlistArray.map(publisherDetail => {
+              ? playlistArray.map((publisher, i) => {
                   return (
                     <React.Fragment>
-                      <StyledPlaylistEntry>
+                      <StyledPlaylistEntry key={publisher.id}>
                         <StyledPlaylistImage
-                          src={publisherDetail.product_image}
-                          alt={publisherDetail.product_title}
+                          src={publisher.product_image}
+                          alt={publisher.product_title}
                         />
-                        <StyledPlaylistProduct key={publisherDetail.id}>
+                        <StyledPlaylistProduct>
                           <StyledProduct>
-                            {publisherDetail.product_title}
+                            {publisher.product_title}
                           </StyledProduct>
                           <StyledPublisher>
-                            {publisherDetail.publisher}
+                            {publisher.publisher}
                           </StyledPublisher>
                         </StyledPlaylistProduct>
                         <StyledPlaylistProductDetail>
                           <StyledReach>
                             <NumberFormat
-                              value={publisherDetail.reach}
+                              value={publisher.reach}
                               displayType={'text'}
                               thousandSeparator={true}
                               decimalSeparator={'.'}
                               prefix={'Reichweite Gesamt: '}
                             />
                           </StyledReach>
-
                           <StyledCirculation>
                             <NumberFormat
-                              value={publisherDetail.paid_circulation}
+                              value={publisher.paid_circulation}
                               displayType={'text'}
                               thousandSeparator={true}
                               decimalSeparator={'.'}
@@ -633,6 +656,13 @@ export default function Form({
                             />
                           </StyledCirculation>
                         </StyledPlaylistProductDetail>
+                        <StyledDelete>
+                          <MdClose
+                            color="#dc695a"
+                            size="1.5em"
+                            onClick={() => removePublisher(i)}
+                          />
+                        </StyledDelete>
                       </StyledPlaylistEntry>
                       <StyledDivider />
                     </React.Fragment>
@@ -648,7 +678,7 @@ export default function Form({
             <StyledButtonPassiv onClick={() => setStep(2)}>
               Zurück
             </StyledButtonPassiv>
-            <StyledButtonActive onClick={() => onClickPlaylistLoad()}>
+            <StyledButtonActive onClick={() => setStep(4)}>
               Weiter
             </StyledButtonActive>
             <AbortLink onClick={() => props.history.push('/')}>
