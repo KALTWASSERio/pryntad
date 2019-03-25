@@ -8,6 +8,7 @@ import Home from '../common/Home'
 import CampaignsPage from '../campaigns/CampaignsPage'
 import CreateCampaignPage from '../create/CreateCampaignPage'
 import Confirmation from '../create/Confirmation'
+import Campaign from '../campaigns/Campaign'
 import {
   getAllCampaigns,
   getCampaignsFromStorage,
@@ -90,6 +91,18 @@ function App() {
             )}
           />
           <Route path="/confirmation" component={Confirmation} />
+          <Route
+            path="/campaign/:id"
+            render={({ match }) => (
+              <Campaign
+                id={match.params.id}
+                campaign={
+                  campaigns.find(campaign => campaign.id === match.params.id) ||
+                  []
+                }
+              />
+            )}
+          />
           <GlobalStyle />
         </Grid>
       </Router>

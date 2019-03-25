@@ -20,6 +20,7 @@ const PageGrid = styled.div`
 
 export default function CampaignsPage({ campaigns }) {
   return (
+    console.log(campaign._id)
     <React.Fragment>
       <PageGrid>
         {campaigns.map(campaign => (

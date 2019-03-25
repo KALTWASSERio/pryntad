@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import axios from 'axios'
 import Form from './Form'
 import publisher from '../data/publisher.json'
-import uid from 'uid'
 import { withRouter } from 'react-router'
 
 const PageGrid = styled.div`
@@ -40,7 +39,7 @@ const defaultData = {
   tags: '',
   budget: '',
   bid: '',
-  id: uid(),
+  id: '',
 }
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
