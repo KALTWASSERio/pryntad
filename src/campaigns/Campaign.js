@@ -70,12 +70,13 @@ export default function Campaign({
   playlist,
   budget,
   bid,
+  id,
 }) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
   }
 
-  console.log(ad)
+  console.log('id', id, brand)
 
   var NumberFormat = require('react-number-format')
   return (
