@@ -84,11 +84,7 @@ export default function CampaignListItem({
       <StyledLine>
         <StyledCampaignLabels>Kampage</StyledCampaignLabels>
         <StyledLink to={`/campaign/${_id}`}>
-          <StyledCampaignContents
-          /*  style={{ color: '#28233c', fontWeight: 'bold', padding: '4px' }} */
-          >
-            {title}
-          </StyledCampaignContents>
+          <StyledCampaignContents>{title}</StyledCampaignContents>
         </StyledLink>
       </StyledLine>
       <StyledLine>

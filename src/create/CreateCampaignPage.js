@@ -62,7 +62,6 @@ function CreateCampaignPage(props) {
     event.preventDefault()
     data.tags = tags
     data.ad = ad
-    /*     data.date = Date.now() */
     data.playlist = playlist
     props.onSubmit(data)
     setData(defaultData)

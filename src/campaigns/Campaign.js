@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
-import BrowseBack from '../common/BrowseBack'
+import BrowseBackArrow from '../common/BrowseBackArrow'
 
 const PageGrid = styled.div`
   display: flex;
@@ -98,7 +98,7 @@ export default function Campaign({
   const NumberFormat = require('react-number-format')
   return (
     <React.Fragment>
-      <BrowseBack />
+      <BrowseBackArrow />
       <PageGrid>
         <StyledCampaign>
           <StyledCampaignLabels>Kampage</StyledCampaignLabels>

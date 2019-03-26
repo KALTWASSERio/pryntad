@@ -9,7 +9,7 @@ const StyledBrowseBack = styled.div`
   z-index: 11;
 `
 
-export default function BrowseBack() {
+export default function BrowseBackArrow() {
   function goBack() {
     window.history.back()
   }
