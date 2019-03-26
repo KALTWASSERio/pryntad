@@ -40,12 +40,20 @@ export default createGlobalStyle`
     font-weight: lighter; 
     min-height: 1.5em;
     left: -9999px;
+
+    :focus {
+      outline: 2px solid #d70064;
+    }
 }
 
 input[type="date"]
 {
     min-height: 1.5em;
     left: -9999px;
+
+    :focus {
+      outline: 2px solid #d70064;
+    }
 }
 
 input[type=file]::-webkit-file-upload-button {
@@ -57,6 +65,10 @@ input[type=file]::-webkit-file-upload-button {
     font-weight: lighter; 
     left: -9999px;
     width: 100%;
+
+    :focus {
+      outline: 2px solid #d70064;
+    }
   }
 
   input[type=radio] {
@@ -65,8 +77,13 @@ input[type=file]::-webkit-file-upload-button {
   color: #d70064;;
   left: -9999px;
 
+  :focus {
+      outline: 2px solid #d70064;
+    }
+
   :checked + label {
   background-color: #d70064;
+  border: 1px solid #d70064;
   color: white;
   left: -9999px;
 } 
@@ -85,6 +102,11 @@ input[type=file]::-webkit-file-upload-button {
     font-weight: lighter; 
     min-height: 1.5em;
     left: -9999px;
+
+    :focus {
+      outline: 2px solid #d70064;
+    }
+
   }
 
   :invalid {
