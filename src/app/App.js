@@ -5,9 +5,11 @@ import styled from 'styled-components'
 import GlobalStyle from './GlobalStyle'
 import Header from '../common/Header'
 import Home from '../common/Home'
-import CampaignsPage from '../campaigns/CampaignsPage'
+/* import CampaignsPage from '../campaigns/CampaignsPage' */
+import CampaignsList from '../campaigns/CampaignsList'
 import CreateCampaignPage from '../create/CreateCampaignPage'
 import Confirmation from '../create/Confirmation'
+import Campaign from '../campaigns/Campaign'
 import {
   getAllCampaigns,
   getCampaignsFromStorage,
@@ -42,7 +44,6 @@ function App() {
       setCampaigns([...campaigns, res.data])
     })
   }
-
   return (
     <React.Fragment>
       <Helmet>
@@ -80,7 +81,7 @@ function App() {
           <Route
             path="/dashboard"
             render={props => (
-              <CampaignsPage campaigns={campaigns} props={props} />
+              <CampaignsList campaigns={campaigns} props={props} />
             )}
           />
           <Route
@@ -90,11 +91,21 @@ function App() {
             )}
           />
           <Route path="/confirmation" component={Confirmation} />
+          <Route
+            path="/campaign/:_id"
+            render={({ match }) => (
+              <Campaign
+                id={match.params._id}
+                {...campaigns.find(
+                  campaign => campaign._id === match.params._id
+                ) || {}}
+              />
+            )}
+          />
           <GlobalStyle />
         </Grid>
       </Router>
     </React.Fragment>
   )
 }
-
 export default App

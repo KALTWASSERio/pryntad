@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import axios from 'axios'
 import Form from './Form'
 import publisher from '../data/publisher.json'
-import uid from 'uid'
 import { withRouter } from 'react-router'
 
 const PageGrid = styled.div`
@@ -11,7 +10,7 @@ const PageGrid = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   scroll-behavior: auto;
   padding: 14px 14px 0 14px;
@@ -40,7 +39,8 @@ const defaultData = {
   tags: '',
   budget: '',
   bid: '',
-  id: uid(),
+  date: '',
+  id: '',
 }
 
 const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME

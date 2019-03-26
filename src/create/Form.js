@@ -6,11 +6,12 @@ import InputTag from './InputTag'
 import Sections from '../common/Sections'
 import Campaign from '../campaigns/Campaign'
 import { MdClose } from 'react-icons/md'
+import BrowseBack from '../common/BrowseBackArrow'
 
 const PageGrid = styled.form`
   display: grid;
   grid-gap: 12px;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     position: 'relative';
   }
 `
@@ -292,13 +293,7 @@ export default function Form({
     <PageGrid onSubmit={onSubmit} style={{ position: 'relative' }}>
       {step === 0 ? (
         <React.Fragment>
-          {/*  <MdClose
-            style={{ position: 'absolute', right: '-4', top: '-2' }}
-            size="1.9em"
-            color="#28233c"
-            onClick={() => props.history.push('/')}
-          /> */}
-
+          <BrowseBack />
           <Sections text="1. Kampagne erstellen" />
           <StyledInputArea>
             <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
@@ -365,12 +360,6 @@ export default function Form({
       ) : null}
       {step === 1 ? (
         <React.Fragment>
-          {/* <MdClose
-            style={{ position: 'absolute', right: '-4', top: '-2' }}
-            size="1.9em"
-            color="#28233c"
-            onClick={() => props.history.push('/')}
-          /> */}
           <Sections text="2. Werbemittel" />
           <Select onChange={onInputChange} name="format" value={data.format} />
           <SelectPlacement
@@ -488,12 +477,6 @@ export default function Form({
       ) : null}
       {step === 2 ? (
         <React.Fragment>
-          {/* <MdClose
-            style={{ position: 'absolute', right: '-4', top: '-2' }}
-            size="1.9em"
-            color="#28233c"
-            onClick={() => props.history.push('/')}
-          /> */}
           <Sections text="3. Zielgruppe definieren" />
           <StyledInputArea>
             <StyledLabel htmlFor="location__input">Ort</StyledLabel>
@@ -605,12 +588,6 @@ export default function Form({
       ) : null}
       {step === 3 ? (
         <React.Fragment>
-          {/* <MdClose
-            style={{ position: 'absolute', right: '-4', top: '-2' }}
-            size="1.9em"
-            color="#28233c"
-            onClick={() => props.history.push('/')}
-          /> */}
           <Sections text="4. Titel-Playlist" />
           <StyledInputArea>
             <StyledExplanation>
@@ -689,12 +666,6 @@ export default function Form({
       ) : null}
       {step === 4 ? (
         <React.Fragment>
-          {/* <MdClose
-            style={{ position: 'absolute', right: '-4', top: '-2' }}
-            size="1.9em"
-            color="#28233c"
-            onClick={() => props.history.push('/')}
-          /> */}
           <Sections text="5. Budget" />
           <StyledInputArea>
             <StyledLabel htmlFor="budget__input">Budget (€)</StyledLabel>
@@ -739,12 +710,6 @@ export default function Form({
       ) : null}
       {step === 5 ? (
         <React.Fragment>
-          {/* <MdClose
-            style={{ position: 'absolute', right: '-4', top: '-2' }}
-            size="1.9em"
-            color="#28233c"
-            onClick={() => props.history.push('/')}
-          /> */}
           <Sections text="Kampagne prüfen" />
           <StyledExplanation>
             Deine Kampagne ist startklar, überprüfe deine Einstellungen für

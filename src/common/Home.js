@@ -11,7 +11,7 @@ const PageGrid = styled.div`
   overflow-y: scroll;
   justify-content: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   scroll-behavior: auto;
   padding: 14px 14px 0 14px;
@@ -39,10 +39,11 @@ const StyledInfoText = styled.div`
   color: white;
   text-align: center;
   line-height: 1.5em;
+  max-width: 50%;
   padding: 12px;
-  margin: 0 64px;
+  margin: 0 auto;
 
-@media (max-width: 560px) {
+  @media (max-width: 560px) {
     display: none;
   }
 `
@@ -53,13 +54,22 @@ function Home(props) {
       <PageGrid>
         <StyledImage src={Plattform} alt="" />
         <section>
-        <StyledTitle
-          style={{ color: 'white', textAlign: 'center', fontSize: '2em' }}
-        >
-          Printwerbung einfach und effizient buchen
+          <StyledTitle
+            style={{ color: 'white', textAlign: 'center', fontSize: '2em' }}
+          >
+            Printwerbung einfach und effizient buchen
           </StyledTitle>
-        <StyledInfoText><p>pryntad bringt Advertiser, Agenturen und Publisher auf einem digitalen Marktplatz zusammen.</p> 
-        <p>Anzeigenbuchungen werden gegen Gebot und Targeting möglich. Publisher, deren Titel matchen, entscheiden, welche Gebote sie annehmen.</p></StyledInfoText>
+          <StyledInfoText>
+            <p>
+              pryntad bringt Advertiser, Agenturen und Publisher auf einem
+              digitalen Marktplatz zusammen.
+            </p>
+            <p>
+              Anzeigenbuchungen werden gegen Gebot und Targeting möglich.
+              Publisher, deren Titel matchen, entscheiden, welche Gebote sie
+              annehmen.
+            </p>
+          </StyledInfoText>
         </section>
       </PageGrid>
       <Footer />

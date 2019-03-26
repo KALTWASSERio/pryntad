@@ -34,7 +34,7 @@ export default createGlobalStyle`
   input {
     border: 1px solid #dcdcdc;
     background: white;
-    padding-left: 4px;
+    padding: 8px;
     width: 100%;
     font-family: 'Open Sans', sans-serif;
     font-weight: lighter; 
@@ -80,7 +80,7 @@ input[type=file]::-webkit-file-upload-button {
   select {
     border: 1px solid #dcdcdc;
     background: white;
-    padding-left: 4px;
+    padding: 8px;
     width: 100%;
     font-weight: lighter; 
     min-height: 1.5em;

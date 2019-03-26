@@ -1,6 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
+import BrowseBackArrow from '../common/BrowseBackArrow'
+
+const PageGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  scroll-behavior: auto;
+  padding: 14px 14px 0 14px;
+  z-index: -1;
+`
 
 const StyledCampaign = styled.div`
   display: grid;
@@ -70,83 +86,90 @@ export default function Campaign({
   playlist,
   budget,
   bid,
+  date,
+  id,
 }) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
   }
 
-  console.log(ad)
+  console.log(date)
 
-  var NumberFormat = require('react-number-format')
+  const NumberFormat = require('react-number-format')
   return (
-    <StyledCampaign>
-      <StyledCampaignLabels>Kampage</StyledCampaignLabels>
-      <StyledCampaignContents
-        style={{ color: '#28233c', fontWeight: 'bold', padding: '4px' }}
-      >
-        {title}
-      </StyledCampaignContents>
-      <StyledAd
-        style={{
-          backgroundImage: 'url(' + ad + ')',
-          height: '100%',
-          width: '100%',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-        }}
-      />
-      <StyledCampaignLabels>Marke</StyledCampaignLabels>
-      <StyledCampaignContents>{brand}</StyledCampaignContents>
-      <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
-      <StyledCampaignContents>
-        {dayjs(scheduleFrom).format('DD/MM/YYYY')} -{' '}
-        {dayjs(scheduleTo).format('DD/MM/YYYY')}
-      </StyledCampaignContents>
-      <StyledCampaignLabels>Budget</StyledCampaignLabels>
-      <StyledCampaignContents>
-        <NumberFormat
-          value={budget}
-          displayType={'text'}
-          thousandSeparator={true}
-          decimalSeparator={'.'}
-          suffix={' € EUR (Gesamt)'}
-        />
-      </StyledCampaignContents>
-      <StyledCampaignLabels>Gebot</StyledCampaignLabels>
-      <StyledCampaignContents>
-        <NumberFormat
-          value={bid}
-          displayType={'text'}
-          thousandSeparator={true}
-          decimalSeparator={'.'}
-          suffix={' € EUR (TAP)'}
-        />
-      </StyledCampaignContents>
-      <StyledCampaignLabels>Format</StyledCampaignLabels>
-      <StyledCampaignContents>{format}</StyledCampaignContents>
-      <StyledCampaignLabels>Farbschema</StyledCampaignLabels>
-      <StyledCampaignContents>{colorSchema}</StyledCampaignContents>
-      <StyledCampaignLabels>Satzspiegel</StyledCampaignLabels>
-      <StyledCampaignContents>{printSpace}</StyledCampaignContents>
-      <StyledCampaignLabels>Platzierung</StyledCampaignLabels>
-      <StyledCampaignContents>{placement}</StyledCampaignContents>
-      <StyledCampaignLabels>Ort</StyledCampaignLabels>
-      <StyledCampaignContents>{location}</StyledCampaignContents>
-      <StyledCampaignLabels>Alter</StyledCampaignLabels>
-      <StyledCampaignContents>
-        {ageFrom} - {ageTo} Jahre
-      </StyledCampaignContents>
-      <StyledCampaignLabels>Geschlecht</StyledCampaignLabels>
-      <StyledCampaignContents>{gender}</StyledCampaignContents>
-      <StyledCampaignLabels>Keywords</StyledCampaignLabels>
-      <StyledCampaignContents>
-        {tags && <TagList>{tags.map(renderTag)}</TagList>}
-      </StyledCampaignContents>
-      <StyledCampaignLabels>Playlist</StyledCampaignLabels>
-      <StyledCampaignContents>
-        {playlist.map(item => item.product_title).join(', ')}
-      </StyledCampaignContents>
-    </StyledCampaign>
+    <React.Fragment>
+      <BrowseBackArrow />
+      <PageGrid>
+        <StyledCampaign>
+          <StyledCampaignLabels>Kampage</StyledCampaignLabels>
+          <StyledCampaignContents
+            style={{ color: '#28233c', fontWeight: 'bold', padding: '4px' }}
+          >
+            {title}
+          </StyledCampaignContents>
+          <StyledAd
+            style={{
+              backgroundImage: 'url(' + ad + ')',
+              height: '100%',
+              width: '100%',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+            }}
+          />
+          <StyledCampaignLabels>Marke</StyledCampaignLabels>
+          <StyledCampaignContents>{brand}</StyledCampaignContents>
+          <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
+          <StyledCampaignContents>
+            {dayjs(scheduleFrom).format('DD/MM/YYYY')} -{' '}
+            {dayjs(scheduleTo).format('DD/MM/YYYY')}
+          </StyledCampaignContents>
+          <StyledCampaignLabels>Budget</StyledCampaignLabels>
+          <StyledCampaignContents>
+            <NumberFormat
+              value={budget}
+              displayType={'text'}
+              thousandSeparator={'.'}
+              decimalSeparator={','}
+              suffix={' € EUR (Gesamt)'}
+            />
+          </StyledCampaignContents>
+          <StyledCampaignLabels>Gebot</StyledCampaignLabels>
+          <StyledCampaignContents>
+            <NumberFormat
+              value={bid}
+              displayType={'text'}
+              thousandSeparator={'.'}
+              decimalSeparator={','}
+              suffix={' € EUR (TAP)'}
+            />
+          </StyledCampaignContents>
+          <StyledCampaignLabels>Format</StyledCampaignLabels>
+          <StyledCampaignContents>{format}</StyledCampaignContents>
+          <StyledCampaignLabels>Farbschema</StyledCampaignLabels>
+          <StyledCampaignContents>{colorSchema}</StyledCampaignContents>
+          <StyledCampaignLabels>Satzspiegel</StyledCampaignLabels>
+          <StyledCampaignContents>{printSpace}</StyledCampaignContents>
+          <StyledCampaignLabels>Platzierung</StyledCampaignLabels>
+          <StyledCampaignContents>{placement}</StyledCampaignContents>
+          <StyledCampaignLabels>Ort</StyledCampaignLabels>
+          <StyledCampaignContents>{location}</StyledCampaignContents>
+          <StyledCampaignLabels>Alter</StyledCampaignLabels>
+          <StyledCampaignContents>
+            {ageFrom} - {ageTo} Jahre
+          </StyledCampaignContents>
+          <StyledCampaignLabels>Geschlecht</StyledCampaignLabels>
+          <StyledCampaignContents>{gender}</StyledCampaignContents>
+          <StyledCampaignLabels>Keywords</StyledCampaignLabels>
+          <StyledCampaignContents>
+            {tags && <TagList>{tags.map(renderTag)}</TagList>}
+          </StyledCampaignContents>
+          <StyledCampaignLabels>Playlist</StyledCampaignLabels>
+          <StyledCampaignContents>
+            {playlist.map(item => item.product_title).join(', ')}
+          </StyledCampaignContents>
+        </StyledCampaign>
+      </PageGrid>
+    </React.Fragment>
   )
 }
