@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
-import { MdKeyboardArrowLeft } from 'react-icons/md'
+import BrowseBack from '../common/BrowseBack'
 
 const PageGrid = styled.div`
   display: flex;
@@ -67,12 +67,6 @@ const Tag = styled.li`
   font-size: 0.9em;
   font-weight: lighter;
 `
-const BrowseBack = styled.div`
-  position: fixed;
-  top: 10px;
-  left: 4px;
-  z-index: 11;
-`
 
 export default function Campaign({
   title,
@@ -99,18 +93,12 @@ export default function Campaign({
     return <Tag key={index}>{text}</Tag>
   }
 
-  function goBack() {
-    window.history.back()
-  }
-
   console.log(date)
 
   var NumberFormat = require('react-number-format')
   return (
     <React.Fragment>
-      <BrowseBack onClick={() => goBack()}>
-        <MdKeyboardArrowLeft color="Black" size="2.5em" />
-      </BrowseBack>
+      <BrowseBack />
       <PageGrid>
         <StyledCampaign>
           <StyledCampaignLabels>Kampage</StyledCampaignLabels>

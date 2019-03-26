@@ -39,8 +39,9 @@ const StyledInfoText = styled.div`
   color: white;
   text-align: center;
   line-height: 1.5em;
+  max-width: 50%;
   padding: 12px;
-  margin: 0 64px;
+  margin: 0 auto;
 
   @media (max-width: 560px) {
     display: none;
