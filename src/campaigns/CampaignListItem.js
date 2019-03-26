@@ -78,7 +78,7 @@ export default function CampaignListItem({
   date,
   _id,
 }) {
-  var NumberFormat = require('react-number-format')
+  const NumberFormat = require('react-number-format')
   return (
     <StyledCampaign>
       <StyledLine>
@@ -108,8 +108,8 @@ export default function CampaignListItem({
           <NumberFormat
             value={budget}
             displayType={'text'}
-            thousandSeparator={true}
-            decimalSeparator={'.'}
+            thousandSeparator={'.'}
+            decimalSeparator={','}
             suffix={' €'}
           />
         </StyledCampaignContents>
@@ -120,8 +120,8 @@ export default function CampaignListItem({
           <NumberFormat
             value={bid}
             displayType={'text'}
-            thousandSeparator={true}
-            decimalSeparator={'.'}
+            thousandSeparator={'.'}
+            decimalSeparator={','}
             suffix={' €'}
           />
         </StyledCampaignContents>

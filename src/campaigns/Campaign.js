@@ -95,7 +95,7 @@ export default function Campaign({
 
   console.log(date)
 
-  var NumberFormat = require('react-number-format')
+  const NumberFormat = require('react-number-format')
   return (
     <React.Fragment>
       <BrowseBack />
@@ -129,8 +129,8 @@ export default function Campaign({
             <NumberFormat
               value={budget}
               displayType={'text'}
-              thousandSeparator={true}
-              decimalSeparator={'.'}
+              thousandSeparator={'.'}
+              decimalSeparator={','}
               suffix={' € EUR (Gesamt)'}
             />
           </StyledCampaignContents>
@@ -139,8 +139,8 @@ export default function Campaign({
             <NumberFormat
               value={bid}
               displayType={'text'}
-              thousandSeparator={true}
-              decimalSeparator={'.'}
+              thousandSeparator={'.'}
+              decimalSeparator={','}
               suffix={' € EUR (TAP)'}
             />
           </StyledCampaignContents>
