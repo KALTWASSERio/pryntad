@@ -8,7 +8,7 @@ const PageGrid = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   ::-webkit-scrollbar {
     display: none;

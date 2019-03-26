@@ -8,7 +8,7 @@ const PageGrid = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   ::-webkit-scrollbar {
     display: none;
@@ -22,9 +22,13 @@ export default function CampaignsList({ campaigns }) {
   return (
     <React.Fragment>
       <PageGrid>
-        {campaigns.map(campaign => (
-          <CampaignListItem {...campaign} key={campaign._id} />
-        ))}
+        {campaigns
+          .map(campaign => (
+            <CampaignListItem {...campaign} key={campaign._id} />
+          ))
+          .sort((a, b) => {
+            return a.date < b.date ? -1 : 1
+          })}
       </PageGrid>
       <Footer />
     </React.Fragment>

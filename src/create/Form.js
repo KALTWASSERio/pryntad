@@ -10,7 +10,7 @@ import { MdClose } from 'react-icons/md'
 const PageGrid = styled.form`
   display: grid;
   grid-gap: 12px;
-  @media (max-width: 800px) {
+  @media (max-width: 1000px) {
     position: 'relative';
   }
 `

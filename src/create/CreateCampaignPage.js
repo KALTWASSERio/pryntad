@@ -10,7 +10,7 @@ const PageGrid = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   scroll-behavior: auto;
   padding: 14px 14px 0 14px;
@@ -39,6 +39,7 @@ const defaultData = {
   tags: '',
   budget: '',
   bid: '',
+  date: '',
   id: '',
 }
 
@@ -61,6 +62,7 @@ function CreateCampaignPage(props) {
     event.preventDefault()
     data.tags = tags
     data.ad = ad
+    /*     data.date = Date.now() */
     data.playlist = playlist
     props.onSubmit(data)
     setData(defaultData)
