@@ -6,7 +6,7 @@ import InputTag from './InputTag'
 import Sections from '../common/Sections'
 import Campaign from '../campaigns/Campaign'
 import { MdClose } from 'react-icons/md'
-import BrowseBack from '../common/BrowseBack'
+import BrowseBack from '../common/BrowseBackArrow'
 
 const PageGrid = styled.form`
   display: grid;

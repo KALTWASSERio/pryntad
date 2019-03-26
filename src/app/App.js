@@ -44,7 +44,6 @@ function App() {
       setCampaigns([...campaigns, res.data])
     })
   }
-  console.log(campaigns)
   return (
     <React.Fragment>
       <Helmet>
