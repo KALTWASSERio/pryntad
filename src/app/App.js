@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 import GlobalStyle from './GlobalStyle'
 import Header from '../common/Header'
 import Home from '../common/Home'
-/* import CampaignsPage from '../campaigns/CampaignsPage' */
 import CampaignsList from '../campaigns/CampaignsList'
 import CreateCampaignPage from '../create/CreateCampaignPage'
 import Confirmation from '../create/Confirmation'
 import Campaign from '../campaigns/Campaign'
-import {
-  getAllCampaigns,
-  getCampaignsFromStorage,
-  postNewCampaign,
-  saveCampaignsToStorage,
-} from '../services'
 
 const Grid = styled.div`
   display: grid;
@@ -27,23 +20,6 @@ const Grid = styled.div`
   height: 100%;
 `
 function App() {
-  const [campaigns, setCampaigns] = useState(getCampaignsFromStorage())
-
-  useEffect(() => {
-    getAllCampaigns().then(res => {
-      setCampaigns(res.data)
-    })
-  }, [])
-
-  useEffect(() => {
-    saveCampaignsToStorage(campaigns)
-  }, [campaigns])
-
-  function createCampaign(data) {
-    postNewCampaign(data).then(res => {
-      setCampaigns([...campaigns, res.data])
-    })
-  }
   return (
     <React.Fragment>
       <Helmet>
@@ -81,24 +57,24 @@ function App() {
           <Route
             path="/dashboard"
             render={props => (
-              <CampaignsList campaigns={campaigns} props={props} />
+              <CampaignsList /* campaigns={campaigns} */ props={props} />
             )}
           />
           <Route
             path="/create"
             render={props => (
-              <CreateCampaignPage onSubmit={createCampaign} props={props} />
+              <CreateCampaignPage
+                /* onSubmit={createCampaign} */ props={props}
+              />
             )}
           />
           <Route path="/confirmation" component={Confirmation} />
           <Route
             path="/campaign/:_id"
-            render={({ match }) => (
+            render={props => (
               <Campaign
-                id={match.params._id}
-                {...campaigns.find(
-                  campaign => campaign._id === match.params._id
-                ) || {}}
+                props={props}
+                /*      id={match.params._id} */
               />
             )}
           />

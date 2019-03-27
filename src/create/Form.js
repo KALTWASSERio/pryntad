@@ -4,7 +4,7 @@ import Select from './Select'
 import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
-import Campaign from '../campaigns/Campaign'
+import CampaignsPreview from '../campaigns/CampaingsPreview'
 import { MdClose } from 'react-icons/md'
 import BrowseBack from '../common/BrowseBackArrow'
 import Stepper from './Stepper'
@@ -258,9 +258,6 @@ const StyledDelete = styled.div`
     justify-self: flex-end;
   }
 `
-const StyledText = styled.div`
-  color: #d70064;
-`
 
 export default function Form({
   tagsInput,
@@ -278,7 +275,6 @@ export default function Form({
   ad,
   props,
 }) {
-  console.log(props)
   const [step, setStep] = useState(0)
 
   var NumberFormat = require('react-number-format')
@@ -286,7 +282,6 @@ export default function Form({
   function onClickPlaylistLoad() {
     setStep(3)
     playlistUpdate()
-    console.log('Klick')
   }
 
   return (
@@ -294,7 +289,7 @@ export default function Form({
       {step === 0 ? (
         <React.Fragment>
           <BrowseBack />
-          <Sections text="Schritt 1/6: Neue Kampagne anlegen" />
+          <Sections text="Schritt 1/6: Kampagne anlegen" />
           <Stepper step={step} />
           <StyledInputArea>
             <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
@@ -622,8 +617,8 @@ export default function Form({
                             <NumberFormat
                               value={publisher.reach}
                               displayType={'text'}
-                              thousandSeparator={true}
-                              decimalSeparator={'.'}
+                              thousandSeparator={'.'}
+                              decimalSeparator={','}
                               prefix={'Reichweite Gesamt: '}
                             />
                           </StyledReach>
@@ -631,8 +626,8 @@ export default function Form({
                             <NumberFormat
                               value={publisher.paid_circulation}
                               displayType={'text'}
-                              thousandSeparator={true}
-                              decimalSeparator={'.'}
+                              thousandSeparator={'.'}
+                              decimalSeparator={','}
                               prefix={'Verkaufte Auflage: '}
                             />
                           </StyledCirculation>
@@ -721,7 +716,7 @@ export default function Form({
             Deine Kampagne ist startklar, überprüfe deine Einstellungen für
             diese Kampagne.
           </StyledExplanation>
-          <Campaign
+          <CampaignsPreview
             title={data.title}
             ad={ad}
             brand={data.brand}

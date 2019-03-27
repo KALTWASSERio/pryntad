@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from '../common/Footer'
 import CampaignListItem from '../campaigns/CampaignListItem'
 import styled from 'styled-components'
+import { getAllCampaigns } from '../services'
 
 const PageGrid = styled.div`
   display: flex;
@@ -18,17 +19,22 @@ const PageGrid = styled.div`
   z-index: -1;
 `
 
-export default function CampaignsList({ campaigns }) {
+export default function CampaignsList() {
+  const [campaigns, setCampaigns] = useState()
+
+  useEffect(() => {
+    getAllCampaigns().then(res => {
+      setCampaigns(res.data)
+    })
+  }, [])
+
   return (
     <React.Fragment>
       <PageGrid>
-        {campaigns
-          .map(campaign => (
+        {campaigns &&
+          campaigns.map(campaign => (
             <CampaignListItem {...campaign} key={campaign._id} />
-          ))
-          .sort((a, b) => {
-            return a.date < b.date ? -1 : 1
-          })}
+          ))}
       </PageGrid>
       <Footer />
     </React.Fragment>

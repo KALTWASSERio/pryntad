@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
 import { Link } from 'react-router-dom'
@@ -79,6 +79,7 @@ export default function CampaignListItem({
   _id,
 }) {
   const NumberFormat = require('react-number-format')
+
   return (
     <StyledCampaign>
       <StyledLine>
