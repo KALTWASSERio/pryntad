@@ -120,7 +120,7 @@ input[type=file]::-webkit-file-upload-button {
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: none;
-    color: white;
+    color: white; 
     display: inline-block;
     border: 1px solid #d70064;
 

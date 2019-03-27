@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
-import BrowseBackArrow from '../common/BrowseBackArrow'
-import { getSingleCampaign } from '../services'
 
 const PageGrid = styled.div`
   display: flex;
@@ -69,36 +67,46 @@ const Tag = styled.li`
   font-weight: lighter;
 `
 
-export default function Campaign({ props }) {
+export default function CampaignsPreview(
+  campaign,
+  data,
+  ad,
+  title,
+  bid,
+  budget,
+  format,
+  brand,
+  scheduleFrom,
+  scheduleTo,
+  playlist,
+  tags,
+  colorSchema,
+  printSpace,
+  location,
+  gender,
+  ageFrom,
+  ageTo,
+  placement
+) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
   }
 
-  const [campaign, setCampaign] = useState()
-
-  useEffect(() => {
-    console.log(props.match.params._id)
-    getSingleCampaign(props.match.params._id).then(res => {
-      console.log(res.data)
-      setCampaign(res.data)
-    })
-  }, [])
-
   const NumberFormat = require('react-number-format')
+  console.log(data, campaign)
   return (
     <React.Fragment>
-      <BrowseBackArrow />
       <PageGrid>
         <StyledCampaign>
           <StyledCampaignLabels>Kampage</StyledCampaignLabels>
           <StyledCampaignContents
             style={{ color: '#28233c', fontWeight: 'bold', padding: '4px' }}
           >
-            {campaign && campaign.title}
+            {campaign.title}
           </StyledCampaignContents>
           <StyledAd
             style={{
-              backgroundImage: 'url(' + (campaign && campaign.ad) + ')',
+              backgroundImage: 'url(' + campaign.ad + ')',
               height: '100%',
               width: '100%',
               backgroundSize: 'cover',
@@ -107,18 +115,16 @@ export default function Campaign({ props }) {
             }}
           />
           <StyledCampaignLabels>Marke</StyledCampaignLabels>
-          <StyledCampaignContents>
-            {campaign && campaign.brand}
-          </StyledCampaignContents>
+          <StyledCampaignContents>{campaign.brand}</StyledCampaignContents>
           <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
           <StyledCampaignContents>
-            {dayjs(campaign && campaign.scheduleFrom).format('DD/MM/YYYY')} -{' '}
-            {dayjs(campaign && campaign.scheduleTo).format('DD/MM/YYYY')}
+            {dayjs(campaign.scheduleFrom).format('DD/MM/YYYY')} -{' '}
+            {dayjs(campaign.scheduleTo).format('DD/MM/YYYY')}
           </StyledCampaignContents>
           <StyledCampaignLabels>Budget</StyledCampaignLabels>
           <StyledCampaignContents>
             <NumberFormat
-              value={campaign && campaign.budget}
+              value={campaign.budget}
               displayType={'text'}
               thousandSeparator={'.'}
               decimalSeparator={','}
@@ -128,7 +134,7 @@ export default function Campaign({ props }) {
           <StyledCampaignLabels>Gebot</StyledCampaignLabels>
           <StyledCampaignContents>
             <NumberFormat
-              value={campaign && campaign.bid}
+              value={campaign.bid}
               displayType={'text'}
               thousandSeparator={'.'}
               decimalSeparator={','}
@@ -136,41 +142,30 @@ export default function Campaign({ props }) {
             />
           </StyledCampaignContents>
           <StyledCampaignLabels>Format</StyledCampaignLabels>
-          <StyledCampaignContents>
-            {campaign && campaign.format}
-          </StyledCampaignContents>
+          <StyledCampaignContents>{campaign.format}</StyledCampaignContents>
           <StyledCampaignLabels>Farbschema</StyledCampaignLabels>
           <StyledCampaignContents>
-            {campaign && campaign.colorSchema}
+            {campaign.colorSchema}
           </StyledCampaignContents>
           <StyledCampaignLabels>Satzspiegel</StyledCampaignLabels>
-          <StyledCampaignContents>
-            {campaign && campaign.printSpace}
-          </StyledCampaignContents>
+          <StyledCampaignContents>{campaign.printSpace}</StyledCampaignContents>
           <StyledCampaignLabels>Platzierung</StyledCampaignLabels>
-          <StyledCampaignContents>
-            {campaign && campaign.placement}
-          </StyledCampaignContents>
+          <StyledCampaignContents>{campaign.placement}</StyledCampaignContents>
           <StyledCampaignLabels>Ort</StyledCampaignLabels>
-          <StyledCampaignContents>
-            {campaign && campaign.location}
-          </StyledCampaignContents>
+          <StyledCampaignContents>{campaign.location}</StyledCampaignContents>
           <StyledCampaignLabels>Alter</StyledCampaignLabels>
           <StyledCampaignContents>
-            {campaign && campaign.ageFrom} - {campaign && campaign.ageTo} Jahre
+            {campaign.ageFrom} - {campaign.ageTo} Jahre
           </StyledCampaignContents>
           <StyledCampaignLabels>Geschlecht</StyledCampaignLabels>
-          <StyledCampaignContents>
-            {campaign && campaign.gender}
-          </StyledCampaignContents>
+          <StyledCampaignContents>{campaign.gender}</StyledCampaignContents>
           <StyledCampaignLabels>Keywords</StyledCampaignLabels>
           <StyledCampaignContents>
-            <TagList>{campaign && campaign.tags.map(renderTag)}</TagList>
+            <TagList>{campaign.tags.map(renderTag)}</TagList>
           </StyledCampaignContents>
           <StyledCampaignLabels>Playlist</StyledCampaignLabels>
           <StyledCampaignContents>
-            {campaign &&
-              campaign.playlist.map(item => item.product_title).join(', ')}
+            {campaign.playlist.map(item => item.product_title).join(', ')}
           </StyledCampaignContents>
         </StyledCampaign>
       </PageGrid>

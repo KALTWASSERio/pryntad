@@ -3,15 +3,15 @@ import styled from 'styled-components'
 
 const StyledSections = styled.div`
   display: flex;
-  border-bottom: 2px solid #dcdcdc;
+  /* border-bottom: 2px solid #dcdcdc; */
   height: 30px;
 `
 const StyledSectionHeadline = styled.h2`
-  align-self: center;
+  align-content: center;
   color: #28233c;
-  font-size: 1em;
-  font-weight: normal;
-  text-transform: uppercase;
+  font-size: 1.1em;
+  font-weight: bolder;
+  /* text-transform: uppercase; */
   padding: 4px;
 `
 export default function Sections(props) {

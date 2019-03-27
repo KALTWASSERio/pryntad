@@ -4,9 +4,10 @@ import Select from './Select'
 import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
-import Campaign from '../campaigns/Campaign'
+import CampaignsPreview from '../campaigns/CampaingsPreview'
 import { MdClose } from 'react-icons/md'
 import BrowseBack from '../common/BrowseBackArrow'
+import Stepper from './Stepper'
 
 const PageGrid = styled.form`
   display: grid;
@@ -20,11 +21,6 @@ const StyledInputArea = styled.section`
   display: flex;
   flex-direction: column;
 `
-
-/* const StyledInputAreaDates = styled.section`
-  display: flex;
-  grid-template-columns: row;
-` */
 
 const StyledSectionFrom = styled.section`
   display: flex;
@@ -203,14 +199,15 @@ const StyledButtonArea = styled.div`
   justify-self: center;
 `
 const StyledButtonPassiv = styled.button`
-  background: #fac8d7;
-  border: 2px solid #fac8d7;
+  background: white;
+  border: 2px solid #d70064;
   justify-content: center;
+  color: #d70064;
 
   :hover {
-    background-color: white;
-    border: 2px solid #fac8d7;
-    color: #fac8d7;
+    background-color: #d70064;
+    border: 2px solid #d70064;
+    color: white;
   }
 `
 
@@ -278,7 +275,6 @@ export default function Form({
   ad,
   props,
 }) {
-  console.log(props)
   const [step, setStep] = useState(0)
 
   var NumberFormat = require('react-number-format')
@@ -286,7 +282,6 @@ export default function Form({
   function onClickPlaylistLoad() {
     setStep(3)
     playlistUpdate()
-    console.log('Klick')
   }
 
   return (
@@ -294,7 +289,8 @@ export default function Form({
       {step === 0 ? (
         <React.Fragment>
           <BrowseBack />
-          <Sections text="1. Kampagne erstellen" />
+          <Sections text="Schritt 1/6: Kampagne anlegen" />
+          <Stepper step={step} />
           <StyledInputArea>
             <StyledLabel htmlFor="campaign__name__input">Kampagne</StyledLabel>
             <input
@@ -360,7 +356,8 @@ export default function Form({
       ) : null}
       {step === 1 ? (
         <React.Fragment>
-          <Sections text="2. Werbemittel" />
+          <Sections text="Schritt 2/6: Werbemittel" />
+          <Stepper step={step} />
           <Select onChange={onInputChange} name="format" value={data.format} />
           <SelectPlacement
             name="placement"
@@ -477,7 +474,8 @@ export default function Form({
       ) : null}
       {step === 2 ? (
         <React.Fragment>
-          <Sections text="3. Zielgruppe definieren" />
+          <Sections text="Schritt 3/6: Targeting" />
+          <Stepper step={step} />
           <StyledInputArea>
             <StyledLabel htmlFor="location__input">Ort</StyledLabel>
             <input
@@ -588,7 +586,8 @@ export default function Form({
       ) : null}
       {step === 3 ? (
         <React.Fragment>
-          <Sections text="4. Titel-Playlist" />
+          <Sections text="Schritt 4/6: Titel-Playlist" />
+          <Stepper step={step} />
           <StyledInputArea>
             <StyledExplanation>
               Deine Titel-Playlist wird auf Basis deiner Kampagneninformationen
@@ -618,8 +617,8 @@ export default function Form({
                             <NumberFormat
                               value={publisher.reach}
                               displayType={'text'}
-                              thousandSeparator={true}
-                              decimalSeparator={'.'}
+                              thousandSeparator={'.'}
+                              decimalSeparator={','}
                               prefix={'Reichweite Gesamt: '}
                             />
                           </StyledReach>
@@ -627,8 +626,8 @@ export default function Form({
                             <NumberFormat
                               value={publisher.paid_circulation}
                               displayType={'text'}
-                              thousandSeparator={true}
-                              decimalSeparator={'.'}
+                              thousandSeparator={'.'}
+                              decimalSeparator={','}
                               prefix={'Verkaufte Auflage: '}
                             />
                           </StyledCirculation>
@@ -666,7 +665,8 @@ export default function Form({
       ) : null}
       {step === 4 ? (
         <React.Fragment>
-          <Sections text="5. Budget" />
+          <Sections text="Schritt 5/6: Budget" />
+          <Stepper step={step} />
           <StyledInputArea>
             <StyledLabel htmlFor="budget__input">Budget (€)</StyledLabel>
             <input
@@ -710,12 +710,13 @@ export default function Form({
       ) : null}
       {step === 5 ? (
         <React.Fragment>
-          <Sections text="Kampagne prüfen" />
+          <Sections text="Schritt 6/6: Bestätigung" />
+          <Stepper step={step} />
           <StyledExplanation>
             Deine Kampagne ist startklar, überprüfe deine Einstellungen für
             diese Kampagne.
           </StyledExplanation>
-          <Campaign
+          <CampaignsPreview
             title={data.title}
             ad={ad}
             brand={data.brand}

@@ -4,6 +4,7 @@ import axios from 'axios'
 import Form from './Form'
 import publisher from '../data/publisher.json'
 import { withRouter } from 'react-router'
+import { postNewCampaign } from '../services'
 
 const PageGrid = styled.div`
   display: flex;
@@ -39,7 +40,6 @@ const defaultData = {
   tags: '',
   budget: '',
   bid: '',
-  date: '',
   id: '',
 }
 
@@ -47,12 +47,15 @@ const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME
 const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET
 
 function CreateCampaignPage(props) {
-  console.log(props)
   const [data, setData] = useState(defaultData)
   const [ad, setAd] = useState('')
   const [tags, setTags] = useState([])
   const [tagsInput, setTagsInput] = useState('')
   const [playlist, setPlaylist] = useState([])
+
+  function createCampaign(data) {
+    postNewCampaign(data)
+  }
 
   function onTagsInputChange(event) {
     setTagsInput(event.target.value)
@@ -63,9 +66,9 @@ function CreateCampaignPage(props) {
     data.tags = tags
     data.ad = ad
     data.playlist = playlist
-    props.onSubmit(data)
     setData(defaultData)
     setPlaylist([])
+    createCampaign(data)
     props.history.push('/confirmation')
   }
 
