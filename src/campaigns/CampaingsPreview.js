@@ -67,13 +67,13 @@ const Tag = styled.li`
   font-weight: lighter;
 `
 
-export default function CampaignsPreview(campaign, data) {
+export default function CampaignsPreview(campaign) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
   }
 
   const NumberFormat = require('react-number-format')
-  console.log(data, campaign)
+
   return (
     <React.Fragment>
       <PageGrid>

@@ -5,8 +5,6 @@ import styled from 'styled-components'
 import { getAllCampaigns } from '../services'
 
 const PageGrid = styled.div`
-  display: flex;
-  flex-direction: column;
   overflow-y: scroll;
   width: 100%;
   max-width: 1000px;

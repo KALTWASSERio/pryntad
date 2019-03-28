@@ -8,7 +8,6 @@ import CampaignsPreview from '../campaigns/CampaingsPreview'
 import { MdClose } from 'react-icons/md'
 import BrowseBack from '../common/BrowseBackArrow'
 import Stepper from './Stepper'
-import TextField from '@material-ui/core/TextField'
 
 const PageGrid = styled.form`
   display: grid;
@@ -103,6 +102,7 @@ const StyledPlaylistImage = styled.img`
   @media (max-width: 560px) {
     max-height: 120px;
     grid-column: 1 / 2;
+    padding-right: 6px;
   }
 `
 const StyledPlaylistProduct = styled.div`
