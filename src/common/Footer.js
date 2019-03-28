@@ -9,8 +9,9 @@ const Nav = styled.nav`
   display: grid;
   grid-auto-flow: column;
   grid-gap: 2px;
-  height: 48px;
-  border-top: 2px solid white;
+  height: 60px;
+  /*   border-top: 2px solid rgba(0, 0, 0, 0.1); */
+  box-shadow: 1px -1px 1px -1px rgba(0, 0, 0, 0.1);
 `
 
 const StyledLink = styled(NavLink)`
@@ -18,31 +19,32 @@ const StyledLink = styled(NavLink)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #28233c;
-  color: white;
+  background: white;
+  color: #28233c;
   text-decoration: none;
 
   &.active {
-    background: #d70064;
+    color: #d70064;
   }
 `
 const MenuItem = styled.h4`
-  font-size: 0.7em;
+  font-size: 0.8em;
+  font-weight: bolder;
 `
 
 export default function Footer() {
   return (
     <Nav>
       <StyledLink exact to="/">
-        <MdHome size="1.4em" /> <MenuItem>Home</MenuItem>
+        <MdHome size="1.6em" /> <MenuItem>Home</MenuItem>
       </StyledLink>
       <StyledLink to="/dashboard">
-        <MdList size="1.4em" />
+        <MdList size="1.6em" />
         <MenuItem>Kampagnen</MenuItem>
       </StyledLink>
       <StyledLink to="/create">
-        <MdAdd size="1.4em" />
-        <MenuItem>Hinzufügen</MenuItem>
+        <MdAdd size="1.6em" />
+        <MenuItem>Neue Kampagne</MenuItem>
       </StyledLink>
     </Nav>
   )

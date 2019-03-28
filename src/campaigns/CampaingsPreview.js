@@ -33,7 +33,7 @@ const StyledCampaignLabels = styled.div`
   grid-auto-flow: column;
   font-size: 0.8em;
   text-transform: uppercase;
-  color: #dcdcdc;
+  color: #a0a09b;
   align-self: center;
   margin: 4px 12px 4px 12px;
 `
@@ -67,27 +67,7 @@ const Tag = styled.li`
   font-weight: lighter;
 `
 
-export default function CampaignsPreview(
-  campaign,
-  data,
-  ad,
-  title,
-  bid,
-  budget,
-  format,
-  brand,
-  scheduleFrom,
-  scheduleTo,
-  playlist,
-  tags,
-  colorSchema,
-  printSpace,
-  location,
-  gender,
-  ageFrom,
-  ageTo,
-  placement
-) {
+export default function CampaignsPreview(campaign, data) {
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
   }
@@ -138,6 +118,9 @@ export default function CampaignsPreview(
               displayType={'text'}
               thousandSeparator={'.'}
               decimalSeparator={','}
+              isNumericString
+              decimalScale={2}
+              fixedDecimalScale
               suffix={' € EUR (TAP)'}
             />
           </StyledCampaignContents>

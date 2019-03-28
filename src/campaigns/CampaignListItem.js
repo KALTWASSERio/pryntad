@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
 import { Link } from 'react-router-dom'
@@ -33,7 +33,7 @@ const StyledCampaignLabels = styled.div`
   grid-auto-flow: column;
   font-size: 0.9em;
   text-transform: uppercase;
-  color: #dcdcdc;
+  color: #a0a09b;
   margin: 4px 12px 4px 12px;
 
   @media (max-width: 690px) {
@@ -53,19 +53,43 @@ const StyledCampaignContents = styled.div`
   }
 `
 
-const StyledDetail = styled.div`
-  grid-column: 7 / 8;
-  align-self: center;
+const StyledLineD = styled.div`
+  grid-auto-flow: row;
+  background: #d70064;
+  border-radius: 0 8px 8px 0;
 
   @media (max-width: 690px) {
-    display: block;
-    padding: 12px 0 0;
+    display: flex;
+    flex-direction: row;
+    border-radius: 0 0 8px 8px;
+    justify-content: center;
   }
 `
 
 const StyledLink = styled(Link)`
-  color: #d70064;
+  background: #d70064;
+  color: white;
   text-decoration: none;
+  font-weight: bold;
+  align-self: stretch;
+  justify-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 8px 8px 0;
+
+  @media (max-width: 690px) {
+    display: flex;
+    flex-direction: row;
+    border-radius: 0 0 8px 8px;
+    justify-content: center;
+  }
+`
+const StyledTextLink = styled(Link)`
+  color: #d70064;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1em;
 `
 
 export default function CampaignListItem({
@@ -75,7 +99,6 @@ export default function CampaignListItem({
   scheduleTo,
   budget,
   bid,
-  date,
   _id,
 }) {
   const NumberFormat = require('react-number-format')
@@ -84,9 +107,9 @@ export default function CampaignListItem({
     <StyledCampaign>
       <StyledLine>
         <StyledCampaignLabels>Kampage</StyledCampaignLabels>
-        <StyledLink to={`/campaign/${_id}`}>
+        <StyledTextLink to={`/campaign/${_id}`}>
           <StyledCampaignContents>{title}</StyledCampaignContents>
-        </StyledLink>
+        </StyledTextLink>
       </StyledLine>
       <StyledLine>
         <StyledCampaignLabels>Marke</StyledCampaignLabels>
@@ -123,11 +146,11 @@ export default function CampaignListItem({
           />
         </StyledCampaignContents>
       </StyledLine>
-      <StyledDetail>
-        <StyledLink to={`/campaign/${_id}`}>
-          <MdKeyboardArrowRight color="#d70064" size="1.5em" />
-        </StyledLink>
-      </StyledDetail>
+      <StyledLink to={`/campaign/${_id}`}>
+        <StyledLineD>
+          <MdKeyboardArrowRight color="white" size="1.6em" />
+        </StyledLineD>
+      </StyledLink>
     </StyledCampaign>
   )
 }

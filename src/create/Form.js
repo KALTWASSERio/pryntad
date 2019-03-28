@@ -8,6 +8,7 @@ import CampaignsPreview from '../campaigns/CampaingsPreview'
 import { MdClose } from 'react-icons/md'
 import BrowseBack from '../common/BrowseBackArrow'
 import Stepper from './Stepper'
+import TextField from '@material-ui/core/TextField'
 
 const PageGrid = styled.form`
   display: grid;
@@ -356,6 +357,7 @@ export default function Form({
       ) : null}
       {step === 1 ? (
         <React.Fragment>
+          <BrowseBack />
           <Sections text="Schritt 2/6: Werbemittel" />
           <Stepper step={step} />
           <Select onChange={onInputChange} name="format" value={data.format} />
@@ -456,7 +458,7 @@ export default function Form({
               type="file"
               value={data.ad}
               onChange={onImageUpload}
-              style={{ color: 'white', border: 'none' }}
+              style={{ color: 'white', border: 'none', padding: '0' }}
             />
           </StyledInputArea>
           <StyledButtonArea>
@@ -474,6 +476,7 @@ export default function Form({
       ) : null}
       {step === 2 ? (
         <React.Fragment>
+          <BrowseBack />
           <Sections text="Schritt 3/6: Targeting" />
           <Stepper step={step} />
           <StyledInputArea>
@@ -586,6 +589,7 @@ export default function Form({
       ) : null}
       {step === 3 ? (
         <React.Fragment>
+          <BrowseBack />
           <Sections text="Schritt 4/6: Titel-Playlist" />
           <Stepper step={step} />
           <StyledInputArea>
@@ -665,6 +669,7 @@ export default function Form({
       ) : null}
       {step === 4 ? (
         <React.Fragment>
+          <BrowseBack />
           <Sections text="Schritt 5/6: Budget" />
           <Stepper step={step} />
           <StyledInputArea>
@@ -677,6 +682,7 @@ export default function Form({
               type="number"
               min="1"
               placeholder="Gesamtbudget in € EUR"
+              allowEmptyFormatting={true}
             />
           </StyledInputArea>
           <StyledInputArea>
@@ -688,7 +694,9 @@ export default function Form({
               value={data.bid}
               type="number"
               min="1"
+              step=".01"
               placeholder="TAP* in € EUR"
+              allowEmptyFormatting={true}
             />
             <StyledHint>
               *Der Tausend-Auflagen-Preis (TAP) gibt den Eurobetrag an, wie viel
@@ -710,6 +718,7 @@ export default function Form({
       ) : null}
       {step === 5 ? (
         <React.Fragment>
+          <BrowseBack />
           <Sections text="Schritt 6/6: Bestätigung" />
           <Stepper step={step} />
           <StyledExplanation>
@@ -738,7 +747,7 @@ export default function Form({
           />
           <StyledHint>
             Mit Klick auf Bestätigung, wird die Kampagne auf den Marktplatz von
-            pryntad gestellt und ist ür Publisher sichtbar.
+            pryntad gestellt und ist für Publisher sichtbar.
           </StyledHint>
           <StyledButtonArea>
             <StyledButtonPassiv onClick={() => setStep(4)}>

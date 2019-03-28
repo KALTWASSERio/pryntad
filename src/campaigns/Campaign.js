@@ -35,7 +35,7 @@ const StyledCampaignLabels = styled.div`
   grid-auto-flow: column;
   font-size: 0.8em;
   text-transform: uppercase;
-  color: #dcdcdc;
+  color: #a0a09b;
   align-self: center;
   margin: 4px 12px 4px 12px;
 `

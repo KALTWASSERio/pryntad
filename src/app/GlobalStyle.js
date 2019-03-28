@@ -33,12 +33,12 @@ export default createGlobalStyle`
 
   input {
     border: 1px solid #dcdcdc;
+    padding-left: 8px;
     background: white;
-    padding: 8px;
     width: 100%;
     font-family: 'Open Sans', sans-serif;
     font-weight: lighter; 
-    min-height: 1.5em;
+    height: 2.4em;
     left: -9999px;
 
     :focus {
@@ -48,8 +48,9 @@ export default createGlobalStyle`
 
 input[type="date"]
 {
-    min-height: 1.5em;
+    
     left: -9999px;
+    height: 2.4em;
 
     :focus {
       outline: 2px solid #d70064;
@@ -65,6 +66,7 @@ input[type=file]::-webkit-file-upload-button {
     font-weight: lighter; 
     left: -9999px;
     width: 100%;
+    height: 2.4em;
 
     :focus {
       outline: 2px solid #d70064;
@@ -76,6 +78,7 @@ input[type=file]::-webkit-file-upload-button {
   border: 1px solid #d70064;
   color: #d70064;;
   left: -9999px;
+  height: 2.4em;
 
   :focus {
       outline: 2px solid #d70064;
@@ -100,14 +103,16 @@ input[type=file]::-webkit-file-upload-button {
     padding: 8px;
     width: 100%;
     font-weight: lighter; 
-    min-height: 1.5em;
+    min-height: 2em;
     left: -9999px;
+    height: 2.4em;
 
     :focus {
       outline: 2px solid #d70064;
     }
 
   }
+
 
   :invalid {
     color: #a0a09b;
@@ -128,7 +133,12 @@ input[type=file]::-webkit-file-upload-button {
     background-color: white;
     border: 2px solid #d70064;
     color: #d70064;
-}
+    }
+    
+    :focus {
+      outline: 2px solid #d70064;
+      border-radius: 8px;
+    }
   }
 
 `
