@@ -135,7 +135,6 @@ function CreateCampaignPage(props) {
             )
           ) */
     )
-    console.log(playlist)
   }
 
   function onImageUpload(event) {

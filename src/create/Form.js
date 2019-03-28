@@ -8,6 +8,7 @@ import CampaignsPreview from '../campaigns/CampaingsPreview'
 import { MdClose } from 'react-icons/md'
 import BrowseBack from '../common/BrowseBackArrow'
 import Stepper from './Stepper'
+import ReachEstimator from './ReachEstimator'
 
 const PageGrid = styled.form`
   display: grid;
@@ -593,6 +594,7 @@ export default function Form({
           <Sections text="Schritt 4/6: Titel-Playlist" />
           <Stepper step={step} />
           <StyledInputArea>
+            <ReachEstimator playlist={playlistArray} />
             <StyledExplanation>
               Deine Titel-Playlist wird auf Basis deiner Kampagneninformationen
               erzeugt und zeigt alle Printerzeugnisse, die zu deinem Targeting
