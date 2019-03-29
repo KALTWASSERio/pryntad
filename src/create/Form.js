@@ -268,6 +268,7 @@ export default function Form({
   onSubmit,
   onTagsInputChange,
   onInputChange,
+  onInputChangeTargeting,
   onImageUpload,
   inputKeyDown,
   removeTag,
@@ -485,7 +486,7 @@ export default function Form({
             <input
               name="location"
               id="location__input"
-              onInput={onInputChange}
+              onInput={onInputChangeTargeting}
               value={data.location}
               type="text"
               placeholder="Orte"
@@ -497,7 +498,7 @@ export default function Form({
             <input
               name="ageFrom"
               id="age__input__from"
-              onInput={onInputChange}
+              onInput={onInputChangeTargeting}
               type="number"
               min="10"
               placeholder="min. 10 Jahre"
@@ -510,7 +511,7 @@ export default function Form({
             <input
               name="ageTo"
               id="age__input__to"
-              onInput={onInputChange}
+              onInput={onInputChangeTargeting}
               type="number"
               max="65+"
               placeholder="max. 65+ Jahre"
@@ -527,7 +528,7 @@ export default function Form({
                 type="radio"
                 value="Männer und Frauen"
                 checked={data.gender === 'Männer und Frauen' ? data.gender : ''}
-                onChange={onInputChange}
+                onChange={onInputChangeTargeting}
                 style={{ display: 'none', left: '-9999px' }}
               />
               <StyledRadioLabel htmlFor="gender__input-both">
@@ -539,7 +540,7 @@ export default function Form({
                 type="radio"
                 value="Frauen"
                 checked={data.gender === 'Frauen' ? data.gender : ''}
-                onChange={onInputChange}
+                onChange={onInputChangeTargeting}
                 style={{ display: 'none', left: '-9999px' }}
               />
               <StyledRadioLabel htmlFor="gender__input-women">
@@ -551,7 +552,7 @@ export default function Form({
                 type="radio"
                 value="Männer"
                 checked={data.gender === 'Männer' ? data.gender : ''}
-                onChange={onInputChange}
+                onChange={onInputChangeTargeting}
                 style={{ display: 'none', left: '-9999px' }}
               />
               <StyledRadioLabel htmlFor="gender__input-men">
@@ -679,7 +680,7 @@ export default function Form({
             <input
               name="budget"
               id="budget__input"
-              onInput={onInputChange}
+              onInput={onInputChangeTargeting}
               value={data.budget}
               type="number"
               min="1"
@@ -692,7 +693,7 @@ export default function Form({
             <input
               name="bid"
               id="bid__input"
-              onInput={onInputChange}
+              onInput={onInputChangeTargeting}
               value={data.bid}
               type="number"
               min="1"

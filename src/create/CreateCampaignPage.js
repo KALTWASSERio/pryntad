@@ -106,6 +106,13 @@ function CreateCampaignPage(props) {
     })
   }
 
+  function onInputChangeTargeting(event) {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    })
+  }
+
   function playlistUpdate(event) {
     setPlaylist(
       publisher
@@ -163,6 +170,7 @@ function CreateCampaignPage(props) {
     <PageGrid>
       <Form
         onInputChange={onInputChange}
+        onInputChangeTargeting={onInputChangeTargeting}
         onSubmit={onSubmit}
         inputKeyDown={inputKeyDown}
         removeTag={removeTag}
