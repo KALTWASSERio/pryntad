@@ -1,4 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
+const StyledEstimator = styled.div`
+  height: 60px;
+  background: #28233c;
+  color: white;
+  box-shadow: 1px -1px 1px -1px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0 auto;
+`
+const StyledValues = styled.p`
+  margin: 0 0;
+  padding: 4px 14px;
+  display: block;
+`
 
 export default function ReachEstimator(playlist) {
   const [reach, setReach] = useState()
@@ -25,36 +40,38 @@ export default function ReachEstimator(playlist) {
     )
   }
 
-  var NumberFormat = require('react-number-format')
+  const NumberFormat = require('react-number-format')
 
   return (
     <React.Fragment>
-      <div>
-        <p>
-          Potenzielle Reichweite
-          <NumberFormat
-            value={reach}
-            displayType={'text'}
-            thousandSeparator={'.'}
-            decimalSeparator={','}
-            prefix={' '}
-            suffix={' '}
-            style={{ fontWeight: 'bolder' }}
-          />
-          Personen. <br />
-          Potenzielle Auflage
-          <NumberFormat
-            value={circulation}
-            displayType={'text'}
-            thousandSeparator={'.'}
-            decimalSeparator={','}
-            prefix={' '}
-            suffix={' '}
-            style={{ fontWeight: 'bolder' }}
-          />
-          Exemplaren.
-        </p>
-      </div>
+      <React.Fragment>
+        <StyledEstimator>
+          <StyledValues>
+            Potenzielle Reichweite:
+            <NumberFormat
+              value={reach}
+              displayType={'text'}
+              thousandSeparator={'.'}
+              decimalSeparator={','}
+              prefix={' '}
+              suffix={' '}
+              style={{ fontWeight: 'bolder', color: '#d70064' }}
+            />
+            Personen <br />
+            Potenzielle Auflage:
+            <NumberFormat
+              value={circulation}
+              displayType={'text'}
+              thousandSeparator={'.'}
+              decimalSeparator={','}
+              prefix={' '}
+              suffix={' '}
+              style={{ fontWeight: 'bolder', color: '#d70064' }}
+            />
+            Exemplare
+          </StyledValues>
+        </StyledEstimator>
+      </React.Fragment>
     </React.Fragment>
   )
 }

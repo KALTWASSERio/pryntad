@@ -5,20 +5,19 @@ import Form from './Form'
 import publisher from '../data/publisher.json'
 import { withRouter } from 'react-router'
 import { postNewCampaign } from '../services'
+import ReachEstimator from './ReachEstimator'
 
 const PageGrid = styled.div`
-  display: flex;
-  flex-direction: column;
   overflow-y: scroll;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  scroll-behavior: auto;
-  padding: 14px 14px 0 14px;
+  background: white;
   ::-webkit-scrollbar {
     display: none;
   }
-  background: white;
+  scroll-behavior: auto;
+  padding: 14px 14px 0 14px;
   z-index: -1;
 `
 
@@ -174,24 +173,39 @@ function CreateCampaignPage(props) {
     setAd(response.data.url)
   }
 
+  const [step, setStep] = useState(0)
+
+  function ReachEstimatorConditional() {
+    if (step === 1 || step === 2 || step === 3) {
+      return <ReachEstimator playlist={playlist} step={step} />
+    } else {
+      return null
+    }
+  }
+
   return (
-    <PageGrid>
-      <Form
-        onInputChange={onInputChange}
-        onSubmit={onSubmit}
-        inputKeyDown={inputKeyDown}
-        removeTag={removeTag}
-        removePublisher={removePublisher}
-        onTagsInputChange={onTagsInputChange}
-        tagsInput={tagsInput}
-        tagsArray={tags}
-        data={data}
-        onImageUpload={onImageUpload}
-        playlistArray={playlist}
-        ad={ad}
-        props={props}
-      />
-    </PageGrid>
+    <React.Fragment>
+      <PageGrid>
+        <Form
+          step={step}
+          setStep={setStep}
+          onInputChange={onInputChange}
+          onSubmit={onSubmit}
+          inputKeyDown={inputKeyDown}
+          removeTag={removeTag}
+          removePublisher={removePublisher}
+          onTagsInputChange={onTagsInputChange}
+          tagsInput={tagsInput}
+          tagsArray={tags}
+          data={data}
+          onImageUpload={onImageUpload}
+          playlistArray={playlist}
+          ad={ad}
+          props={props}
+        />
+      </PageGrid>
+      <ReachEstimatorConditional />
+    </React.Fragment>
   )
 }
 
