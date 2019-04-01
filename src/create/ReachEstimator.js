@@ -1,47 +1,59 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function ReachEstimator(playlist) {
-  /*  const [reach, setReach] = useState([])
-  const [circulation, setCirculation] = useState([])
- */
+  const [reach, setReach] = useState()
+  const [circulation, setCirculation] = useState()
 
-  /* console.log(
-    playlist.playlist
-      .map(item => item.reach)
-      .reduce((prev, curr) => Number(prev) + Number(curr), 0)
-  ) */
-  /* function reachCalc() {
+  useEffect(() => {
+    reachCalc()
+    circulationCalc()
+  }, [playlist])
+
+  function reachCalc() {
     setReach(
       playlist.playlist
         .map(item => item.reach)
         .reduce((prev, curr) => Number(prev) + Number(curr), 0)
     )
-  } */
+  }
 
-  /*   function circulationCalc() {
+  function circulationCalc() {
     setCirculation(
       playlist.playlist
-        .map(item => item.circulation)
+        .map(item => item.paid_circulation)
         .reduce((prev, curr) => Number(prev) + Number(curr), 0)
     )
   }
- */
-  /*   reachCalc()
-  circulationCalc() */
+
+  var NumberFormat = require('react-number-format')
 
   return (
     <React.Fragment>
       <div>
-        {playlist &&
-          playlist.playlist
-            .map(item => item.reach)
-            .reduce((prev, curr) => Number(prev) + Number(curr), 0)}
-      </div>
-      <div>
-        {playlist &&
-          playlist.playlist
-            .map(item => item.paid_circulation)
-            .reduce((prev, curr) => Number(prev) + Number(curr), 0)}
+        <p>
+          Potenzielle Reichweite
+          <NumberFormat
+            value={reach}
+            displayType={'text'}
+            thousandSeparator={'.'}
+            decimalSeparator={','}
+            prefix={' '}
+            suffix={' '}
+            style={{ fontWeight: 'bolder' }}
+          />
+          Personen. <br />
+          Potenzielle Auflage
+          <NumberFormat
+            value={circulation}
+            displayType={'text'}
+            thousandSeparator={'.'}
+            decimalSeparator={','}
+            prefix={' '}
+            suffix={' '}
+            style={{ fontWeight: 'bolder' }}
+          />
+          Exemplaren.
+        </p>
       </div>
     </React.Fragment>
   )

@@ -268,7 +268,6 @@ export default function Form({
   onSubmit,
   onTagsInputChange,
   onInputChange,
-  onInputChangeTargeting,
   onImageUpload,
   inputKeyDown,
   removeTag,
@@ -289,7 +288,7 @@ export default function Form({
 
   return (
     <PageGrid onSubmit={onSubmit} style={{ position: 'relative' }}>
-      {step === 0 ? (
+      {step === 0 && (
         <React.Fragment>
           <BrowseBack />
           <Sections text="Schritt 1/6: Kampagne anlegen" />
@@ -356,8 +355,8 @@ export default function Form({
             </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
-      ) : null}
-      {step === 1 ? (
+      )}
+      {step === 1 && (
         <React.Fragment>
           <BrowseBack />
           <Sections text="Schritt 2/6: Werbemittel" />
@@ -475,8 +474,8 @@ export default function Form({
             </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
-      ) : null}
-      {step === 2 ? (
+      )}
+      {step === 2 && (
         <React.Fragment>
           <BrowseBack />
           <Sections text="Schritt 3/6: Targeting" />
@@ -486,19 +485,18 @@ export default function Form({
             <input
               name="location"
               id="location__input"
-              onInput={onInputChangeTargeting}
+              onInput={onInputChange}
               value={data.location}
               type="text"
               placeholder="Orte"
             />
           </StyledInputArea>
-
           <StyledSectionFrom>
             <StyledLabel htmlFor="age__input__from">Alter (ab)</StyledLabel>
             <input
               name="ageFrom"
               id="age__input__from"
-              onInput={onInputChangeTargeting}
+              onInput={onInputChange}
               type="number"
               min="10"
               placeholder="min. 10 Jahre"
@@ -511,7 +509,7 @@ export default function Form({
             <input
               name="ageTo"
               id="age__input__to"
-              onInput={onInputChangeTargeting}
+              onInput={onInputChange}
               type="number"
               max="65+"
               placeholder="max. 65+ Jahre"
@@ -528,7 +526,7 @@ export default function Form({
                 type="radio"
                 value="Männer und Frauen"
                 checked={data.gender === 'Männer und Frauen' ? data.gender : ''}
-                onChange={onInputChangeTargeting}
+                onChange={onInputChange}
                 style={{ display: 'none', left: '-9999px' }}
               />
               <StyledRadioLabel htmlFor="gender__input-both">
@@ -540,7 +538,7 @@ export default function Form({
                 type="radio"
                 value="Frauen"
                 checked={data.gender === 'Frauen' ? data.gender : ''}
-                onChange={onInputChangeTargeting}
+                onChange={onInputChange}
                 style={{ display: 'none', left: '-9999px' }}
               />
               <StyledRadioLabel htmlFor="gender__input-women">
@@ -552,7 +550,7 @@ export default function Form({
                 type="radio"
                 value="Männer"
                 checked={data.gender === 'Männer' ? data.gender : ''}
-                onChange={onInputChangeTargeting}
+                onChange={onInputChange}
                 style={{ display: 'none', left: '-9999px' }}
               />
               <StyledRadioLabel htmlFor="gender__input-men">
@@ -587,15 +585,15 @@ export default function Form({
               Abbrechen
             </AbortLink>
           </StyledButtonArea>
+          <ReachEstimator playlist={playlistArray} />
         </React.Fragment>
-      ) : null}
-      {step === 3 ? (
+      )}
+      {step === 3 && (
         <React.Fragment>
           <BrowseBack />
           <Sections text="Schritt 4/6: Titel-Playlist" />
           <Stepper step={step} />
           <StyledInputArea>
-            <ReachEstimator playlist={playlistArray} />
             <StyledExplanation>
               Deine Titel-Playlist wird auf Basis deiner Kampagneninformationen
               erzeugt und zeigt alle Printerzeugnisse, die zu deinem Targeting
@@ -668,9 +666,10 @@ export default function Form({
               Abbrechen
             </AbortLink>
           </StyledButtonArea>
+          <ReachEstimator playlist={playlistArray} />
         </React.Fragment>
-      ) : null}
-      {step === 4 ? (
+      )}
+      {step === 4 && (
         <React.Fragment>
           <BrowseBack />
           <Sections text="Schritt 5/6: Budget" />
@@ -680,7 +679,7 @@ export default function Form({
             <input
               name="budget"
               id="budget__input"
-              onInput={onInputChangeTargeting}
+              onInput={onInputChange}
               value={data.budget}
               type="number"
               min="1"
@@ -693,7 +692,7 @@ export default function Form({
             <input
               name="bid"
               id="bid__input"
-              onInput={onInputChangeTargeting}
+              onInput={onInputChange}
               value={data.bid}
               type="number"
               min="1"
@@ -717,9 +716,10 @@ export default function Form({
               Abbrechen
             </AbortLink>
           </StyledButtonArea>
+          <ReachEstimator playlist={playlistArray} />
         </React.Fragment>
-      ) : null}
-      {step === 5 ? (
+      )}
+      {step === 5 && (
         <React.Fragment>
           <BrowseBack />
           <Sections text="Schritt 6/6: Bestätigung" />
@@ -762,7 +762,7 @@ export default function Form({
             </AbortLink>
           </StyledButtonArea>
         </React.Fragment>
-      ) : null}
+      )}
     </PageGrid>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import Form from './Form'
@@ -106,41 +106,49 @@ function CreateCampaignPage(props) {
     })
   }
 
-  function onInputChangeTargeting(event) {
-    setData({
-      ...data,
-      [event.target.name]: event.target.value,
-    })
-  }
+  useEffect(() => playlistUpdate(), [data, tags])
 
-  function playlistUpdate(event) {
+  function playlistUpdate() {
     setPlaylist(
       publisher
         .filter(publisherDetail =>
-          tags.some(tag =>
-            publisherDetail.interests
-              .map(interest => interest.toLowerCase())
-              .includes(tag.toLowerCase())
-          )
+          tags.length
+            ? tags.some(tag =>
+                publisherDetail.interests
+                  .map(interest => interest.toLowerCase())
+                  .includes(tag.toLowerCase())
+              )
+            : true
         )
         .filter(publisherDetail =>
-          publisherDetail.ad_format.includes(data.format)
+          data.format ? publisherDetail.ad_format.includes(data.format) : true
         )
 
         .filter(publisherDetail =>
-          publisherDetail.demography.filter(item => item.gender === data.gender)
+          data.gender
+            ? publisherDetail.demography.filter(
+                item => item.gender === data.gender
+              )
+            : true
         )
-      /*  .filter(publisherDetail =>
-            publisherDetail.demography.filter(
-              item => Number(item.ageFrom) >= Number(data.ageFrom)
+
+        .filter(publisherDetail => {
+          if (data.ageFrom) {
+            const ageFrom = publisherDetail.demography.find(
+              item => item.ageFrom
             )
-          )
-          
-          .filter(publisherDetail =>
-            publisherDetail.demography.filter(
-              item => Number(item.ageTo) <= Number(data.ageTo)
-            )
-          ) */
+            return ageFrom && Number(ageFrom.ageFrom) >= Number(data.ageFrom)
+          }
+          return true
+        })
+
+        .filter(publisherDetail =>
+          data.ageTo
+            ? publisherDetail.demography.filter(
+                item => Number(item.ageTo) <= Number(data.ageTo)
+              )
+            : true
+        )
     )
   }
 
@@ -170,7 +178,6 @@ function CreateCampaignPage(props) {
     <PageGrid>
       <Form
         onInputChange={onInputChange}
-        onInputChangeTargeting={onInputChangeTargeting}
         onSubmit={onSubmit}
         inputKeyDown={inputKeyDown}
         removeTag={removeTag}
@@ -181,7 +188,6 @@ function CreateCampaignPage(props) {
         data={data}
         onImageUpload={onImageUpload}
         playlistArray={playlist}
-        playlistUpdate={playlistUpdate}
         ad={ad}
         props={props}
       />

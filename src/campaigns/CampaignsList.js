@@ -34,7 +34,6 @@ export default function CampaignsList() {
   useEffect(() => {
     getAllCampaigns().then(res => {
       setCampaigns(res.data)
-      console.log(campaigns)
     })
   }, [])
 
