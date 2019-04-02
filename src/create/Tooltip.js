@@ -3,17 +3,17 @@ import Tippy from '@tippy.js/react'
 import styled from 'styled-components'
 import { MdInfoOutline } from 'react-icons/md'
 
-const StyledTooltipp = styled.div`
+const StyledTooltip = styled.div`
   margin-left: 8px;
   color: #a0a09b;
 `
 
-export default function Tooltipp(props) {
+export default function Tooltip(props) {
   const ThisWillWork = forwardRef((props, ref) => {
     return (
-      <StyledTooltipp ref={ref}>
+      <StyledTooltip ref={ref}>
         <MdInfoOutline />
-      </StyledTooltipp>
+      </StyledTooltip>
     )
   })
   return (
