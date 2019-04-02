@@ -31,30 +31,46 @@ const StyledCampaign = styled.div`
 `
 
 const StyledCampaignLabels = styled.div`
-  grid-column: 1 / 2;
+  grid-column: 2 / 3;
   grid-auto-flow: column;
   font-size: 0.8em;
   text-transform: uppercase;
-  color: #a0a09b;
+  color: #a0a09b ;
   align-self: center;
   margin: 4px 12px 4px 12px;
 `
 
 const StyledCampaignContents = styled.div`
   font-size: 0.9em;
-  grid-column: 2 / 7;
+  grid-column: 3 / 7;
   margin: 4px 12px 4px 12px;
+`
+
+const StyledCampaignLabelsMotiv = styled.div`
+   display: flex;
+   align-items: flex-start;
+   grid-column: 2 / 3;
+   grid-auto-flow: column;
+   font-size: 0.8em;
+   text-transform: uppercase;
+   color: #a0a09b ;
+   padding: 0;
+   margin: 4px 12px 4px 12px;
+
+  @media (max-width: 600px) {
+    display: none;
+   }
 `
 
 const StyledAd = styled.img`
   width: 50%;
-  grid-column: 2 / 7;
+  grid-column: 3 / 7;
   margin: 4px 12px;
 
   @media (max-width: 600px) {
     grid-column: 6 span;
     width: 100%;
-    margin: 0 0;
+    margin: 0 0 ;
   }
 `
 
@@ -103,6 +119,7 @@ export default function Campaign({ props }) {
           >
             {campaign && campaign.title}
           </StyledCampaignContents>
+          <StyledCampaignLabelsMotiv>Motiv</StyledCampaignLabelsMotiv>
           <StyledAd src={campaign && campaign.ad}/>
           <StyledCampaignLabels>Marke</StyledCampaignLabels>
           <StyledCampaignContents>
