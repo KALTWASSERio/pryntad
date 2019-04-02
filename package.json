@@ -6,6 +6,7 @@
     "@babel/core": "7.3.3",
     "@craco/craco": "3.4.1",
     "@material-ui/core": "^3.9.2",
+    "@tippy.js/react": "^2.1.2",
     "axios": "0.18.0",
     "babel-loader": "8.0.5",
     "babel-plugin-jsx-remove-data-test-id": "2.0.0",

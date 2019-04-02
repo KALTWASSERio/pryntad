@@ -8,6 +8,7 @@ import Sections from '../common/Sections'
 import CampaignsPreview from '../campaigns/CampaignsPreview'
 import BrowseBack from '../common/BrowseBackArrow'
 import Stepper from './Stepper'
+import Tooltipp from './Tooltipp'
 
 const PageGrid = styled.form`
   display: grid;
@@ -678,7 +679,10 @@ export default function Form({
             <Sections text="Schritt 5/6: Budget" />
             <Stepper step={step} />
             <StyledInputArea>
-              <StyledLabel htmlFor="budget__input">Budget (€)</StyledLabel>
+              <StyledLabel htmlFor="budget__input">
+                Budget (€)
+                <Tooltipp props={props} text="Test" />
+              </StyledLabel>
               <input
                 name="budget"
                 id="budget__input"
