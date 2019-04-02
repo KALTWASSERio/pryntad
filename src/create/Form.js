@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Select from './Select'
 import SelectPlacement from './SelectPlacement'
@@ -8,7 +8,6 @@ import CampaignsPreview from '../campaigns/CampaingsPreview'
 import { MdClose } from 'react-icons/md'
 import BrowseBack from '../common/BrowseBackArrow'
 import Stepper from './Stepper'
-import ReachEstimator from './ReachEstimator'
 
 const PageGrid = styled.form`
   display: grid;

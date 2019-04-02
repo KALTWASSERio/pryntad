@@ -51,6 +51,7 @@ function CreateCampaignPage(props) {
   const [tags, setTags] = useState([])
   const [tagsInput, setTagsInput] = useState('')
   const [playlist, setPlaylist] = useState([])
+  const [step, setStep] = useState(0)
 
   function createCampaign(data) {
     postNewCampaign(data)
@@ -141,13 +142,13 @@ function CreateCampaignPage(props) {
           return true
         })
 
-        .filter(publisherDetail =>
-          data.ageTo
-            ? publisherDetail.demography.filter(
-                item => Number(item.ageTo) <= Number(data.ageTo)
-              )
-            : true
-        )
+        .filter(publisherDetail => {
+          if (data.ageTo) {
+            const ageTo = publisherDetail.demography.find(item => item.ageTo)
+            return ageTo && Number(ageTo.ageTo) <= Number(data.ageTo)
+          }
+          return true
+        })
     )
   }
 
@@ -172,8 +173,6 @@ function CreateCampaignPage(props) {
   function onAdSave(response) {
     setAd(response.data.url)
   }
-
-  const [step, setStep] = useState(0)
 
   function ReachEstimatorConditional() {
     if (step === 1 || step === 2 || step === 3) {

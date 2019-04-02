@@ -3,11 +3,20 @@ import styled from 'styled-components'
 
 const StyledEstimator = styled.div`
   height: 60px;
-  background: #28233c;
+  background: #d70064;
   color: white;
   box-shadow: 1px -1px 1px -1px rgba(0, 0, 0, 0.1);
   width: 100%;
   margin: 0 auto;
+  /* animation: move-up 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  @keyframes move-up {
+    0% {
+      transform: translateY(60px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  } */
 `
 const StyledValues = styled.p`
   margin: 0 0;
@@ -55,9 +64,9 @@ export default function ReachEstimator(playlist) {
               decimalSeparator={','}
               prefix={' '}
               suffix={' '}
-              style={{ fontWeight: 'bolder', color: '#d70064' }}
+              style={{ fontWeight: 'bolder', color: 'white' }}
             />
-            Personen <br />
+            Leser <br />
             Potenzielle Auflage:
             <NumberFormat
               value={circulation}
@@ -66,7 +75,7 @@ export default function ReachEstimator(playlist) {
               decimalSeparator={','}
               prefix={' '}
               suffix={' '}
-              style={{ fontWeight: 'bolder', color: '#d70064' }}
+              style={{ fontWeight: 'bolder', color: 'white' }}
             />
             Exemplare
           </StyledValues>
