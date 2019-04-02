@@ -22,7 +22,7 @@ const PageGrid = styled.div`
 const StyledCampaign = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: auto 160px auto;
+  grid-template-rows: auto auto auto;
   border-radius: 8px;
   margin-bottom: 12px;
   padding-bottom: 12px;
@@ -46,8 +46,16 @@ const StyledCampaignContents = styled.div`
   margin: 4px 12px 4px 12px;
 `
 
-const StyledAd = styled.div`
-  grid-column: 6 span;
+const StyledAd = styled.img`
+  width: 50%;
+  grid-column: 2 / 7;
+  margin: 4px 12px;
+
+  @media (max-width: 600px) {
+    grid-column: 6 span;
+    width: 100%;
+    margin: 0 0;
+  }
 `
 
 const TagList = styled.ul`
@@ -95,16 +103,7 @@ export default function Campaign({ props }) {
           >
             {campaign && campaign.title}
           </StyledCampaignContents>
-          <StyledAd
-            style={{
-              backgroundImage: 'url(' + (campaign && campaign.ad) + ')',
-              height: '100%',
-              width: '100%',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-            }}
-          />
+          <StyledAd src={campaign && campaign.ad}/>
           <StyledCampaignLabels>Marke</StyledCampaignLabels>
           <StyledCampaignContents>
             {campaign && campaign.brand}
