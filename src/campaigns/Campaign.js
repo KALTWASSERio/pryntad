@@ -35,7 +35,7 @@ const StyledCampaignLabels = styled.div`
   grid-auto-flow: column;
   font-size: 0.8em;
   text-transform: uppercase;
-  color: #a0a09b ;
+  color: #a0a09b;
   align-self: center;
   margin: 4px 12px 4px 12px;
 `
@@ -47,19 +47,19 @@ const StyledCampaignContents = styled.div`
 `
 
 const StyledCampaignLabelsMotiv = styled.div`
-   display: flex;
-   align-items: flex-start;
-   grid-column: 2 / 3;
-   grid-auto-flow: column;
-   font-size: 0.8em;
-   text-transform: uppercase;
-   color: #a0a09b ;
-   padding: 0;
-   margin: 4px 12px 4px 12px;
+  display: flex;
+  align-items: flex-start;
+  grid-column: 2 / 3;
+  grid-auto-flow: column;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: #a0a09b;
+  padding: 0;
+  margin: 4px 12px 4px 12px;
 
   @media (max-width: 600px) {
     display: none;
-   }
+  }
 `
 
 const StyledAd = styled.img`
@@ -70,7 +70,7 @@ const StyledAd = styled.img`
   @media (max-width: 600px) {
     grid-column: 6 span;
     width: 100%;
-    margin: 0 0 ;
+    margin: 0 0;
   }
 `
 
@@ -120,7 +120,7 @@ export default function Campaign({ props }) {
             {campaign && campaign.title}
           </StyledCampaignContents>
           <StyledCampaignLabelsMotiv>Motiv</StyledCampaignLabelsMotiv>
-          <StyledAd src={campaign && campaign.ad}/>
+          <StyledAd src={campaign && campaign.ad} />
           <StyledCampaignLabels>Marke</StyledCampaignLabels>
           <StyledCampaignContents>
             {campaign && campaign.brand}
