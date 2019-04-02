@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import styled from 'styled-components'
 import Campaign from './Campaign'
 import Footer from '../common/Footer'
@@ -30,3 +30,4 @@ export default function CampaignsPage({ campaigns }) {
     </React.Fragment>
   )
 }
+ */

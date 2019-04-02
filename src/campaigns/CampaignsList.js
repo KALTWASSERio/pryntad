@@ -9,12 +9,13 @@ const PageGrid = styled.div`
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  ::-webkit-scrollbar {
-    display: none;
-  }
   scroll-behavior: auto;
   padding: 14px 14px 0 14px;
   z-index: -1;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 const StyledTitle = styled.div`
   background: white;

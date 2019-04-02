@@ -70,21 +70,20 @@ const Tag = styled.li`
 `
 
 export default function Campaign({ props }) {
-  function renderTag(text, index) {
-    return <Tag key={index}>{text}</Tag>
-  }
-
+  const NumberFormat = require('react-number-format')
   const [campaign, setCampaign] = useState()
 
   useEffect(() => {
-    console.log(props.match.params._id)
     getSingleCampaign(props.match.params._id).then(res => {
       console.log(res.data)
       setCampaign(res.data)
     })
   }, [])
 
-  const NumberFormat = require('react-number-format')
+  function renderTag(text, index) {
+    return <Tag key={index}>{text}</Tag>
+  }
+
   return (
     <React.Fragment>
       <BrowseBackArrow />
@@ -112,7 +111,7 @@ export default function Campaign({ props }) {
           </StyledCampaignContents>
           <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
           <StyledCampaignContents>
-            {dayjs(campaign && campaign.scheduleFrom).format('DD/MM/YYYY')} -{' '}
+            {dayjs(campaign && campaign.scheduleFrom).format('DD/MM/YYYY')} -
             {dayjs(campaign && campaign.scheduleTo).format('DD/MM/YYYY')}
           </StyledCampaignContents>
           <StyledCampaignLabels>Budget</StyledCampaignLabels>

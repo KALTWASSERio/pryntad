@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
-import { Link } from 'react-router-dom'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 
 const StyledCampaign = styled.div`
@@ -102,7 +102,6 @@ export default function CampaignListItem({
   _id,
 }) {
   const NumberFormat = require('react-number-format')
-
   return (
     <StyledCampaign>
       <StyledLine>
@@ -118,7 +117,7 @@ export default function CampaignListItem({
       <StyledLine>
         <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
         <StyledCampaignContents>
-          {dayjs(scheduleFrom).format('DD/MM/YYYY')} -{' '}
+          {dayjs(scheduleFrom).format('DD/MM/YYYY')} -
           {dayjs(scheduleTo).format('DD/MM/YYYY')}
         </StyledCampaignContents>
       </StyledLine>

@@ -15,7 +15,6 @@ export default createGlobalStyle`
 
 
   html, body {
-   /*  position: fixed; */
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -47,11 +46,10 @@ export default createGlobalStyle`
 }
 
 input[type="date"]
-{
-    
-    left: -9999px;
-    height: 2.4em;
-
+    {
+      left: -9999px;
+      height: 2.4em;
+      
     :focus {
       outline: 2px solid #d70064;
     }
