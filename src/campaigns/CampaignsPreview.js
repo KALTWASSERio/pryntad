@@ -68,11 +68,11 @@ const Tag = styled.li`
 `
 
 export default function CampaignsPreview(campaign) {
+  const NumberFormat = require('react-number-format')
+
   function renderTag(text, index) {
     return <Tag key={index}>{text}</Tag>
   }
-
-  const NumberFormat = require('react-number-format')
 
   return (
     <React.Fragment>
@@ -98,7 +98,7 @@ export default function CampaignsPreview(campaign) {
           <StyledCampaignContents>{campaign.brand}</StyledCampaignContents>
           <StyledCampaignLabels>Zeitraum</StyledCampaignLabels>
           <StyledCampaignContents>
-            {dayjs(campaign.scheduleFrom).format('DD/MM/YYYY')} -{' '}
+            {dayjs(campaign.scheduleFrom).format('DD/MM/YYYY')} -
             {dayjs(campaign.scheduleTo).format('DD/MM/YYYY')}
           </StyledCampaignContents>
           <StyledCampaignLabels>Budget</StyledCampaignLabels>

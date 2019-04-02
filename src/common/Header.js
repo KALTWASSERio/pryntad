@@ -20,6 +20,7 @@ const StyledImage = styled.img`
   height: 30px;
   cursor: pointer;
 `
+
 function Header(props) {
   return (
     <StyledHeader>

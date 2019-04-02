@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import axios from 'axios'
-import Form from './Form'
-import publisher from '../data/publisher.json'
 import { withRouter } from 'react-router'
+import axios from 'axios'
+import styled from 'styled-components'
 import { postNewCampaign } from '../services'
+import publisher from '../data/publisher.json'
+import Form from './Form'
 import ReachEstimator from './ReachEstimator'
 
 const PageGrid = styled.div`
@@ -13,12 +13,13 @@ const PageGrid = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   background: white;
-  ::-webkit-scrollbar {
-    display: none;
-  }
   scroll-behavior: auto;
   padding: 14px 14px 0 14px;
   z-index: -1;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `
 
 const defaultData = {

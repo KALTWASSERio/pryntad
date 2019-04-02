@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { MdClose } from 'react-icons/md'
 import Select from './Select'
 import SelectPlacement from './SelectPlacement'
 import InputTag from './InputTag'
 import Sections from '../common/Sections'
-import CampaignsPreview from '../campaigns/CampaingsPreview'
-import { MdClose } from 'react-icons/md'
+import CampaignsPreview from '../campaigns/CampaignsPreview'
 import BrowseBack from '../common/BrowseBackArrow'
 import Stepper from './Stepper'
 
@@ -99,7 +99,7 @@ const StyledPlaylistImage = styled.img`
   max-height: 150px;
   grid-row: 1 / 4;
 
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     max-height: 120px;
     grid-column: 1 / 2;
     padding-right: 6px;
@@ -109,7 +109,7 @@ const StyledPlaylistProduct = styled.div`
   margin: 0;
   grid-column: 2 / 3;
   grid-row: 1/ -1;
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     grid-column: 2 / 3;
   }
 `
@@ -121,7 +121,7 @@ const StyledPlaylistProductDetail = styled.div`
   grid-column: 3 / 5;
   grid-gap: 12px;
 
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     grid-column: 2 / 4;
     grid-row: 2 / 3;
   }
@@ -134,7 +134,7 @@ const StyledProduct = styled.h3`
   grid-row: 1 / -1;
   margin-bottom: 12px;
 
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     font-size: 1.2em;
     grid-column: 2 / 4;
     margin-bottom: 6px;
@@ -147,7 +147,7 @@ const StyledPublisher = styled.div`
   grid-row: 1 / 1;
   margin-bottom: 12px;
 
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     grid-column: 2 / 4;
     font-size: 0.6em;
     margin: 0;
@@ -159,7 +159,7 @@ const StyledReach = styled.div`
   margin-bottom: 12px;
   grid-column: 3 / 5;
 
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     font-size: 1em;
     margin-bottom: 6px;
   }
@@ -170,7 +170,7 @@ const StyledCirculation = styled.div`
   margin-bottom: 12px;
   grid-column: 3 / 5;
 
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     font-size: 1em;
     margin-bottom: 6px;
   }
@@ -199,6 +199,7 @@ const StyledButtonArea = styled.div`
   margin: 24px 0;
   justify-self: center;
 `
+
 const StyledButtonPassiv = styled.button`
   background: white;
   border: 2px solid #d70064;

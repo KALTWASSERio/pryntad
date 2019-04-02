@@ -26,6 +26,7 @@ const StyledLink = styled(NavLink)`
     color: #d70064;
   }
 `
+
 const MenuItem = styled.h4`
   font-size: 0.8em;
   font-weight: bolder;
