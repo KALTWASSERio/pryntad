@@ -8,15 +8,6 @@ const StyledEstimator = styled.div`
   box-shadow: 1px -1px 1px -1px rgba(0, 0, 0, 0.1);
   width: 100%;
   margin: 0 auto;
-  /* animation: move-up 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  @keyframes move-up {
-    0% {
-      transform: translateY(60px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  } */
 `
 const StyledValues = styled.p`
   margin: 0 0;
