@@ -23,6 +23,7 @@ export default function Tooltipp(props) {
       animation="scale"
       duration={0}
       delay={[300, 0]}
+      theme="light"
     >
       <ThisWillWork />
     </Tippy>

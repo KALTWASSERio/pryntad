@@ -681,7 +681,7 @@ export default function Form({
             <StyledInputArea>
               <StyledLabel htmlFor="budget__input">
                 Budget (€)
-                <Tooltipp props={props} text="Test" />
+                <Tooltipp props={props} text="Dein Budget wird maximal ausgeschöpft, sofern das Publisher-Netzwerk dein Angebot in Höhe des vollstädnigen Budgets annimmt. Andernfalls werden nur Teilbudgets abgenommen." />
               </StyledLabel>
               <input
                 name="budget"
@@ -695,7 +695,7 @@ export default function Form({
               />
             </StyledInputArea>
             <StyledInputArea>
-              <StyledLabel htmlFor="bid__input">Gebot (€)</StyledLabel>
+              <StyledLabel htmlFor="bid__input">Gebot (€)<Tooltipp props={props} text="Wir bieten nicht mehr als diesen Betrag pro 1.000 gedruckter Anzeigen. Sollte dieser Betrag zu niedrig gewählt sein, kannst du möglicherweise dein Budget nicht ausschöpfen." /></StyledLabel>
               <input
                 name="bid"
                 id="bid__input"
