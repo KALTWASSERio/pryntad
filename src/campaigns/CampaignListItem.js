@@ -43,7 +43,7 @@ const StyledCampaignLabels = styled.div`
 `
 
 const StyledCampaignContents = styled.div`
-  font-size: 0.9em;
+  font-size: 1em;
   justify-self: flex-start;
   margin: 4px 12px 4px 12px;
   padding-bottom: 12px;
@@ -89,7 +89,7 @@ const StyledTextLink = styled(Link)`
   color: #d70064;
   font-weight: bold;
   text-decoration: none;
-  font-size: 1.1em;
+  font-size: 1em;
 `
 
 export default function CampaignListItem({

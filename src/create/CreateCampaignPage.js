@@ -1,24 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import Form from './Form'
 import publisher from '../data/publisher.json'
 import { withRouter } from 'react-router'
 import { postNewCampaign } from '../services'
+import ReachEstimator from './ReachEstimator'
 
 const PageGrid = styled.div`
-  display: flex;
-  flex-direction: column;
   overflow-y: scroll;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  scroll-behavior: auto;
-  padding: 14px 14px 0 14px;
+  background: white;
   ::-webkit-scrollbar {
     display: none;
   }
-  background: white;
+  scroll-behavior: auto;
+  padding: 14px 14px 0 14px;
   z-index: -1;
 `
 
@@ -52,6 +51,7 @@ function CreateCampaignPage(props) {
   const [tags, setTags] = useState([])
   const [tagsInput, setTagsInput] = useState('')
   const [playlist, setPlaylist] = useState([])
+  const [step, setStep] = useState(0)
 
   function createCampaign(data) {
     postNewCampaign(data)
@@ -106,36 +106,50 @@ function CreateCampaignPage(props) {
     })
   }
 
-  function playlistUpdate(event) {
+  useEffect(() => playlistUpdate(), [data, tags])
+
+  function playlistUpdate() {
     setPlaylist(
       publisher
         .filter(publisherDetail =>
-          tags.some(tag =>
-            publisherDetail.interests
-              .map(interest => interest.toLowerCase())
-              .includes(tag.toLowerCase())
-          )
+          tags.length
+            ? tags.some(tag =>
+                publisherDetail.interests
+                  .map(interest => interest.toLowerCase())
+                  .includes(tag.toLowerCase())
+              )
+            : true
         )
         .filter(publisherDetail =>
-          publisherDetail.ad_format.includes(data.format)
+          data.format ? publisherDetail.ad_format.includes(data.format) : true
         )
 
         .filter(publisherDetail =>
-          publisherDetail.demography.filter(item => item.gender === data.gender)
+          data.gender
+            ? publisherDetail.demography.filter(
+                item => item.gender === data.gender
+              )
+            : true
         )
-      /*  .filter(publisherDetail =>
-            publisherDetail.demography.filter(
-              item => Number(item.ageFrom) >= Number(data.ageFrom)
+
+        .filter(publisherDetail => {
+          if (data.ageFrom) {
+            const ageFrom = publisherDetail.demography.find(
+              item => item.ageFrom
             )
-          )
-          
-          .filter(publisherDetail =>
-            publisherDetail.demography.filter(
-              item => Number(item.ageTo) <= Number(data.ageTo)
-            )
-          ) */
+            return ageFrom && Number(ageFrom.ageFrom) >= Number(data.ageFrom)
+          }
+          return true
+        })
+
+        .filter(publisherDetail => {
+          if (data.ageTo) {
+            const ageTo = publisherDetail.demography.find(item => item.ageTo)
+            return ageTo && Number(ageTo.ageTo) <= Number(data.ageTo)
+          }
+          return true
+        })
     )
-    console.log(playlist)
   }
 
   function onImageUpload(event) {
@@ -160,25 +174,37 @@ function CreateCampaignPage(props) {
     setAd(response.data.url)
   }
 
+  function ReachEstimatorConditional() {
+    if (step === 1 || step === 2 || step === 3) {
+      return <ReachEstimator playlist={playlist} step={step} />
+    } else {
+      return null
+    }
+  }
+
   return (
-    <PageGrid>
-      <Form
-        onInputChange={onInputChange}
-        onSubmit={onSubmit}
-        inputKeyDown={inputKeyDown}
-        removeTag={removeTag}
-        removePublisher={removePublisher}
-        onTagsInputChange={onTagsInputChange}
-        tagsInput={tagsInput}
-        tagsArray={tags}
-        data={data}
-        onImageUpload={onImageUpload}
-        playlistArray={playlist}
-        playlistUpdate={playlistUpdate}
-        ad={ad}
-        props={props}
-      />
-    </PageGrid>
+    <React.Fragment>
+      <PageGrid>
+        <Form
+          step={step}
+          setStep={setStep}
+          onInputChange={onInputChange}
+          onSubmit={onSubmit}
+          inputKeyDown={inputKeyDown}
+          removeTag={removeTag}
+          removePublisher={removePublisher}
+          onTagsInputChange={onTagsInputChange}
+          tagsInput={tagsInput}
+          tagsArray={tags}
+          data={data}
+          onImageUpload={onImageUpload}
+          playlistArray={playlist}
+          ad={ad}
+          props={props}
+        />
+      </PageGrid>
+      <ReachEstimatorConditional />
+    </React.Fragment>
   )
 }
 

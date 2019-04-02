@@ -302,8 +302,8 @@
       "DIY"
     ],
     "demography": [
-      { "ageFrom": "20" },
-      { "ageTo": "60" },
+      { "ageFrom": 20 },
+      { "ageTo": 60 },
       { "gender": "Frauen" },
       { "income": "hoch" },
       { "education": "hoch" }
@@ -391,8 +391,8 @@
       "DIY"
     ],
     "demography": [
-      { "ageFrom": "20" },
-      { "ageTo": "40" },
+      { "ageFrom": 20 },
+      { "ageTo": 40 },
       { "gender": "Frauen" },
       { "income": "hoch" },
       { "education": "hoch" }
@@ -435,8 +435,8 @@
       "Philosophie"
     ],
     "demography": [
-      { "ageFrom": "25" },
-      { "ageTo": "60" },
+      { "ageFrom": 25 },
+      { "ageTo": 60 },
       { "gender": "Frauen" },
       { "income": "hoch" },
       { "education": "hoch" }
@@ -489,8 +489,8 @@
       "Fashion"
     ],
     "demography": [
-      { "ageFrom": "18" },
-      { "ageTo": "55" },
+      { "ageFrom": 18 },
+      { "ageTo": 55 },
       { "gender": "Frauen und Männer" },
       { "income": "hoch" },
       { "education": "hoch" }

@@ -56,27 +56,16 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route
             path="/dashboard"
-            render={props => (
-              <CampaignsList /* campaigns={campaigns} */ props={props} />
-            )}
+            render={props => <CampaignsList props={props} />}
           />
           <Route
             path="/create"
-            render={props => (
-              <CreateCampaignPage
-                /* onSubmit={createCampaign} */ props={props}
-              />
-            )}
+            render={props => <CreateCampaignPage props={props} />}
           />
           <Route path="/confirmation" component={Confirmation} />
           <Route
             path="/campaign/:_id"
-            render={props => (
-              <Campaign
-                props={props}
-                /*      id={match.params._id} */
-              />
-            )}
+            render={props => <Campaign props={props} />}
           />
           <GlobalStyle />
         </Grid>
